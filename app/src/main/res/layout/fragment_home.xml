@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- ================= BREAKFAST ================= -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardBreakfast"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#EAEAEA"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <ImageView
+                android:id="@+id/ivBreakfast"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_breakfast"
+                app:tint="#7E57C2"
+                android:contentDescription="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/ivBreakfastChevron"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="#B0B0B0"
+                android:contentDescription="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvBreakfastTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Breakfast"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                app:layout_constraintStart_toEndOf="@id/ivBreakfast"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivBreakfastChevron"/>
+
+            <TextView
+                android:id="@+id/tvBreakfastSub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:text="0 items • 0 kcal"
+                android:textSize="13sp"
+                android:textColor="#777777"
+                app:layout_constraintStart_toEndOf="@id/ivBreakfast"
+                app:layout_constraintTop_toBottomOf="@id/tvBreakfastTitle"
+                app:layout_constraintEnd_toStartOf="@id/ivBreakfastChevron"/>
+
+            <HorizontalScrollView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                app:layout_constraintStart_toEndOf="@id/ivBreakfast"
+                app:layout_constraintTop_toBottomOf="@id/tvBreakfastSub"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/rowBreakfastChips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
+
+                    <TextView
+                        android:id="@+id/tvBreakfastKcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 kcal"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_kcal"/>
+
+                    <TextView
+                        android:id="@+id/tvBreakfastP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Pro 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#1B5E20"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_protein"/>
+
+                    <TextView
+                        android:id="@+id/tvBreakfastF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Fat 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#E65100"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_fat"/>
+
+                    <TextView
+                        android:id="@+id/tvBreakfastC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Carb 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#0D47A1"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_carbs"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ================= LUNCH ================= -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardLunch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#EAEAEA"
+        app:layout_constraintTop_toBottomOf="@id/cardBreakfast"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <ImageView
+                android:id="@+id/ivLunch"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/outline_food_bank_24"
+                app:tint="#7E57C2"
+                android:contentDescription="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/ivLunchChevron"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="#B0B0B0"
+                android:contentDescription="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvLunchTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Lunch"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                app:layout_constraintStart_toEndOf="@id/ivLunch"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivLunchChevron"/>
+
+            <TextView
+                android:id="@+id/tvLunchSub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:text="0 items • 0 kcal"
+                android:textSize="13sp"
+                android:textColor="#777777"
+                app:layout_constraintStart_toEndOf="@id/ivLunch"
+                app:layout_constraintTop_toBottomOf="@id/tvLunchTitle"
+                app:layout_constraintEnd_toStartOf="@id/ivLunchChevron"/>
+
+            <HorizontalScrollView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                app:layout_constraintStart_toEndOf="@id/ivLunch"
+                app:layout_constraintTop_toBottomOf="@id/tvLunchSub"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/rowLunchChips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
+
+                    <TextView
+                        android:id="@+id/tvLunchKcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 kcal"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_kcal"/>
+
+                    <TextView
+                        android:id="@+id/tvLunchP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Pro 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#1B5E20"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_protein"/>
+
+                    <TextView
+                        android:id="@+id/tvLunchF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Fat 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#E65100"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_fat"/>
+
+                    <TextView
+                        android:id="@+id/tvLunchC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Carb 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#0D47A1"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_carbs"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ================= DINNER ================= -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardDinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#EAEAEA"
+        app:layout_constraintTop_toBottomOf="@id/cardLunch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <ImageView
+                android:id="@+id/ivDinner"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/outline_meal_dinner_24"
+                app:tint="#7E57C2"
+                android:contentDescription="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/ivDinnerChevron"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="#B0B0B0"
+                android:contentDescription="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvDinnerTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Dinner"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                app:layout_constraintStart_toEndOf="@id/ivDinner"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivDinnerChevron"/>
+
+            <TextView
+                android:id="@+id/tvDinnerSub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:text="0 items • 0 kcal"
+                android:textSize="13sp"
+                android:textColor="#777777"
+                app:layout_constraintStart_toEndOf="@id/ivDinner"
+                app:layout_constraintTop_toBottomOf="@id/tvDinnerTitle"
+                app:layout_constraintEnd_toStartOf="@id/ivDinnerChevron"/>
+
+            <HorizontalScrollView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                app:layout_constraintStart_toEndOf="@id/ivDinner"
+                app:layout_constraintTop_toBottomOf="@id/tvDinnerSub"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/rowDinnerChips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
+
+                    <TextView
+                        android:id="@+id/tvDinnerKcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 kcal"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_kcal"/>
+
+                    <TextView
+                        android:id="@+id/tvDinnerP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Pro 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#1B5E20"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_protein"/>
+
+                    <TextView
+                        android:id="@+id/tvDinnerF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Fat 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#E65100"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_fat"/>
+
+                    <TextView
+                        android:id="@+id/tvDinnerC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Carb 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#0D47A1"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_carbs"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ================= SNACKS ================= -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardSnacks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#EAEAEA"
+        app:layout_constraintTop_toBottomOf="@id/cardDinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <ImageView
+                android:id="@+id/ivSnacks"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/outline_fastfood_24"
+                app:tint="#7E57C2"
+                android:contentDescription="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/ivSnacksChevron"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="#B0B0B0"
+                android:contentDescription="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvSnacksTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Snacks"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                app:layout_constraintStart_toEndOf="@id/ivSnacks"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivSnacksChevron"/>
+
+            <TextView
+                android:id="@+id/tvSnacksSub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:text="0 items • 0 kcal"
+                android:textSize="13sp"
+                android:textColor="#777777"
+                app:layout_constraintStart_toEndOf="@id/ivSnacks"
+                app:layout_constraintTop_toBottomOf="@id/tvSnacksTitle"
+                app:layout_constraintEnd_toStartOf="@id/ivSnacksChevron"/>
+
+            <HorizontalScrollView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                app:layout_constraintStart_toEndOf="@id/ivSnacks"
+                app:layout_constraintTop_toBottomOf="@id/tvSnacksSub"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/rowSnacksChips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
+
+                    <TextView
+                        android:id="@+id/tvSnacksKcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 kcal"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_kcal"/>
+
+                    <TextView
+                        android:id="@+id/tvSnacksP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Pro 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#1B5E20"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_protein"/>
+
+                    <TextView
+                        android:id="@+id/tvSnacksF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Fat 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#E65100"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_fat"/>
+
+                    <TextView
+                        android:id="@+id/tvSnacksC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Carb 0.0g"
+                        android:maxLines="1"
+                        android:textSize="11sp"
+                        android:textColor="#0D47A1"
+                        android:paddingHorizontal="7dp"
+                        android:paddingVertical="5dp"
+                        android:background="@drawable/bg_chip_carbs"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ================= GRAND TOTAL (COPIED FROM FIRST CODE) ================= -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardGrandTotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#EAEAEA"
+        android:backgroundTint="#F5EFFB"
+        app:layout_constraintTop_toBottomOf="@id/cardSnacks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvGrandTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Total today"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#111111"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <HorizontalScrollView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                android:requiresFadingEdge="horizontal"
+                android:fadingEdgeLength="24dp"
+                app:layout_constraintTop_toBottomOf="@id/tvGrandTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/rowGrandChips"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <TextView
+                        android:id="@+id/tvGrandKcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 kcal"
+                        android:maxLines="1"
+                        android:textStyle="bold"
+                        android:textSize="13sp"
+                        android:textColor="#FFFFFF"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:background="@drawable/bg_chip_kcal"/>
+
+                    <TextView
+                        android:id="@+id/tvGrandP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Pro 0.0g"
+                        android:maxLines="1"
+                        android:textSize="12sp"
+                        android:textColor="#1B5E20"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="6dp"
+                        android:background="@drawable/bg_chip_protein"/>
+
+                    <TextView
+                        android:id="@+id/tvGrandF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Fat 0.0g"
+                        android:maxLines="1"
+                        android:textSize="12sp"
+                        android:textColor="#E65100"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="6dp"
+                        android:background="@drawable/bg_chip_fat"/>
+
+                    <TextView
+                        android:id="@+id/tvGrandC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Carb 0.0g"
+                        android:maxLines="1"
+                        android:textSize="12sp"
+                        android:textColor="#0D47A1"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="6dp"
+                        android:background="@drawable/bg_chip_carbs"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

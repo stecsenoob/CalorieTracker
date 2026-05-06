@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.CalorieTracker" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Intentionally light even at night -->
+    </style>
+
+    <style name="Theme.CalorieTracker" parent="Base.Theme.CalorieTracker" />
+
+</resources>

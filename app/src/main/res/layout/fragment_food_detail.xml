@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="16dp">
+
+    <!-- Back -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_chevron_right"
+        android:rotation="180"
+        app:tint="#7E57C2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- FOOD CARD -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFood"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#EEEAF7"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvFoodTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apple"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="#111111"/>
+
+            <TextView
+                android:id="@+id/tvFoodPortion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 medium (182g)"
+                android:textSize="14sp"
+                android:textColor="#777777"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Calories badge -->
+            <TextView
+                android:id="@+id/tvFoodCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="95 kcal"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#7E57C2"
+                android:background="@drawable/bg_calorie_badge"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Macros -->
+            <LinearLayout
+                android:id="@+id/rowMacros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Protein"
+                        android:textSize="12sp"
+                        android:textColor="#777777"/>
+
+                    <TextView
+                        android:id="@+id/tvProtein"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.5g"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="center"
+                    android:background="#EEEAF7"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fat"
+                        android:textSize="12sp"
+                        android:textColor="#777777"/>
+
+                    <TextView
+                        android:id="@+id/tvFat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.3g"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="center"
+                    android:background="#EEEAF7"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Carbs"
+                        android:textSize="12sp"
+                        android:textColor="#777777"/>
+
+                    <TextView
+                        android:id="@+id/tvCarbs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="25g"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Portion count -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPortionCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:hint="Portion count"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusTopStart="14dp"
+        app:boxCornerRadiusTopEnd="14dp"
+        app:boxCornerRadiusBottomStart="14dp"
+        app:boxCornerRadiusBottomEnd="14dp"
+        app:boxStrokeColor="#D7C9F4"
+        app:layout_constraintTop_toBottomOf="@id/cardFood"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPortionCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="1"
+            android:padding="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Grams/ml -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilGrams"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Grams / ml"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusTopStart="14dp"
+        app:boxCornerRadiusTopEnd="14dp"
+        app:boxCornerRadiusBottomStart="14dp"
+        app:boxCornerRadiusBottomEnd="14dp"
+        app:boxStrokeColor="#D7C9F4"
+        app:layout_constraintTop_toBottomOf="@id/tilPortionCount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etGrams"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="100"
+            android:padding="12dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Buttons (ALL SAME LIGHT PURPLE + SMALLER) -->
+    <!-- Color used: #F0EAFB (light purple like your cards) -->
+    <!-- Text: #7E57C2 -->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddBreakfast"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="Add to Breakfast"
+        android:layout_marginTop="16dp"
+        android:textAllCaps="false"
+        android:textSize="13sp"
+        android:minHeight="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingVertical="8dp"
+        app:cornerRadius="14dp"
+        app:backgroundTint="#F0EAFB"
+        app:strokeWidth="1dp"
+        app:strokeColor="#E6E0F2"
+        android:textColor="#7E57C2"
+        app:layout_constraintTop_toBottomOf="@id/tilGrams"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddLunch"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="Add to Lunch"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:textSize="13sp"
+        android:minHeight="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingVertical="8dp"
+        app:cornerRadius="14dp"
+        app:backgroundTint="#F0EAFB"
+        app:strokeWidth="1dp"
+        app:strokeColor="#E6E0F2"
+        android:textColor="#7E57C2"
+        app:layout_constraintTop_toBottomOf="@id/btnAddBreakfast"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddDinner"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="Add to Dinner"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:textSize="13sp"
+        android:minHeight="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingVertical="8dp"
+        app:cornerRadius="14dp"
+        app:backgroundTint="#F0EAFB"
+        app:strokeWidth="1dp"
+        app:strokeColor="#E6E0F2"
+        android:textColor="#7E57C2"
+        app:layout_constraintTop_toBottomOf="@id/btnAddLunch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddSnacks"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:text="Add to Snacks"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:textSize="13sp"
+        android:minHeight="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:paddingVertical="8dp"
+        app:cornerRadius="14dp"
+        app:backgroundTint="#F0EAFB"
+        app:strokeWidth="1dp"
+        app:strokeColor="#E6E0F2"
+        android:textColor="#7E57C2"
+        app:layout_constraintTop_toBottomOf="@id/btnAddDinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
