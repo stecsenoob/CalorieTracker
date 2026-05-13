@@ -48,6 +48,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation("com.google.android.gms:play-services-code-scanner:16.1.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

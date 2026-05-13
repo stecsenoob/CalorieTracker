@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.Locale;
@@ -35,6 +36,9 @@ public class HomeFragment extends Fragment {
         MaterialCardView cardLunch     = view.findViewById(R.id.cardLunch);
         MaterialCardView cardDinner    = view.findViewById(R.id.cardDinner);
         MaterialCardView cardSnacks    = view.findViewById(R.id.cardSnacks);
+
+        MaterialButton btnScanFood = view.findViewById(R.id.btnScanFood);
+        MaterialButton btnScanBarcode = view.findViewById(R.id.btnScanBarcode);
 
         tvBreakfastSub = view.findViewById(R.id.tvBreakfastSub);
         tvLunchSub     = view.findViewById(R.id.tvLunchSub);
@@ -71,6 +75,9 @@ public class HomeFragment extends Fragment {
         cardDinner.setOnClickListener(v -> openMealPage("dinner"));
         cardSnacks.setOnClickListener(v -> openMealPage("snacks"));
 
+        btnScanFood.setOnClickListener(v -> openScanFoodPage());
+        btnScanBarcode.setOnClickListener(v -> openBarcodeScannerPage());
+
         refreshUI();
     }
 
@@ -84,6 +91,22 @@ public class HomeFragment extends Fragment {
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frameLayout, MealFragment.newInstance(mealType))
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void openScanFoodPage() {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameLayout, new ScanFoodFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void openBarcodeScannerPage() {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameLayout, new BarcodeScannerFragment())
                 .addToBackStack(null)
                 .commit();
     }

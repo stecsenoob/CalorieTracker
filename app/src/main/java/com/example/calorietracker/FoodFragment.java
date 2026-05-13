@@ -57,7 +57,6 @@ public class FoodFragment extends Fragment {
         rvFoods.setLayoutManager(new LinearLayoutManager(requireContext()));
         rvFoods.setAdapter(adapter);
 
-        // ✅ Search filter (no SearchView)
         etSearchFood.addTextChangedListener(new SimpleTextWatcher(text -> adapter.filter(text)));
 
         btnAddFood.setOnClickListener(v -> showAddFoodDialog());
@@ -68,33 +67,43 @@ public class FoodFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadFoods(); // refresh hearts + list
+        loadFoods();
     }
 
     private void loadFoods() {
         allFoods.clear();
 
-        // 1) seed foods (global)
         seedFoods();
 
-        // 2) user foods from DB
         int userId = sm.getUserId();
+
         if (userId != -1) {
             List<dbConnect.UserFoodRow> custom = db.getUserFoods(userId);
+
             for (dbConnect.UserFoodRow r : custom) {
-                allFoods.add(new FoodItem(r.name, r.portion, r.baseGrams, r.calories, r.protein, r.fat, r.carbs));
+                allFoods.add(new FoodItem(
+                        r.id,
+                        true,
+                        r.name,
+                        r.portion,
+                        r.baseGrams,
+                        r.calories,
+                        r.protein,
+                        r.fat,
+                        r.carbs
+                ));
             }
         }
 
         adapter.setData(allFoods);
 
-        // re-apply current search
         String q = (etSearchFood.getText() == null) ? "" : etSearchFood.getText().toString();
         adapter.filter(q);
     }
 
     private void showAddFoodDialog() {
         int userId = sm.getUserId();
+
         if (userId == -1) {
             showSnack(requireView(), "Not logged in", true);
             return;
@@ -132,10 +141,25 @@ public class FoodFragment extends Fragment {
                 float f = parseFloat(text(etFat), 0f);
                 float c = parseFloat(text(etCarbs), 0f);
 
-                if (name.isEmpty()) { etName.setError("Required"); return; }
-                if (portion.isEmpty()) { etPortion.setError("Required"); return; }
-                if (grams <= 0) { etGrams.setError("Must be > 0"); return; }
-                if (kcal < 0) { etKcal.setError("Must be >= 0"); return; }
+                if (name.isEmpty()) {
+                    etName.setError("Required");
+                    return;
+                }
+
+                if (portion.isEmpty()) {
+                    etPortion.setError("Required");
+                    return;
+                }
+
+                if (grams <= 0) {
+                    etGrams.setError("Must be > 0");
+                    return;
+                }
+
+                if (kcal < 0) {
+                    etKcal.setError("Must be >= 0");
+                    return;
+                }
 
                 long id = db.addUserFood(userId, name, portion, grams, kcal, p, f, c);
 
@@ -154,6 +178,7 @@ public class FoodFragment extends Fragment {
 
     private void openFoodDetail(FoodItem item) {
         Bundle args = new Bundle();
+
         args.putString(FoodDetailFragment.ARG_FOOD_NAME, item.name);
         args.putString(FoodDetailFragment.ARG_FOOD_PORTION, item.portion);
         args.putFloat(FoodDetailFragment.ARG_FOOD_BASE_GRAMS, item.baseGrams);
@@ -173,16 +198,40 @@ public class FoodFragment extends Fragment {
                 .commit();
     }
 
-    // ================= Snackbar helper =================
+    private void confirmDeleteUserFood(FoodItem item) {
+        int userId = sm.getUserId();
+
+        if (userId == -1) {
+            showSnack(requireView(), "Not logged in", true);
+            return;
+        }
+
+        if (!item.isCustom || item.userFoodId == -1) {
+            showSnack(requireView(), "Default foods cannot be deleted", true);
+            return;
+        }
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Delete food")
+                .setMessage("Delete \"" + item.name + "\" from My Foods?")
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Delete", (dialog, which) -> {
+                    db.deleteUserFood(userId, item.userFoodId);
+                    showSnack(requireView(), "Food deleted", true);
+                    loadFoods();
+                })
+                .show();
+    }
+
     private void showSnack(View anchor, String message, boolean isError) {
         Snackbar snackbar = Snackbar.make(anchor, message, Snackbar.LENGTH_SHORT);
-        snackbar.setDuration(1000); // 1 секунда
-
+        snackbar.setDuration(1000);
 
         snackbar.setTextColor(Color.WHITE);
         snackbar.setBackgroundTint(Color.parseColor(isError ? "#E53935" : "#4CAF50"));
 
         View snackbarView = snackbar.getView();
+
         try {
             android.widget.FrameLayout.LayoutParams params =
                     (android.widget.FrameLayout.LayoutParams) snackbarView.getLayoutParams();
@@ -195,8 +244,6 @@ public class FoodFragment extends Fragment {
     }
 
     private void seedFoods() {
-        // (истото како кај тебе - не го менувам)
-        // ======================= FRUITS =======================
         allFoods.add(new FoodItem("Apple", "1 medium (182g)", 182f, 95, 0.5f, 0.3f, 25f));
         allFoods.add(new FoodItem("Banana", "1 medium (118g)", 118f, 105, 1.3f, 0.4f, 27f));
         allFoods.add(new FoodItem("Orange", "1 medium (131g)", 131f, 62, 1.2f, 0.2f, 15f));
@@ -224,13 +271,11 @@ public class FoodFragment extends Fragment {
         allFoods.add(new FoodItem("Fig", "2 medium (100g)", 100f, 74, 0.8f, 0.3f, 19f));
         allFoods.add(new FoodItem("Coconut", "1/2 cup shredded (40g)", 40f, 140, 1.5f, 13f, 6f));
         allFoods.add(new FoodItem("Avocado", "1/2 avocado (100g)", 100f, 160, 2.0f, 15f, 9f));
-
-        // ... продолжи си со твојот seedFoods како што беше (не го скратувам намерно тука)
-        // (остави го остатокот од листата ист)
     }
 
-    // -------------------- MODEL --------------------
     static class FoodItem {
+        final int userFoodId;
+        final boolean isCustom;
         final String name;
         final String portion;
         final float baseGrams;
@@ -239,7 +284,15 @@ public class FoodFragment extends Fragment {
         final float fat;
         final float carbs;
 
-        FoodItem(String name, String portion, float baseGrams, int calories, float protein, float fat, float carbs) {
+        FoodItem(String name, String portion, float baseGrams,
+                 int calories, float protein, float fat, float carbs) {
+            this(-1, false, name, portion, baseGrams, calories, protein, fat, carbs);
+        }
+
+        FoodItem(int userFoodId, boolean isCustom, String name, String portion,
+                 float baseGrams, int calories, float protein, float fat, float carbs) {
+            this.userFoodId = userFoodId;
+            this.isCustom = isCustom;
             this.name = name;
             this.portion = portion;
             this.baseGrams = baseGrams;
@@ -250,10 +303,11 @@ public class FoodFragment extends Fragment {
         }
     }
 
-    // -------------------- ADAPTER --------------------
     class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodVH> {
 
-        interface OnFoodClick { void onClick(FoodItem item); }
+        interface OnFoodClick {
+            void onClick(FoodItem item);
+        }
 
         private final List<FoodItem> original = new ArrayList<>();
         private final List<FoodItem> filtered = new ArrayList<>();
@@ -266,10 +320,12 @@ public class FoodFragment extends Fragment {
         void setData(List<FoodItem> items) {
             original.clear();
             filtered.clear();
+
             if (items != null) {
                 original.addAll(items);
                 filtered.addAll(items);
             }
+
             notifyDataSetChanged();
         }
 
@@ -287,7 +343,6 @@ public class FoodFragment extends Fragment {
 
             holder.tvTitle.setText(item.name);
 
-            // ✅ 2 lines
             String line1 = item.portion + " • " + item.calories + " kcal";
             String line2 = "Protein: " + item.protein + "g | Fat: " + item.fat + "g | Carbs: " + item.carbs + "g";
             holder.tvSub.setText(line1 + "\n" + line2);
@@ -300,59 +355,99 @@ public class FoodFragment extends Fragment {
 
             holder.ivFav.setOnClickListener(v -> {
                 int uid = sm.getUserId();
+
                 if (uid == -1) {
                     showSnack(requireView(), "Not logged in", true);
                     return;
                 }
 
                 boolean nowFav = db.isFavorite(uid, key);
+
                 if (nowFav) {
                     db.removeFavorite(uid, key);
                     paintHeart(holder.ivFav, false);
-                    showSnack(requireView(), "Removed from favorites 💔", true); // 🔴
+                    showSnack(requireView(), "Removed from favorites 💔", true);
                 } else {
-                    db.addFavorite(uid, key,
-                            item.name, item.portion, item.baseGrams,
-                            item.calories, item.protein, item.fat, item.carbs);
+                    db.addFavorite(
+                            uid,
+                            key,
+                            item.name,
+                            item.portion,
+                            item.baseGrams,
+                            item.calories,
+                            item.protein,
+                            item.fat,
+                            item.carbs
+                    );
                     paintHeart(holder.ivFav, true);
-                    showSnack(requireView(), "Added to favorites ❤️", false); // 🟢
+                    showSnack(requireView(), "Added to favorites ❤️", false);
                 }
             });
 
+            if (item.isCustom) {
+                holder.cardDelete.setVisibility(View.VISIBLE);
+
+                holder.cardDelete.setOnClickListener(v -> {
+                    confirmDeleteUserFood(item);
+                });
+
+                holder.ivDelete.setOnClickListener(v -> {
+                    confirmDeleteUserFood(item);
+                });
+
+            } else {
+                holder.cardDelete.setVisibility(View.GONE);
+                holder.cardDelete.setOnClickListener(null);
+                holder.ivDelete.setOnClickListener(null);
+            }
+
             holder.itemView.setOnClickListener(v -> {
-                if (listener != null) listener.onClick(item);
+                if (listener != null) {
+                    listener.onClick(item);
+                }
             });
         }
 
         @Override
-        public int getItemCount() { return filtered.size(); }
+        public int getItemCount() {
+            return filtered.size();
+        }
 
         void filter(String query) {
             String q = (query == null) ? "" : query.trim().toLowerCase(Locale.ROOT);
+
             filtered.clear();
-            if (q.isEmpty()) filtered.addAll(original);
-            else {
+
+            if (q.isEmpty()) {
+                filtered.addAll(original);
+            } else {
                 for (FoodItem item : original) {
-                    if (item.name.toLowerCase(Locale.ROOT).contains(q)) filtered.add(item);
+                    if (item.name.toLowerCase(Locale.ROOT).contains(q)) {
+                        filtered.add(item);
+                    }
                 }
             }
+
             notifyDataSetChanged();
         }
 
         class FoodVH extends RecyclerView.ViewHolder {
             TextView tvTitle, tvSub;
-            ImageView ivFav;
+            ImageView ivFav, ivDelete;
+            View cardDelete;
 
             FoodVH(@NonNull View itemView) {
                 super(itemView);
+
                 tvTitle = itemView.findViewById(R.id.tvTitle);
                 tvSub = itemView.findViewById(R.id.tvSub);
                 ivFav = itemView.findViewById(R.id.ivFav);
+                ivDelete = itemView.findViewById(R.id.ivDelete);
+                cardDelete = itemView.findViewById(R.id.cardDelete);
             }
         }
     }
 
-    // ---------- Favorites helpers ----------
     private String makeFoodKey(FoodItem item) {
         return item.name + "|" + item.portion + "|" + item.baseGrams + "|" +
                 item.calories + "|" + item.protein + "|" + item.fat + "|" + item.carbs;
@@ -360,16 +455,16 @@ public class FoodFragment extends Fragment {
 
     private void paintHeart(ImageView iv, boolean fav) {
         if (iv == null) return;
+
         if (fav) {
             iv.setImageResource(R.drawable.baseline_favorite_24);
-            iv.setColorFilter(0xFFE53935); // red
+            iv.setColorFilter(0xFFE53935);
         } else {
             iv.setImageResource(R.drawable.outline_favorite_24);
-            iv.setColorFilter(0xFFB0B0B0); // gray
+            iv.setColorFilter(0xFFB0B0B0);
         }
     }
 
-    // ---------- small utils ----------
     private static String text(TextInputEditText et) {
         return (et.getText() == null) ? "" : et.getText().toString();
     }
@@ -385,19 +480,28 @@ public class FoodFragment extends Fragment {
         }
     }
 
-    // ✅ FIXED TextWatcher (now compiles)
     static class SimpleTextWatcher implements TextWatcher {
-        interface OnTextChanged { void onChanged(String text); }
+        interface OnTextChanged {
+            void onChanged(String text);
+        }
+
         private final OnTextChanged cb;
 
-        SimpleTextWatcher(OnTextChanged cb) { this.cb = cb; }
+        SimpleTextWatcher(OnTextChanged cb) {
+            this.cb = cb;
+        }
 
-        @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-        @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
         @Override
         public void afterTextChanged(Editable s) {
-            if (cb != null) cb.onChanged(s == null ? "" : s.toString());
+            if (cb != null) {
+                cb.onChanged(s == null ? "" : s.toString());
+            }
         }
     }
 }

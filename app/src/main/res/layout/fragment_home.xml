@@ -598,7 +598,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- ================= GRAND TOTAL (COPIED FROM FIRST CODE) ================= -->
+    <!-- ================= GRAND TOTAL ================= -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardGrandTotal"
         android:layout_width="0dp"
@@ -706,5 +706,60 @@
             </HorizontalScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <!-- ================= ACTION BUTTONS ROW ================= -->
+    <LinearLayout
+        android:id="@+id/rowScanButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/cardGrandTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnScanFood"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:text="Scan Food"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#7B1FA2"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/outline_photo_camera_24"
+            app:iconTint="#FFFFFF"
+            app:iconSize="22dp"
+            app:iconGravity="textStart"
+            app:iconPadding="6dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnScanBarcode"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text="Barcode"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#7B1FA2"
+            android:backgroundTint="#F5EFFB"
+            app:cornerRadius="18dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#D7BDEB"
+            app:icon="@drawable/ic_barcode"
+            app:iconTint="#7B1FA2"
+            app:iconSize="22dp"
+            app:iconGravity="textStart"
+            app:iconPadding="6dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

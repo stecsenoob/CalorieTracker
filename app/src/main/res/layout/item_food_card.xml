@@ -26,7 +26,7 @@
             android:textColor="#111111"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/cardFav"/>
+            app:layout_constraintEnd_toStartOf="@id/cardFav" />
 
         <TextView
             android:id="@+id/tvSub"
@@ -39,9 +39,8 @@
             android:textColor="#6F6F6F"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
-            app:layout_constraintEnd_toStartOf="@id/cardFav"/>
+            app:layout_constraintEnd_toStartOf="@id/cardFav" />
 
-        <!-- Heart as circular button -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardFav"
             android:layout_width="40dp"
@@ -52,8 +51,7 @@
             app:strokeColor="#E7DFF6"
             app:cardBackgroundColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/ivFav"
@@ -64,7 +62,35 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="8dp"
-                app:tint="#B0B0B0"/>
+                app:tint="#B0B0B0" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardDelete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#F3D0D0"
+            app:cardBackgroundColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardFav">
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="@null"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"
+                app:tint="#E53935" />
+
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ import java.util.List;
 public class dbConnect extends SQLiteOpenHelper {
 
     private static final String dbName = "findFriendsManager";
-    private static final int dbVersion = 5; // ✅ bump version (was 4)
+    private static final int dbVersion = 5;
 
     // ================= USERS TABLE =================
     private static final String USERS_TABLE = "users";
@@ -55,7 +55,6 @@ public class dbConnect extends SQLiteOpenHelper {
     public static final String FV_ID = "id";
     public static final String FV_USER_ID = "user_id";
     public static final String FV_KEY = "food_key";
-
     public static final String FV_NAME = "name";
     public static final String FV_PORTION = "portion";
     public static final String FV_BASE_GRAMS = "base_grams";
@@ -71,15 +70,12 @@ public class dbConnect extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        // USERS
         String usersQuery = "CREATE TABLE " + USERS_TABLE + " (" +
                 U_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 U_USERNAME + " TEXT UNIQUE, " +
                 U_PASSWORD + " TEXT)";
         db.execSQL(usersQuery);
 
-        // FOOD LOGS
         String logsQuery = "CREATE TABLE " + LOGS_TABLE + " (" +
                 L_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 L_USER_ID + " INTEGER NOT NULL, " +
@@ -99,7 +95,6 @@ public class dbConnect extends SQLiteOpenHelper {
         db.execSQL("CREATE INDEX idx_logs_user_meal ON " + LOGS_TABLE + "(" + L_USER_ID + ", " + L_MEAL + ")");
         db.execSQL("CREATE INDEX idx_logs_user_created ON " + LOGS_TABLE + "(" + L_USER_ID + ", " + L_CREATED + ")");
 
-        // USER FOODS
         String foodsQuery = "CREATE TABLE " + FOODS_TABLE + " (" +
                 F_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 F_USER_ID + " INTEGER NOT NULL, " +
@@ -117,7 +112,6 @@ public class dbConnect extends SQLiteOpenHelper {
 
         db.execSQL("CREATE INDEX idx_foods_user ON " + FOODS_TABLE + "(" + F_USER_ID + ")");
 
-        // FAVORITES
         String favQuery = "CREATE TABLE " + FAV_TABLE + " (" +
                 FV_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 FV_USER_ID + " INTEGER NOT NULL, " +
@@ -140,7 +134,6 @@ public class dbConnect extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Development friendly: drop & recreate
         db.execSQL("DROP TABLE IF EXISTS " + LOGS_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + FOODS_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + FAV_TABLE);
@@ -160,30 +153,40 @@ public class dbConnect extends SQLiteOpenHelper {
 
     public boolean userExists(String user) {
         SQLiteDatabase db = this.getReadableDatabase();
+
         Cursor cursor = db.rawQuery(
                 "SELECT 1 FROM " + USERS_TABLE + " WHERE " + U_USERNAME + "=?",
                 new String[]{user}
         );
+
         boolean exists = cursor.getCount() > 0;
         cursor.close();
+
         return exists;
     }
 
-    // ✅ returns userId if ok, else -1
     public int checkLoginGetUserId(String user, String pass) {
         SQLiteDatabase db = this.getReadableDatabase();
+
         Cursor cursor = db.rawQuery(
-                "SELECT " + U_ID + " FROM " + USERS_TABLE + " WHERE " + U_USERNAME + "=? AND " + U_PASSWORD + "=?",
+                "SELECT " + U_ID + " FROM " + USERS_TABLE +
+                        " WHERE " + U_USERNAME + "=? AND " + U_PASSWORD + "=?",
                 new String[]{user, pass}
         );
 
         int id = -1;
-        if (cursor.moveToFirst()) id = cursor.getInt(0);
+
+        if (cursor.moveToFirst()) {
+            id = cursor.getInt(0);
+        }
+
         cursor.close();
+
         return id;
     }
 
     // ================= FOOD LOGS MODEL =================
+
     public static class LoggedFoodRow {
         public int id;
         public String name;
@@ -229,7 +232,6 @@ public class dbConnect extends SQLiteOpenHelper {
         meal = normalizeMeal(meal);
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // ✅ only today's items (so totals reset when date changes)
         long start = startOfToday();
         long end = endOfToday();
 
@@ -249,6 +251,7 @@ public class dbConnect extends SQLiteOpenHelper {
         );
 
         List<LoggedFoodRow> list = new ArrayList<>();
+
         while (c.moveToNext()) {
             LoggedFoodRow r = new LoggedFoodRow();
             r.id = c.getInt(0);
@@ -262,7 +265,9 @@ public class dbConnect extends SQLiteOpenHelper {
             r.meal = c.getString(8);
             list.add(r);
         }
+
         c.close();
+
         return list;
     }
 
@@ -270,7 +275,6 @@ public class dbConnect extends SQLiteOpenHelper {
         meal = normalizeMeal(meal);
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // ✅ only today's totals (so totals reset when date changes)
         long start = startOfToday();
         long end = endOfToday();
 
@@ -292,6 +296,7 @@ public class dbConnect extends SQLiteOpenHelper {
         );
 
         Totals t = new Totals();
+
         if (c.moveToFirst()) {
             t.items = c.getInt(0);
             t.calories = c.getInt(1);
@@ -299,14 +304,15 @@ public class dbConnect extends SQLiteOpenHelper {
             t.fat = c.getFloat(3);
             t.carbs = c.getFloat(4);
         }
+
         c.close();
+
         return t;
     }
 
     public Totals getGrandTotals(int userId) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // ✅ only today's totals (so totals reset when date changes)
         long start = startOfToday();
         long end = endOfToday();
 
@@ -327,6 +333,7 @@ public class dbConnect extends SQLiteOpenHelper {
         );
 
         Totals t = new Totals();
+
         if (c.moveToFirst()) {
             t.items = c.getInt(0);
             t.calories = c.getInt(1);
@@ -334,13 +341,17 @@ public class dbConnect extends SQLiteOpenHelper {
             t.fat = c.getFloat(3);
             t.carbs = c.getFloat(4);
         }
+
         c.close();
+
         return t;
     }
 
     public void deleteFoodLog(int userId, int logId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(LOGS_TABLE,
+
+        db.delete(
+                LOGS_TABLE,
                 L_ID + "=? AND " + L_USER_ID + "=?",
                 new String[]{String.valueOf(logId), String.valueOf(userId)}
         );
@@ -362,6 +373,7 @@ public class dbConnect extends SQLiteOpenHelper {
     public long addUserFood(int userId, String name, String portion, float baseGrams,
                             int calories, float protein, float fat, float carbs) {
         SQLiteDatabase db = this.getWritableDatabase();
+
         ContentValues v = new ContentValues();
         v.put(F_USER_ID, userId);
         v.put(F_NAME, name);
@@ -372,11 +384,43 @@ public class dbConnect extends SQLiteOpenHelper {
         v.put(F_F, fat);
         v.put(F_C, carbs);
         v.put(F_CREATED, System.currentTimeMillis());
+
         return db.insert(FOODS_TABLE, null, v);
+    }
+
+    public boolean userFoodExists(int userId, String name, float baseGrams,
+                                  int calories, float protein, float fat, float carbs) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor c = db.rawQuery(
+                "SELECT 1 FROM " + FOODS_TABLE +
+                        " WHERE " + F_USER_ID + "=? " +
+                        "AND LOWER(TRIM(" + F_NAME + "))=LOWER(TRIM(?)) " +
+                        "AND ABS(" + F_BASE_GRAMS + " - ?) < 0.01 " +
+                        "AND " + F_CAL + "=? " +
+                        "AND ABS(" + F_P + " - ?) < 0.01 " +
+                        "AND ABS(" + F_F + " - ?) < 0.01 " +
+                        "AND ABS(" + F_C + " - ?) < 0.01",
+                new String[]{
+                        String.valueOf(userId),
+                        name,
+                        String.valueOf(baseGrams),
+                        String.valueOf(calories),
+                        String.valueOf(protein),
+                        String.valueOf(fat),
+                        String.valueOf(carbs)
+                }
+        );
+
+        boolean exists = c.moveToFirst();
+        c.close();
+
+        return exists;
     }
 
     public List<UserFoodRow> getUserFoods(int userId) {
         SQLiteDatabase db = this.getReadableDatabase();
+
         Cursor c = db.rawQuery(
                 "SELECT " + F_ID + ", " + F_NAME + ", " + F_PORTION + ", " + F_BASE_GRAMS + ", " +
                         F_CAL + ", " + F_P + ", " + F_F + ", " + F_C +
@@ -386,6 +430,7 @@ public class dbConnect extends SQLiteOpenHelper {
         );
 
         List<UserFoodRow> list = new ArrayList<>();
+
         while (c.moveToNext()) {
             UserFoodRow r = new UserFoodRow();
             r.id = c.getInt(0);
@@ -398,20 +443,36 @@ public class dbConnect extends SQLiteOpenHelper {
             r.carbs = c.getFloat(7);
             list.add(r);
         }
+
         c.close();
+
         return list;
+    }
+
+    public void deleteUserFood(int userId, int foodId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(
+                FOODS_TABLE,
+                F_ID + "=? AND " + F_USER_ID + "=?",
+                new String[]{String.valueOf(foodId), String.valueOf(userId)}
+        );
     }
 
     // ================= FAVORITES API =================
 
     public boolean isFavorite(int userId, String foodKey) {
         SQLiteDatabase db = this.getReadableDatabase();
+
         Cursor c = db.rawQuery(
-                "SELECT 1 FROM " + FAV_TABLE + " WHERE " + FV_USER_ID + "=? AND " + FV_KEY + "=?",
+                "SELECT 1 FROM " + FAV_TABLE +
+                        " WHERE " + FV_USER_ID + "=? AND " + FV_KEY + "=?",
                 new String[]{String.valueOf(userId), foodKey}
         );
+
         boolean ok = c.getCount() > 0;
         c.close();
+
         return ok;
     }
 
@@ -419,6 +480,7 @@ public class dbConnect extends SQLiteOpenHelper {
                             String name, String portion, float baseGrams,
                             int calories, float protein, float fat, float carbs) {
         SQLiteDatabase db = this.getWritableDatabase();
+
         ContentValues v = new ContentValues();
         v.put(FV_USER_ID, userId);
         v.put(FV_KEY, foodKey);
@@ -430,12 +492,15 @@ public class dbConnect extends SQLiteOpenHelper {
         v.put(FV_F, fat);
         v.put(FV_C, carbs);
         v.put(FV_CREATED, System.currentTimeMillis());
-        return db.insert(FAV_TABLE, null, v); // if exists -> -1
+
+        return db.insert(FAV_TABLE, null, v);
     }
 
     public void removeFavorite(int userId, String foodKey) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(FAV_TABLE,
+
+        db.delete(
+                FAV_TABLE,
                 FV_USER_ID + "=? AND " + FV_KEY + "=?",
                 new String[]{String.valueOf(userId), foodKey}
         );
@@ -454,6 +519,7 @@ public class dbConnect extends SQLiteOpenHelper {
 
     public List<FavoriteFoodRow> getFavorites(int userId) {
         SQLiteDatabase db = this.getReadableDatabase();
+
         Cursor c = db.rawQuery(
                 "SELECT " + FV_KEY + ", " + FV_NAME + ", " + FV_PORTION + ", " + FV_BASE_GRAMS + ", " +
                         FV_CAL + ", " + FV_P + ", " + FV_F + ", " + FV_C +
@@ -463,6 +529,7 @@ public class dbConnect extends SQLiteOpenHelper {
         );
 
         List<FavoriteFoodRow> list = new ArrayList<>();
+
         while (c.moveToNext()) {
             FavoriteFoodRow r = new FavoriteFoodRow();
             r.key = c.getString(0);
@@ -475,22 +542,31 @@ public class dbConnect extends SQLiteOpenHelper {
             r.carbs = c.getFloat(7);
             list.add(r);
         }
+
         c.close();
+
         return list;
     }
 
     // ================= HELPERS =================
 
     private String normalizeMeal(String meal) {
-        if (meal == null) return "breakfast";
-        meal = meal.trim().toLowerCase();
-        if (!(meal.equals("breakfast") || meal.equals("lunch") || meal.equals("dinner") || meal.equals("snacks"))) {
+        if (meal == null) {
             return "breakfast";
         }
+
+        meal = meal.trim().toLowerCase();
+
+        if (!(meal.equals("breakfast") ||
+                meal.equals("lunch") ||
+                meal.equals("dinner") ||
+                meal.equals("snacks"))) {
+            return "breakfast";
+        }
+
         return meal;
     }
 
-    // ✅ Date helpers (today range) -> makes totals reset when phone date changes
     private long startOfToday() {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, 0);
