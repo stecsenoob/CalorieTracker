@@ -70,6 +70,8 @@ public class HomeFragment extends Fragment {
         tvGrandF    = view.findViewById(R.id.tvGrandF);
         tvGrandC    = view.findViewById(R.id.tvGrandC);
 
+        hideMealKcalChips();
+
         cardBreakfast.setOnClickListener(v -> openMealPage("breakfast"));
         cardLunch.setOnClickListener(v -> openMealPage("lunch"));
         cardDinner.setOnClickListener(v -> openMealPage("dinner"));
@@ -85,6 +87,13 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         refreshUI();
+    }
+
+    private void hideMealKcalChips() {
+        tvBreakfastKcal.setVisibility(View.GONE);
+        tvLunchKcal.setVisibility(View.GONE);
+        tvDinnerKcal.setVisibility(View.GONE);
+        tvSnacksKcal.setVisibility(View.GONE);
     }
 
     private void openMealPage(String mealType) {
@@ -117,27 +126,35 @@ public class HomeFragment extends Fragment {
 
         dbConnect db = new dbConnect(requireContext());
 
-        setMealCard(db, userId, "breakfast", tvBreakfastSub, tvBreakfastKcal, tvBreakfastP, tvBreakfastF, tvBreakfastC);
-        setMealCard(db, userId, "lunch",     tvLunchSub,     tvLunchKcal,     tvLunchP,     tvLunchF,     tvLunchC);
-        setMealCard(db, userId, "dinner",    tvDinnerSub,    tvDinnerKcal,    tvDinnerP,    tvDinnerF,    tvDinnerC);
-        setMealCard(db, userId, "snacks",    tvSnacksSub,    tvSnacksKcal,    tvSnacksP,    tvSnacksF,    tvSnacksC);
+        setMealCard(db, userId, "breakfast", tvBreakfastSub, tvBreakfastP, tvBreakfastF, tvBreakfastC);
+        setMealCard(db, userId, "lunch",     tvLunchSub,     tvLunchP,     tvLunchF,     tvLunchC);
+        setMealCard(db, userId, "dinner",    tvDinnerSub,    tvDinnerP,    tvDinnerF,    tvDinnerC);
+        setMealCard(db, userId, "snacks",    tvSnacksSub,    tvSnacksP,    tvSnacksF,    tvSnacksC);
 
         dbConnect.Totals g = db.getGrandTotals(userId);
-        setChips(g, tvGrandKcal, tvGrandP, tvGrandF, tvGrandC);
+        setGrandChips(g, tvGrandKcal, tvGrandP, tvGrandF, tvGrandC);
     }
 
     private void setMealCard(dbConnect db, int userId, String meal,
                              TextView tvSub,
-                             TextView tvKcal, TextView tvP, TextView tvF, TextView tvC) {
+                             TextView tvP, TextView tvF, TextView tvC) {
 
         dbConnect.Totals t = db.getMealTotals(userId, meal);
 
         tvSub.setText(t.items + " items • " + t.calories + " kcal");
-        setChips(t, tvKcal, tvP, tvF, tvC);
+        setMacroChips(t, tvP, tvF, tvC);
     }
 
-    private void setChips(dbConnect.Totals t,
-                          TextView tvKcal, TextView tvP, TextView tvF, TextView tvC) {
+    private void setMacroChips(dbConnect.Totals t,
+                               TextView tvP, TextView tvF, TextView tvC) {
+
+        tvP.setText(String.format(Locale.ROOT, "Protein %.1fg", t.protein));
+        tvF.setText(String.format(Locale.ROOT, "Fat %.1fg", t.fat));
+        tvC.setText(String.format(Locale.ROOT, "Carbs %.1fg", t.carbs));
+    }
+
+    private void setGrandChips(dbConnect.Totals t,
+                               TextView tvKcal, TextView tvP, TextView tvF, TextView tvC) {
 
         tvKcal.setText(String.format(Locale.ROOT, "%d kcal", t.calories));
         tvP.setText(String.format(Locale.ROOT, "Protein %.1fg", t.protein));

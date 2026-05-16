@@ -2,6 +2,7 @@ package com.example.calorietracker;
 
 import android.app.AlertDialog;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,8 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class FoodFragment extends Fragment {
 
         etSearchFood.addTextChangedListener(new SimpleTextWatcher(text -> adapter.filter(text)));
 
-        btnAddFood.setOnClickListener(v -> showAddFoodDialog());
+        btnAddFood.setOnClickListener(v -> showAddFoodBottomSheet());
 
         loadFoods();
     }
@@ -101,15 +102,16 @@ public class FoodFragment extends Fragment {
         adapter.filter(q);
     }
 
-    private void showAddFoodDialog() {
+    private void showAddFoodBottomSheet() {
         int userId = sm.getUserId();
 
         if (userId == -1) {
-            showSnack(requireView(), "Not logged in", true);
+            showSimpleDialog("Not Logged In", "Please log in before adding food.");
             return;
         }
 
-        View v = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_food, null, false);
+        BottomSheetDialog sheet = new BottomSheetDialog(requireContext());
+        View v = LayoutInflater.from(requireContext()).inflate(R.layout.bottom_sheet_add_food, null, false);
 
         TextInputEditText etName = v.findViewById(R.id.etName);
         TextInputEditText etPortion = v.findViewById(R.id.etPortion);
@@ -119,61 +121,56 @@ public class FoodFragment extends Fragment {
         TextInputEditText etFat = v.findViewById(R.id.etFat);
         TextInputEditText etCarbs = v.findViewById(R.id.etCarbs);
 
+        MaterialButton btnCancel = v.findViewById(R.id.btnCancelAddFood);
+        MaterialButton btnSave = v.findViewById(R.id.btnSaveAddFood);
+
         etPortion.setText("100g");
         etGrams.setText("100");
 
-        AlertDialog d = new AlertDialog.Builder(requireContext())
-                .setTitle("Add Food")
-                .setView(v)
-                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
-                .setPositiveButton("Save", null)
-                .create();
+        btnCancel.setOnClickListener(view -> sheet.dismiss());
 
-        d.setOnShowListener(dialog -> {
-            d.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(btn -> {
+        btnSave.setOnClickListener(view -> {
+            String name = text(etName).trim();
+            String portion = text(etPortion).trim();
 
-                String name = text(etName).trim();
-                String portion = text(etPortion).trim();
+            float grams = parseFloat(text(etGrams), 100f);
+            int kcal = (int) parseFloat(text(etKcal), 0f);
+            float p = parseFloat(text(etProtein), 0f);
+            float f = parseFloat(text(etFat), 0f);
+            float c = parseFloat(text(etCarbs), 0f);
 
-                float grams = parseFloat(text(etGrams), 100f);
-                int kcal = (int) parseFloat(text(etKcal), 0f);
-                float p = parseFloat(text(etProtein), 0f);
-                float f = parseFloat(text(etFat), 0f);
-                float c = parseFloat(text(etCarbs), 0f);
+            if (name.isEmpty()) {
+                etName.setError("Required");
+                return;
+            }
 
-                if (name.isEmpty()) {
-                    etName.setError("Required");
-                    return;
-                }
+            if (portion.isEmpty()) {
+                etPortion.setError("Required");
+                return;
+            }
 
-                if (portion.isEmpty()) {
-                    etPortion.setError("Required");
-                    return;
-                }
+            if (grams <= 0) {
+                etGrams.setError("Must be > 0");
+                return;
+            }
 
-                if (grams <= 0) {
-                    etGrams.setError("Must be > 0");
-                    return;
-                }
+            if (kcal < 0) {
+                etKcal.setError("Must be >= 0");
+                return;
+            }
 
-                if (kcal < 0) {
-                    etKcal.setError("Must be >= 0");
-                    return;
-                }
+            long id = db.addUserFood(userId, name, portion, grams, kcal, p, f, c);
 
-                long id = db.addUserFood(userId, name, portion, grams, kcal, p, f, c);
-
-                if (id != -1) {
-                    showSnack(requireView(), "Food added ✅", false);
-                    d.dismiss();
-                    loadFoods();
-                } else {
-                    showSnack(requireView(), "Failed to save", true);
-                }
-            });
+            if (id != -1) {
+                sheet.dismiss();
+                loadFoods();
+            } else {
+                showSimpleDialog("Save Failed", "The food could not be saved. Please try again.");
+            }
         });
 
-        d.show();
+        sheet.setContentView(v);
+        sheet.show();
     }
 
     private void openFoodDetail(FoodItem item) {
@@ -202,45 +199,48 @@ public class FoodFragment extends Fragment {
         int userId = sm.getUserId();
 
         if (userId == -1) {
-            showSnack(requireView(), "Not logged in", true);
+            showSimpleDialog("Not Logged In", "Please log in before deleting food.");
             return;
         }
 
         if (!item.isCustom || item.userFoodId == -1) {
-            showSnack(requireView(), "Default foods cannot be deleted", true);
+            showSimpleDialog("Cannot Delete", "Default foods cannot be deleted.");
             return;
         }
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Delete food")
-                .setMessage("Delete \"" + item.name + "\" from My Foods?")
-                .setNegativeButton("Cancel", null)
-                .setPositiveButton("Delete", (dialog, which) -> {
-                    db.deleteUserFood(userId, item.userFoodId);
-                    showSnack(requireView(), "Food deleted", true);
-                    loadFoods();
-                })
-                .show();
+        View v = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_delete_food, null, false);
+
+        TextView tvDeleteMessage = v.findViewById(R.id.tvDeleteMessage);
+        MaterialButton btnCancelDelete = v.findViewById(R.id.btnCancelDelete);
+        MaterialButton btnConfirmDelete = v.findViewById(R.id.btnConfirmDelete);
+
+        tvDeleteMessage.setText("Delete \"" + item.name + "\" from My Foods?");
+
+        AlertDialog dialog = new AlertDialog.Builder(requireContext())
+                .setView(v)
+                .create();
+
+        btnCancelDelete.setOnClickListener(view -> dialog.dismiss());
+
+        btnConfirmDelete.setOnClickListener(view -> {
+            db.deleteUserFood(userId, item.userFoodId);
+            dialog.dismiss();
+            loadFoods();
+        });
+
+        dialog.show();
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
     }
 
-    private void showSnack(View anchor, String message, boolean isError) {
-        Snackbar snackbar = Snackbar.make(anchor, message, Snackbar.LENGTH_SHORT);
-        snackbar.setDuration(1000);
-
-        snackbar.setTextColor(Color.WHITE);
-        snackbar.setBackgroundTint(Color.parseColor(isError ? "#E53935" : "#4CAF50"));
-
-        View snackbarView = snackbar.getView();
-
-        try {
-            android.widget.FrameLayout.LayoutParams params =
-                    (android.widget.FrameLayout.LayoutParams) snackbarView.getLayoutParams();
-            params.setMargins(40, 0, 40, 40);
-            snackbarView.setLayoutParams(params);
-        } catch (Exception ignored) {}
-
-        snackbarView.setBackground(requireContext().getDrawable(R.drawable.bg_chip_protein));
-        snackbar.show();
+    private void showSimpleDialog(String title, String message) {
+        new AlertDialog.Builder(requireContext())
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null)
+                .show();
     }
 
     private void seedFoods() {
@@ -357,7 +357,7 @@ public class FoodFragment extends Fragment {
                 int uid = sm.getUserId();
 
                 if (uid == -1) {
-                    showSnack(requireView(), "Not logged in", true);
+                    showSimpleDialog("Not Logged In", "Please log in before using favorites.");
                     return;
                 }
 
@@ -366,7 +366,6 @@ public class FoodFragment extends Fragment {
                 if (nowFav) {
                     db.removeFavorite(uid, key);
                     paintHeart(holder.ivFav, false);
-                    showSnack(requireView(), "Removed from favorites 💔", true);
                 } else {
                     db.addFavorite(
                             uid,
@@ -380,20 +379,14 @@ public class FoodFragment extends Fragment {
                             item.carbs
                     );
                     paintHeart(holder.ivFav, true);
-                    showSnack(requireView(), "Added to favorites ❤️", false);
                 }
             });
 
             if (item.isCustom) {
                 holder.cardDelete.setVisibility(View.VISIBLE);
 
-                holder.cardDelete.setOnClickListener(v -> {
-                    confirmDeleteUserFood(item);
-                });
-
-                holder.ivDelete.setOnClickListener(v -> {
-                    confirmDeleteUserFood(item);
-                });
+                holder.cardDelete.setOnClickListener(v -> confirmDeleteUserFood(item));
+                holder.ivDelete.setOnClickListener(v -> confirmDeleteUserFood(item));
 
             } else {
                 holder.cardDelete.setVisibility(View.GONE);

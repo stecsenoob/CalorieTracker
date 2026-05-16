@@ -1,6 +1,7 @@
 package com.example.calorietracker;
 
 import android.Manifest;
+import androidx.appcompat.app.AlertDialog;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,11 +9,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -47,7 +48,17 @@ public class ScanFoodFragment extends Fragment {
     private ImageView imgFoodPreview;
     private TextView tvImagePlaceholderIcon;
     private TextView tvImagePlaceholder;
-    private TextView tvResult;
+
+    private TextView tvResultTitle;
+    private TextView tvResultSubtitle;
+    private TextView tvFoodValue;
+    private TextView tvQuantityValue;
+    private TextView tvCaloriesValue;
+    private TextView tvProteinValue;
+    private TextView tvCarbsValue;
+    private TextView tvFatValue;
+    private TextView tvConfidenceValue;
+    private TextView tvNoteValue;
 
     private MaterialCardView cardQuantity;
     private TextInputEditText etGrams;
@@ -101,10 +112,11 @@ public class ScanFoodFragment extends Fragment {
                     if (isGranted) {
                         openCameraFullQuality();
                     } else {
-                        Toast.makeText(requireContext(), "Camera permission is required", Toast.LENGTH_SHORT).show();
-
-                        if (tvResult != null) {
-                            tvResult.setText("Camera permission is required to take a food photo.");
+                        if (tvResultTitle != null) {
+                            showInfoState(
+                                    "Camera Permission Needed",
+                                    "Camera access is required to take a food photo.\n\nPlease allow camera permission and try again."
+                            );
                         }
                     }
                 }
@@ -122,11 +134,19 @@ public class ScanFoodFragment extends Fragment {
                         showImagePreview(currentPhotoUri);
 
                         cardQuantity.setVisibility(View.GONE);
-                        tvResult.setText("Image captured successfully.\n\nNow click Analyze Food.");
+
+                        showInfoState(
+                                "Photo Captured",
+                                "Your food image is ready.\n\nTap Analyze Food to estimate calories, protein, carbs, and fat."
+                        );
+
                         disableSaveButton();
 
                     } else {
-                        Toast.makeText(requireContext(), "No image captured", Toast.LENGTH_SHORT).show();
+                        showInfoState(
+                                "No Image Captured",
+                                "The camera did not return a photo.\n\nPlease tap Take Photo and try again."
+                        );
                     }
                 }
         );
@@ -139,7 +159,17 @@ public class ScanFoodFragment extends Fragment {
         imgFoodPreview = view.findViewById(R.id.imgFoodPreview);
         tvImagePlaceholderIcon = view.findViewById(R.id.tvImagePlaceholderIcon);
         tvImagePlaceholder = view.findViewById(R.id.tvImagePlaceholder);
-        tvResult = view.findViewById(R.id.tvResult);
+
+        tvResultTitle = view.findViewById(R.id.tvResultTitle);
+        tvResultSubtitle = view.findViewById(R.id.tvResultSubtitle);
+        tvFoodValue = view.findViewById(R.id.tvFoodValue);
+        tvQuantityValue = view.findViewById(R.id.tvQuantityValue);
+        tvCaloriesValue = view.findViewById(R.id.tvCaloriesValue);
+        tvProteinValue = view.findViewById(R.id.tvProteinValue);
+        tvCarbsValue = view.findViewById(R.id.tvCarbsValue);
+        tvFatValue = view.findViewById(R.id.tvFatValue);
+        tvConfidenceValue = view.findViewById(R.id.tvConfidenceValue);
+        tvNoteValue = view.findViewById(R.id.tvNoteValue);
 
         cardQuantity = view.findViewById(R.id.cardQuantity);
         etGrams = view.findViewById(R.id.etGrams);
@@ -152,6 +182,7 @@ public class ScanFoodFragment extends Fragment {
 
         cardQuantity.setVisibility(View.GONE);
         disableSaveButton();
+        showEmptyResultState();
 
         btnBack.setOnClickListener(v -> {
             requireActivity().getSupportFragmentManager().popBackStack();
@@ -163,7 +194,10 @@ public class ScanFoodFragment extends Fragment {
 
         btnAnalyzeFood.setOnClickListener(v -> {
             if (!hasPhoto || currentPhotoUri == null) {
-                Toast.makeText(requireContext(), "Please take a photo first", Toast.LENGTH_SHORT).show();
+                showInfoState(
+                        "Photo Required",
+                        "Please take a food photo first.\n\nAfter the image appears, tap Analyze Food."
+                );
                 return;
             }
 
@@ -172,12 +206,18 @@ public class ScanFoodFragment extends Fragment {
 
         btnSaveFood.setOnClickListener(v -> {
             if (!hasAnalyzedFood) {
-                Toast.makeText(requireContext(), "Analyze the food first", Toast.LENGTH_SHORT).show();
+                showInfoState(
+                        "Analysis Required",
+                        "Please analyze the food before saving it to a meal."
+                );
                 return;
             }
 
             if (hasSavedFood) {
-                Toast.makeText(requireContext(), "This food is already saved", Toast.LENGTH_SHORT).show();
+                showInfoState(
+                        "Already Saved",
+                        "This food has already been saved.\n\nGo back to Home to see updated totals."
+                );
                 return;
             }
 
@@ -229,19 +269,10 @@ public class ScanFoodFragment extends Fragment {
             takePictureLauncher.launch(currentPhotoUri);
 
         } catch (Exception e) {
-            Toast.makeText(requireContext(), "Camera error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-
-            if (tvResult != null) {
-                tvResult.setText(
-                        "Camera error:\n\n" +
-                                e.toString() + "\n\n" +
-                                "Check:\n" +
-                                "1. AndroidManifest.xml provider\n" +
-                                "2. res/xml/file_paths.xml\n" +
-                                "3. CAMERA permission\n" +
-                                "4. Package name / authority"
-                );
-            }
+            showInfoState(
+                    "Camera Error",
+                    "The camera could not be opened.\n\nPlease check app permissions and try again."
+            );
         }
     }
 
@@ -295,7 +326,7 @@ public class ScanFoodFragment extends Fragment {
                 analyzedNote = jsonObject.optString("note", "Nutrition values are estimated.");
 
                 mainHandler.post(() -> {
-                    if (!isAdded() || tvResult == null) return;
+                    if (!isAdded()) return;
 
                     hasAnalyzedFood = true;
                     hasSavedFood = false;
@@ -303,16 +334,14 @@ public class ScanFoodFragment extends Fragment {
                     cardQuantity.setVisibility(View.VISIBLE);
                     setGramsInputText(currentQuantityGrams);
 
-                    updateResultText();
+                    updateResultCard();
                     enableSaveButton();
                     setLoadingState(false);
-
-                    Toast.makeText(requireContext(), "Food analyzed successfully", Toast.LENGTH_SHORT).show();
                 });
 
             } catch (Exception e) {
                 mainHandler.post(() -> {
-                    if (!isAdded() || tvResult == null) return;
+                    if (!isAdded()) return;
 
                     hasAnalyzedFood = false;
                     hasSavedFood = false;
@@ -321,17 +350,7 @@ public class ScanFoodFragment extends Fragment {
                     disableSaveButton();
                     setLoadingState(false);
 
-                    tvResult.setText(
-                            "Error analyzing food:\n\n" +
-                                    e.getMessage() + "\n\n" +
-                                    "Check:\n" +
-                                    "1. Internet connection\n" +
-                                    "2. Render server is running\n" +
-                                    "3. OpenAI API key is valid\n" +
-                                    "4. OpenAI billing/credits are active"
-                    );
-
-                    Toast.makeText(requireContext(), "AI analysis failed", Toast.LENGTH_SHORT).show();
+                    showAnalysisFailedCard();
                 });
             }
         });
@@ -444,51 +463,159 @@ public class ScanFoodFragment extends Fragment {
             hasSavedFood = false;
             enableSaveButton();
 
-            updateResultText();
+            updateResultCard();
 
         } catch (NumberFormatException ignored) {
             // Ignore invalid input while user is typing
         }
     }
 
-    private void updateResultText() {
-        tvResult.setText(
-                "AI result:\n\n" +
-                        "Food: " + capitalize(analyzedFoodName) + "\n" +
-                        "Quantity: " + formatGrams(currentQuantityGrams) + "g\n\n" +
-                        "Calories: " + currentCalories + " kcal\n" +
-                        "Protein: " + formatDouble(currentProtein) + "g\n" +
-                        "Carbs: " + formatDouble(currentCarbs) + "g\n" +
-                        "Fat: " + formatDouble(currentFat) + "g\n\n" +
-                        "Confidence: " + analyzedConfidence + "\n" +
-                        "Note: " + analyzedNote + "\n\n" +
-                        "You can edit grams before saving."
+    private void updateResultCard() {
+        tvResultTitle.setText("AI Food Analysis");
+        tvResultSubtitle.setText("Review the estimate and adjust grams before saving.");
+
+        tvFoodValue.setText(capitalize(analyzedFoodName));
+        tvQuantityValue.setText(formatGrams(currentQuantityGrams) + "g");
+        tvCaloriesValue.setText(currentCalories + " kcal");
+
+        tvProteinValue.setText("Protein\n" + formatDouble(currentProtein) + "g");
+        tvCarbsValue.setText("Carbs\n" + formatDouble(currentCarbs) + "g");
+        tvFatValue.setText("Fat\n" + formatDouble(currentFat) + "g");
+
+        tvConfidenceValue.setText("Confidence: " + capitalize(analyzedConfidence));
+        tvNoteValue.setText(analyzedNote + "\n\nNutrition values are estimates. You can edit grams before saving.");
+    }
+
+    private void showEmptyResultState() {
+        tvResultTitle.setText("No food analyzed yet");
+        tvResultSubtitle.setText("Take a photo and tap Analyze Food.");
+
+        tvFoodValue.setText("-");
+        tvQuantityValue.setText("-");
+        tvCaloriesValue.setText("-");
+
+        tvProteinValue.setText("Protein\n-");
+        tvCarbsValue.setText("Carbs\n-");
+        tvFatValue.setText("Fat\n-");
+
+        tvConfidenceValue.setText("Confidence: -");
+        tvNoteValue.setText("Nutrition values will appear here after analysis.");
+    }
+
+    private void showInfoState(String title, String message) {
+        tvResultTitle.setText(title);
+        tvResultSubtitle.setText(message);
+
+        tvFoodValue.setText("-");
+        tvQuantityValue.setText("-");
+        tvCaloriesValue.setText("-");
+
+        tvProteinValue.setText("Protein\n-");
+        tvCarbsValue.setText("Carbs\n-");
+        tvFatValue.setText("Fat\n-");
+
+        tvConfidenceValue.setText("Status: Attention needed");
+        tvNoteValue.setText(message);
+    }
+
+    private void showAnalysisFailedCard() {
+        tvResultTitle.setText("Analysis Failed");
+        tvResultSubtitle.setText("We couldn’t analyze this photo.");
+
+        tvFoodValue.setText("-");
+        tvQuantityValue.setText("-");
+        tvCaloriesValue.setText("-");
+
+        tvProteinValue.setText("Protein\n-");
+        tvCarbsValue.setText("Carbs\n-");
+        tvFatValue.setText("Fat\n-");
+
+        tvConfidenceValue.setText("Status: Try again");
+        tvNoteValue.setText(
+                "What you can try:\n" +
+                        "• Check your internet connection\n" +
+                        "• Take a clearer photo\n" +
+                        "• Make sure the food is visible\n" +
+                        "• Try again in a few seconds"
         );
     }
 
-    private void showMealChoiceDialog() {
-        String[] mealLabels = {"Breakfast", "Lunch", "Dinner", "Snacks"};
-        String[] mealValues = {"breakfast", "lunch", "dinner", "snacks"};
+    private void showSavedResultCard(String mealLabel, boolean savedToMyFoods, boolean alreadyExistsInMyFoods) {
+        tvResultTitle.setText("Food Saved Successfully");
+        tvResultSubtitle.setText("Added to " + mealLabel + ".");
 
-        new MaterialAlertDialogBuilder(requireContext())
-                .setTitle("Add to meal")
-                .setItems(mealLabels, (dialog, which) -> {
-                    saveAnalyzedFoodToMeal(mealValues[which], mealLabels[which]);
-                })
-                .setNegativeButton("Cancel", null)
-                .show();
+        tvFoodValue.setText(capitalize(analyzedFoodName));
+        tvQuantityValue.setText(formatGrams(currentQuantityGrams) + "g");
+        tvCaloriesValue.setText(currentCalories + " kcal");
+
+        tvProteinValue.setText("Protein\n" + formatDouble(currentProtein) + "g");
+        tvCarbsValue.setText("Carbs\n" + formatDouble(currentCarbs) + "g");
+        tvFatValue.setText("Fat\n" + formatDouble(currentFat) + "g");
+
+        tvConfidenceValue.setText("Meal: " + mealLabel);
+
+        if (savedToMyFoods) {
+            tvNoteValue.setText("Also saved to My Foods. You can go back to Home to see updated totals.");
+        } else if (alreadyExistsInMyFoods) {
+            tvNoteValue.setText("Not added to My Foods because it already exists. You can go back to Home to see updated totals.");
+        } else {
+            tvNoteValue.setText("You can go back to Home to see updated totals.");
+        }
+    }
+
+    private void showMealChoiceDialog() {
+        View dialogView = LayoutInflater.from(requireContext())
+                .inflate(R.layout.dialog_choose_meal, null, false);
+
+        AlertDialog dialog = new MaterialAlertDialogBuilder(requireContext())
+                .setView(dialogView)
+                .create();
+
+        MaterialButton btnBreakfast = dialogView.findViewById(R.id.btnMealBreakfast);
+        MaterialButton btnLunch = dialogView.findViewById(R.id.btnMealLunch);
+        MaterialButton btnDinner = dialogView.findViewById(R.id.btnMealDinner);
+        MaterialButton btnSnacks = dialogView.findViewById(R.id.btnMealSnacks);
+        MaterialButton btnCancel = dialogView.findViewById(R.id.btnMealCancel);
+
+        btnBreakfast.setOnClickListener(v -> {
+            dialog.dismiss();
+            saveAnalyzedFoodToMeal("breakfast", "Breakfast");
+        });
+
+        btnLunch.setOnClickListener(v -> {
+            dialog.dismiss();
+            saveAnalyzedFoodToMeal("lunch", "Lunch");
+        });
+
+        btnDinner.setOnClickListener(v -> {
+            dialog.dismiss();
+            saveAnalyzedFoodToMeal("dinner", "Dinner");
+        });
+
+        btnSnacks.setOnClickListener(v -> {
+            dialog.dismiss();
+            saveAnalyzedFoodToMeal("snacks", "Snacks");
+        });
+
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
+
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        }
     }
 
     private void saveAnalyzedFoodToMeal(String mealValue, String mealLabel) {
         int userId = new SessionManager(requireContext()).getUserId();
 
         if (userId == -1) {
-            Toast.makeText(requireContext(), "User is not logged in", Toast.LENGTH_SHORT).show();
+            showInfoState("Not Logged In", "Please log in before saving food.");
             return;
         }
 
         if (analyzedFoodName == null || analyzedFoodName.trim().isEmpty()) {
-            Toast.makeText(requireContext(), "Food name is missing", Toast.LENGTH_SHORT).show();
+            showInfoState("Missing Food Name", "The food name is missing. Please analyze the image again.");
             return;
         }
 
@@ -512,7 +639,7 @@ public class ScanFoodFragment extends Fragment {
         );
 
         if (logResult == -1) {
-            Toast.makeText(requireContext(), "Failed to save food", Toast.LENGTH_SHORT).show();
+            showInfoState("Save Failed", "The food could not be saved. Please try again.");
             return;
         }
 
@@ -549,37 +676,7 @@ public class ScanFoodFragment extends Fragment {
         btnSaveFood.setAlpha(0.5f);
         btnSaveFood.setText("Saved");
 
-        String toastMessage;
-
-        if (savedToMyFoods) {
-            toastMessage = "Saved to " + mealLabel + " and My Foods";
-        } else if (alreadyExistsInMyFoods) {
-            toastMessage = "Saved to " + mealLabel + ". Already exists in My Foods";
-        } else {
-            toastMessage = "Saved to " + mealLabel;
-        }
-
-        Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show();
-
-        String resultText =
-                "Saved successfully!\n\n" +
-                        "Food: " + finalFoodName + "\n" +
-                        "Meal: " + mealLabel + "\n" +
-                        "Quantity: " + formatGrams(currentQuantityGrams) + "g\n\n" +
-                        "Calories: " + currentCalories + " kcal\n" +
-                        "Protein: " + formatDouble(currentProtein) + "g\n" +
-                        "Carbs: " + formatDouble(currentCarbs) + "g\n" +
-                        "Fat: " + formatDouble(currentFat) + "g\n\n";
-
-        if (savedToMyFoods) {
-            resultText += "Also saved to My Foods.\n\n";
-        } else if (alreadyExistsInMyFoods) {
-            resultText += "Not added to My Foods because it already exists.\n\n";
-        }
-
-        resultText += "You can go back to Home to see updated totals.";
-
-        tvResult.setText(resultText);
+        showSavedResultCard(mealLabel, savedToMyFoods, alreadyExistsInMyFoods);
     }
 
     private void setLoadingState(boolean isLoading) {
@@ -589,7 +686,17 @@ public class ScanFoodFragment extends Fragment {
             btnSaveFood.setEnabled(false);
 
             btnAnalyzeFood.setText("Analyzing...");
-            tvResult.setText("Analyzing food image...\n\nPlease wait.");
+
+            tvResultTitle.setText("Analyzing Food Image");
+            tvResultSubtitle.setText("Please wait while the app estimates nutrition values.");
+            tvFoodValue.setText("Processing...");
+            tvQuantityValue.setText("-");
+            tvCaloriesValue.setText("-");
+            tvProteinValue.setText("Protein\n-");
+            tvCarbsValue.setText("Carbs\n-");
+            tvFatValue.setText("Fat\n-");
+            tvConfidenceValue.setText("Status: Processing");
+            tvNoteValue.setText("This may take a few seconds.");
         } else {
             btnAnalyzeFood.setEnabled(true);
             btnTakePhoto.setEnabled(true);
@@ -651,6 +758,8 @@ public class ScanFoodFragment extends Fragment {
         if (cbSaveToMyFoods != null) {
             cbSaveToMyFoods.setChecked(false);
         }
+
+        showEmptyResultState();
     }
 
     private String formatDouble(double value) {

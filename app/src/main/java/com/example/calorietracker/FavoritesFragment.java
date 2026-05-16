@@ -1,6 +1,6 @@
 package com.example.calorietracker;
 
-import android.graphics.Color;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,23 +43,22 @@ public class FavoritesFragment extends Fragment {
         rvFav.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         adapter = new FavAdapter(data, new FavAdapter.OnFavActions() {
-            @Override public void onOpen(dbConnect.FavoriteFoodRow item) {
+            @Override
+            public void onOpen(dbConnect.FavoriteFoodRow item) {
                 openFoodDetail(item);
             }
 
-            @Override public void onToggleHeart(dbConnect.FavoriteFoodRow item) {
+            @Override
+            public void onToggleHeart(dbConnect.FavoriteFoodRow item) {
                 int uid = sm.getUserId();
+
                 if (uid == -1) {
-                    showSnack(requireView(), "Not logged in", true);
+                    showSimpleDialog("Not Logged In", "Please log in before using favorites.");
                     return;
                 }
 
-                // 1) remove immediately
                 db.removeFavorite(uid, item.key);
                 loadFavorites();
-
-                // 2) show snackbar with UNDO
-                showUndoRemoveFavorite(requireView(), uid, item);
             }
         });
 
@@ -78,15 +75,19 @@ public class FavoritesFragment extends Fragment {
 
     private void loadFavorites() {
         data.clear();
+
         int uid = sm.getUserId();
+
         if (uid != -1) {
             data.addAll(db.getFavorites(uid));
         }
+
         adapter.notifyDataSetChanged();
     }
 
     private void openFoodDetail(dbConnect.FavoriteFoodRow item) {
         Bundle args = new Bundle();
+
         args.putString(FoodDetailFragment.ARG_FOOD_NAME, item.name);
         args.putString(FoodDetailFragment.ARG_FOOD_PORTION, item.portion);
         args.putFloat(FoodDetailFragment.ARG_FOOD_BASE_GRAMS, item.baseGrams);
@@ -106,64 +107,14 @@ public class FavoritesFragment extends Fragment {
                 .commit();
     }
 
-    // ================= UNDO Snackbar =================
-    private void showUndoRemoveFavorite(View anchor, int uid, dbConnect.FavoriteFoodRow item) {
-        Snackbar snackbar = Snackbar.make(anchor, "Removed from favorites 💔", Snackbar.LENGTH_SHORT);
-        snackbar.setDuration(1000); // 1 секунда
-
-        // colors
-        snackbar.setTextColor(Color.WHITE);
-        snackbar.setBackgroundTint(Color.parseColor("#E53935")); // 🔴 red
-
-        // action
-        snackbar.setAction("UNDO", v -> {
-            // Restore favorite back
-            db.addFavorite(uid, item.key,
-                    item.name, item.portion, item.baseGrams,
-                    item.calories, item.protein, item.fat, item.carbs);
-
-            loadFavorites();
-            showSnack(anchor, "Restored ✅", false); // 🟢 green
-        });
-
-        // Optional: style action text (ke e bel/kontrast)
-        snackbar.setActionTextColor(Color.WHITE);
-
-        // floating look + background drawable like RegisterActivity
-        View snackbarView = snackbar.getView();
-        try {
-            android.widget.FrameLayout.LayoutParams params =
-                    (android.widget.FrameLayout.LayoutParams) snackbarView.getLayoutParams();
-            params.setMargins(40, 0, 40, 40);
-            snackbarView.setLayoutParams(params);
-        } catch (Exception ignored) {}
-
-        snackbarView.setBackground(requireContext().getDrawable(R.drawable.bg_chip_protein));
-
-        snackbar.show();
+    private void showSimpleDialog(String title, String message) {
+        new AlertDialog.Builder(requireContext())
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null)
+                .show();
     }
 
-    // ================= Snackbar helper =================
-    private void showSnack(View anchor, String message, boolean isError) {
-        Snackbar snackbar = Snackbar.make(anchor, message, Snackbar.LENGTH_SHORT);
-        snackbar.setDuration(1000); // 1 секунда
-
-        snackbar.setTextColor(Color.WHITE);
-        snackbar.setBackgroundTint(Color.parseColor(isError ? "#E53935" : "#4CAF50"));
-
-        View snackbarView = snackbar.getView();
-        try {
-            android.widget.FrameLayout.LayoutParams params =
-                    (android.widget.FrameLayout.LayoutParams) snackbarView.getLayoutParams();
-            params.setMargins(40, 0, 40, 40);
-            snackbarView.setLayoutParams(params);
-        } catch (Exception ignored) {}
-
-        snackbarView.setBackground(requireContext().getDrawable(R.drawable.bg_chip_protein));
-        snackbar.show();
-    }
-
-    // ================= Adapter =================
     static class FavAdapter extends RecyclerView.Adapter<FavAdapter.VH> {
 
         interface OnFavActions {
@@ -197,18 +148,22 @@ public class FavoritesFragment extends Fragment {
             String line2 = "Protein: " + format1(item.protein) + "g | " +
                     "Fat: " + format1(item.fat) + "g | " +
                     "Carbs: " + format1(item.carbs) + "g";
+
             holder.tvSub.setText(line1 + "\n" + line2);
 
-            // Always red in Favorites
             holder.ivFav.setImageResource(R.drawable.baseline_favorite_24);
             holder.ivFav.setColorFilter(0xFFE53935);
 
             holder.ivFav.setOnClickListener(v -> {
-                if (actions != null) actions.onToggleHeart(item);
+                if (actions != null) {
+                    actions.onToggleHeart(item);
+                }
             });
 
             holder.itemView.setOnClickListener(v -> {
-                if (actions != null) actions.onOpen(item);
+                if (actions != null) {
+                    actions.onOpen(item);
+                }
             });
         }
 
@@ -223,6 +178,7 @@ public class FavoritesFragment extends Fragment {
 
             VH(@NonNull View itemView) {
                 super(itemView);
+
                 tvTitle = itemView.findViewById(R.id.tvTitle);
                 tvSub = itemView.findViewById(R.id.tvSub);
                 ivFav = itemView.findViewById(R.id.ivFav);

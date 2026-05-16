@@ -1,6 +1,5 @@
 package com.example.calorietracker;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -26,7 +23,8 @@ public class MealFragment extends Fragment {
 
     private String mealType = "breakfast";
 
-    private TextView tvTitle, tvSub, tvTotals;
+    private TextView tvTitle, tvSub;
+    private TextView tvMealProteinChip, tvMealFatChip, tvMealCarbsChip;
     private RecyclerView rvMealFoods;
 
     private MealFoodsAdapter adapter;
@@ -55,16 +53,25 @@ public class MealFragment extends Fragment {
         userId = new SessionManager(requireContext()).getUserId();
 
         ImageView btnBack = view.findViewById(R.id.btnBack);
+
         tvTitle = view.findViewById(R.id.tvMealTitle);
         tvSub = view.findViewById(R.id.tvMealSub);
-        tvTotals = view.findViewById(R.id.tvMealTotals);
+
+        tvMealProteinChip = view.findViewById(R.id.tvMealProteinChip);
+        tvMealFatChip = view.findViewById(R.id.tvMealFatChip);
+        tvMealCarbsChip = view.findViewById(R.id.tvMealCarbsChip);
+
         rvMealFoods = view.findViewById(R.id.rvMealFoods);
 
         Bundle b = getArguments();
-        if (b != null) mealType = b.getString(ARG_MEAL_TYPE, "breakfast");
 
-        String title = mealType.substring(0, 1).toUpperCase()
-                + mealType.substring(1).toLowerCase();
+        if (b != null) {
+            mealType = b.getString(ARG_MEAL_TYPE, "breakfast");
+        }
+
+        String title = mealType.substring(0, 1).toUpperCase(Locale.ROOT)
+                + mealType.substring(1).toLowerCase(Locale.ROOT);
+
         tvTitle.setText(title);
 
         rvMealFoods.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -74,8 +81,6 @@ public class MealFragment extends Fragment {
 
             db.deleteFoodLog(userId, row.id);
             refreshUI();
-
-            showSnack(requireView(), "Removed from " + mealType + " 🗑️", true);
         });
 
         rvMealFoods.setAdapter(adapter);
@@ -101,42 +106,16 @@ public class MealFragment extends Fragment {
 
         tvSub.setText(t.items + " items • " + t.calories + " kcal");
 
-        tvTotals.setText(String.format(Locale.ROOT,
-                "Protein: %.1fg  |  Fat: %.1fg  |  Carbs: %.1fg",
-                t.protein, t.fat, t.carbs));
+        tvMealProteinChip.setText(String.format(Locale.ROOT, "Protein %.1fg", t.protein));
+        tvMealFatChip.setText(String.format(Locale.ROOT, "Fat %.1fg", t.fat));
+        tvMealCarbsChip.setText(String.format(Locale.ROOT, "Carbs %.1fg", t.carbs));
 
         data.clear();
         data.addAll(list);
+
         adapter.notifyDataSetChanged();
     }
 
-    // ================= Snackbar helper =================
-    private void showSnack(View anchor, String message, boolean isError) {
-        Snackbar snackbar = Snackbar.make(anchor, message, Snackbar.LENGTH_SHORT);
-        snackbar.setDuration(1000); // 1 секунда
-
-
-        snackbar.setTextColor(Color.WHITE);
-        snackbar.setBackgroundTint(
-                Color.parseColor(isError ? "#E53935" : "#4CAF50")
-        );
-
-        View snackbarView = snackbar.getView();
-        try {
-            android.widget.FrameLayout.LayoutParams params =
-                    (android.widget.FrameLayout.LayoutParams) snackbarView.getLayoutParams();
-            params.setMargins(40, 0, 40, 40);
-            snackbarView.setLayoutParams(params);
-        } catch (Exception ignored) {}
-
-        snackbarView.setBackground(
-                requireContext().getDrawable(R.drawable.bg_chip_protein)
-        );
-
-        snackbar.show();
-    }
-
-    // ---------------- Adapter ----------------
     static class MealFoodsAdapter extends RecyclerView.Adapter<MealFoodsAdapter.VH> {
 
         interface OnRemoveClick {
@@ -156,6 +135,7 @@ public class MealFragment extends Fragment {
         public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_logged_food, parent, false);
+
             return new VH(v);
         }
 
@@ -169,14 +149,18 @@ public class MealFragment extends Fragment {
                     "%.0fg • %.2f portions • %d kcal",
                     f.grams, f.portions, f.calories));
 
-            holder.tvMacros.setText(String.format(Locale.ROOT,
-                    "Protein: %.1fg | Fats: %.1fg | Carbs: %.1fg",
-                    f.protein, f.fat, f.carbs));
+            holder.tvProteinChip.setText(String.format(Locale.ROOT, "Protein %.1fg", f.protein));
+            holder.tvFatChip.setText(String.format(Locale.ROOT, "Fat %.1fg", f.fat));
+            holder.tvCarbsChip.setText(String.format(Locale.ROOT, "Carbs %.1fg", f.carbs));
 
             holder.btnRemove.setOnClickListener(v -> {
                 int pos = holder.getAdapterPosition();
+
                 if (pos == RecyclerView.NO_POSITION) return;
-                if (onRemove != null) onRemove.onRemove(items.get(pos));
+
+                if (onRemove != null) {
+                    onRemove.onRemove(items.get(pos));
+                }
             });
         }
 
@@ -186,14 +170,20 @@ public class MealFragment extends Fragment {
         }
 
         static class VH extends RecyclerView.ViewHolder {
-            TextView tvTitle, tvSub, tvMacros;
+            TextView tvTitle, tvSub;
+            TextView tvProteinChip, tvFatChip, tvCarbsChip;
             ImageView btnRemove;
 
             VH(@NonNull View itemView) {
                 super(itemView);
+
                 tvTitle = itemView.findViewById(R.id.tvTitle);
                 tvSub = itemView.findViewById(R.id.tvSub);
-                tvMacros = itemView.findViewById(R.id.tvMacros);
+
+                tvProteinChip = itemView.findViewById(R.id.tvProteinChip);
+                tvFatChip = itemView.findViewById(R.id.tvFatChip);
+                tvCarbsChip = itemView.findViewById(R.id.tvCarbsChip);
+
                 btnRemove = itemView.findViewById(R.id.btnRemove);
             }
         }

@@ -78,7 +78,7 @@
             <HorizontalScrollView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:scrollbars="none"
                 android:overScrollMode="never"
@@ -93,8 +93,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -115,39 +113,38 @@
                         android:id="@+id/tvBreakfastP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Pro 0.0g"
+                        android:text="Protein 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#1B5E20"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_protein"/>
 
                     <TextView
                         android:id="@+id/tvBreakfastF"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginStart="7dp"
                         android:text="Fat 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#E65100"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_fat"/>
 
                     <TextView
                         android:id="@+id/tvBreakfastC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Carb 0.0g"
+                        android:layout_marginStart="7dp"
+                        android:text="Carbs 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#0D47A1"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_carbs"/>
                 </LinearLayout>
             </HorizontalScrollView>
@@ -225,7 +222,7 @@
             <HorizontalScrollView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:scrollbars="none"
                 android:overScrollMode="never"
@@ -240,8 +237,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -262,43 +257,41 @@
                         android:id="@+id/tvLunchP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Pro 0.0g"
+                        android:text="Protein 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#1B5E20"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_protein"/>
 
                     <TextView
                         android:id="@+id/tvLunchF"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginStart="7dp"
                         android:text="Fat 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#E65100"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_fat"/>
 
                     <TextView
                         android:id="@+id/tvLunchC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Carb 0.0g"
+                        android:layout_marginStart="7dp"
+                        android:text="Carbs 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#0D47A1"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_carbs"/>
                 </LinearLayout>
             </HorizontalScrollView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -373,7 +366,7 @@
             <HorizontalScrollView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:scrollbars="none"
                 android:overScrollMode="never"
@@ -388,8 +381,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -410,43 +401,41 @@
                         android:id="@+id/tvDinnerP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Pro 0.0g"
+                        android:text="Protein 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#1B5E20"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_protein"/>
 
                     <TextView
                         android:id="@+id/tvDinnerF"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginStart="7dp"
                         android:text="Fat 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#E65100"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_fat"/>
 
                     <TextView
                         android:id="@+id/tvDinnerC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Carb 0.0g"
+                        android:layout_marginStart="7dp"
+                        android:text="Carbs 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#0D47A1"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_carbs"/>
                 </LinearLayout>
             </HorizontalScrollView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -521,7 +510,7 @@
             <HorizontalScrollView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
                 android:scrollbars="none"
                 android:overScrollMode="never"
@@ -536,8 +525,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -558,43 +545,41 @@
                         android:id="@+id/tvSnacksP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Pro 0.0g"
+                        android:text="Protein 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#1B5E20"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_protein"/>
 
                     <TextView
                         android:id="@+id/tvSnacksF"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginStart="7dp"
                         android:text="Fat 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#E65100"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_fat"/>
 
                     <TextView
                         android:id="@+id/tvSnacksC"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Carb 0.0g"
+                        android:layout_marginStart="7dp"
+                        android:text="Carbs 0.0g"
                         android:maxLines="1"
-                        android:textSize="11sp"
+                        android:textSize="12sp"
                         android:textColor="#0D47A1"
-                        android:paddingHorizontal="7dp"
-                        android:paddingVertical="5dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
                         android:background="@drawable/bg_chip_carbs"/>
                 </LinearLayout>
             </HorizontalScrollView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -669,7 +654,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
-                        android:text="Pro 0.0g"
+                        android:text="Protein 0.0g"
                         android:maxLines="1"
                         android:textSize="12sp"
                         android:textColor="#1B5E20"
@@ -695,7 +680,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
-                        android:text="Carb 0.0g"
+                        android:text="Carbs 0.0g"
                         android:maxLines="1"
                         android:textSize="12sp"
                         android:textColor="#0D47A1"

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="#FFFFFF"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="22dp">
+
+        <TextView
+            android:id="@+id/tvProductNotFoundTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Not Found"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:textColor="#111111"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tvProductNotFoundSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="This barcode was scanned, but the product was not found or nutrition data is missing."
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp" />
+
+        <TextView
+            android:id="@+id/tvProductNotFoundBarcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Barcode: -"
+            android:textSize="13sp"
+            android:textColor="#555555"
+            android:gravity="center" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTryAnotherBarcode"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="20dp"
+            android:text="Try Another Barcode"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="#7B1FA2"
+            android:backgroundTint="#F5EFFB"
+            app:cornerRadius="16dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#D7BDEB" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUseAiScan"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:text="Use AI Scan Food"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#8A1DB5"
+            app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnProductNotFoundCancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:backgroundTint="#FFFFFF"
+            app:cornerRadius="16dp"
+            app:strokeWidth="0dp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

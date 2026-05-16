@@ -1,6 +1,6 @@
 package com.example.calorietracker;
 
-import android.graphics.Color;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Locale;
 
@@ -79,10 +78,10 @@ public class FoodDetailFragment extends Fragment {
                 requireActivity().getSupportFragmentManager().popBackStack()
         );
 
-        btnBreakfast.setOnClickListener(v -> addToMeal("breakfast"));
-        btnLunch.setOnClickListener(v -> addToMeal("lunch"));
-        btnDinner.setOnClickListener(v -> addToMeal("dinner"));
-        btnSnacks.setOnClickListener(v -> addToMeal("snacks"));
+        btnBreakfast.setOnClickListener(v -> addToMeal("breakfast", btnBreakfast));
+        btnLunch.setOnClickListener(v -> addToMeal("lunch", btnLunch));
+        btnDinner.setOnClickListener(v -> addToMeal("dinner", btnDinner));
+        btnSnacks.setOnClickListener(v -> addToMeal("snacks", btnSnacks));
     }
 
     private void readArgs() {
@@ -115,7 +114,9 @@ public class FoodDetailFragment extends Fragment {
     private void setupInputs() {
         etPortionCount.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
             @Override public void afterTextChanged(Editable s) {
                 if (lock) return;
 
@@ -132,7 +133,9 @@ public class FoodDetailFragment extends Fragment {
 
         etGrams.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
             @Override public void afterTextChanged(Editable s) {
                 if (lock) return;
 
@@ -166,41 +169,62 @@ public class FoodDetailFragment extends Fragment {
         tvCarbs.setText(String.format(Locale.ROOT, "%.1fg", cNow));
     }
 
-    private void addToMeal(String meal) {
+    private void addToMeal(String meal, MaterialButton clickedButton) {
         int userId = new SessionManager(requireContext()).getUserId();
+
         if (userId == -1) {
-            showSnack(requireView(), "Not logged in", true);
+            showSimpleDialog("Not Logged In", "Please log in before adding food to a meal.");
             return;
         }
 
         dbConnect db = new dbConnect(requireContext());
-        db.addFoodLog(userId, meal, name, gramsNow, portionsNow, calNow, pNow, fNow, cNow);
 
-        showSnack(requireView(), "Added to " + meal + " ✅", false);
-        // остануваш на истата страна
+        long result = db.addFoodLog(
+                userId,
+                meal,
+                name,
+                gramsNow,
+                portionsNow,
+                calNow,
+                pNow,
+                fNow,
+                cNow
+        );
+
+        if (result == -1) {
+            showSimpleDialog("Save Failed", "The food could not be added to your meal. Please try again.");
+            return;
+        }
+
+        markButtonAsAdded(clickedButton, meal);
     }
 
-    private void showSnack(View anchor, String message, boolean isError) {
-        Snackbar snackbar = Snackbar.make(anchor, message, Snackbar.LENGTH_SHORT);
-        snackbar.setDuration(1000); // 1 секунда
+    private void markButtonAsAdded(MaterialButton clickedButton, String meal) {
+        resetMealButtons();
 
-        snackbar.setTextColor(Color.WHITE);
+        String mealLabel = meal.substring(0, 1).toUpperCase(Locale.ROOT) + meal.substring(1).toLowerCase(Locale.ROOT);
+        clickedButton.setText("Added to " + mealLabel);
+        clickedButton.setAlpha(0.75f);
+    }
 
-        // позадина: црвена ако е грешка, зелена ако е успех
-        snackbar.setBackgroundTint(Color.parseColor(isError ? "#E53935" : "#4CAF50"));
+    private void resetMealButtons() {
+        btnBreakfast.setText("Add to Breakfast");
+        btnLunch.setText("Add to Lunch");
+        btnDinner.setText("Add to Dinner");
+        btnSnacks.setText("Add to Snacks");
 
-        View snackbarView = snackbar.getView();
-        try {
-            android.widget.FrameLayout.LayoutParams params =
-                    (android.widget.FrameLayout.LayoutParams) snackbarView.getLayoutParams();
-            params.setMargins(40, 0, 40, 40);
-            snackbarView.setLayoutParams(params);
-        } catch (Exception ignored) {}
+        btnBreakfast.setAlpha(1.0f);
+        btnLunch.setAlpha(1.0f);
+        btnDinner.setAlpha(1.0f);
+        btnSnacks.setAlpha(1.0f);
+    }
 
-        // ако сакаш ист изглед како RegisterActivity
-        snackbarView.setBackground(getResources().getDrawable(R.drawable.bg_chip_protein));
-
-        snackbar.show();
+    private void showSimpleDialog(String title, String message) {
+        new AlertDialog.Builder(requireContext())
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", null)
+                .show();
     }
 
     private float parseFloatSafe(String s, float def) {
