@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingStart="22dp"
-            android:paddingTop="24dp"
+            android:paddingTop="22dp"
             android:paddingEnd="22dp"
             android:paddingBottom="22dp">
 
@@ -43,7 +43,7 @@
                 android:textSize="15sp"
                 android:textColor="#6B7280"
                 android:gravity="center"
-                android:layout_marginBottom="6dp" />
+                android:layout_marginBottom="5dp" />
 
             <TextView
                 android:id="@+id/logintitle"
@@ -54,13 +54,13 @@
                 android:textStyle="bold"
                 android:textColor="#111827"
                 android:gravity="center"
-                android:layout_marginBottom="26dp" />
+                android:layout_marginBottom="22dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="14dp"
+                android:layout_marginBottom="12dp"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="#6F50B5"
                 app:hintTextColor="#6F50B5"
@@ -87,7 +87,7 @@
                 android:id="@+id/tilPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="6dp"
                 app:boxBackgroundMode="outline"
                 app:boxStrokeColor="#6F50B5"
                 app:hintTextColor="#6F50B5"
@@ -111,6 +111,20 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Forgot password?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#6F50B5"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:paddingBottom="14dp"
+                android:clickable="true"
+                android:focusable="true" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/loginbtn"
                 android:layout_width="match_parent"
@@ -122,7 +136,63 @@
                 android:textColor="@android:color/white"
                 android:backgroundTint="#6F50B5"
                 app:cornerRadius="15dp"
-                android:layout_marginBottom="14dp" />
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:id="@+id/rowDivider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="12dp">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="#E5E7EB" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="or"
+                    android:textSize="13sp"
+                    android:textColor="#6B7280"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="#E5E7EB" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGoogleSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="Continue with Google"
+                android:textAllCaps="false"
+                android:textColor="#202124"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:backgroundTint="#FFFFFF"
+                app:cornerRadius="16dp"
+                app:strokeColor="#DADCE0"
+                app:strokeWidth="1dp"
+                app:icon="@drawable/ic_google_24"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                app:iconTint="@null" />
 
             <TextView
                 android:id="@+id/registerbtn"
@@ -132,8 +202,8 @@
                 android:textSize="14sp"
                 android:textColor="#374151"
                 android:gravity="center"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
                 android:clickable="true"
                 android:focusable="true" />
 

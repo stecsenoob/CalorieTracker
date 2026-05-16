@@ -17,13 +17,11 @@ public class dbConnect extends SQLiteOpenHelper {
     private static final String dbName = "findFriendsManager";
     private static final int dbVersion = 5;
 
-    // ================= USERS TABLE =================
     private static final String USERS_TABLE = "users";
     private static final String U_ID = "id";
     private static final String U_USERNAME = "username";
     private static final String U_PASSWORD = "password";
 
-    // ================= FOOD LOGS TABLE =================
     public static final String LOGS_TABLE = "food_logs";
     public static final String L_ID = "id";
     public static final String L_USER_ID = "user_id";
@@ -37,7 +35,6 @@ public class dbConnect extends SQLiteOpenHelper {
     public static final String L_C = "carbs";
     public static final String L_CREATED = "created_at";
 
-    // ================= USER FOODS TABLE =================
     public static final String FOODS_TABLE = "user_foods";
     public static final String F_ID = "id";
     public static final String F_USER_ID = "user_id";
@@ -50,7 +47,6 @@ public class dbConnect extends SQLiteOpenHelper {
     public static final String F_C = "carbs";
     public static final String F_CREATED = "created_at";
 
-    // ================= FAVORITES TABLE =================
     public static final String FAV_TABLE = "favorites";
     public static final String FV_ID = "id";
     public static final String FV_USER_ID = "user_id";
@@ -141,13 +137,13 @@ public class dbConnect extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // ================= USERS API =================
-
     public void addUser(Users user) {
         SQLiteDatabase db = this.getWritableDatabase();
+
         ContentValues values = new ContentValues();
         values.put(U_USERNAME, user.getUsername());
         values.put(U_PASSWORD, user.getPassword());
+
         db.insert(USERS_TABLE, null, values);
     }
 
@@ -159,7 +155,7 @@ public class dbConnect extends SQLiteOpenHelper {
                 new String[]{user}
         );
 
-        boolean exists = cursor.getCount() > 0;
+        boolean exists = cursor.moveToFirst();
         cursor.close();
 
         return exists;
@@ -185,7 +181,46 @@ public class dbConnect extends SQLiteOpenHelper {
         return id;
     }
 
-    // ================= FOOD LOGS MODEL =================
+    public int getUserIdByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(
+                "SELECT " + U_ID + " FROM " + USERS_TABLE + " WHERE " + U_USERNAME + "=?",
+                new String[]{email}
+        );
+
+        int id = -1;
+
+        if (cursor.moveToFirst()) {
+            id = cursor.getInt(0);
+        }
+
+        cursor.close();
+
+        return id;
+    }
+
+    public int getOrCreateLocalUserId(String email) {
+        int existingId = getUserIdByEmail(email);
+
+        if (existingId != -1) {
+            return existingId;
+        }
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(U_USERNAME, email);
+        values.put(U_PASSWORD, "");
+
+        long insertedId = db.insert(USERS_TABLE, null, values);
+
+        if (insertedId == -1) {
+            return getUserIdByEmail(email);
+        }
+
+        return (int) insertedId;
+    }
 
     public static class LoggedFoodRow {
         public int id;
@@ -206,8 +241,6 @@ public class dbConnect extends SQLiteOpenHelper {
         public float carbs = 0f;
         public int items = 0;
     }
-
-    // ================= FOOD LOGS API =================
 
     public long addFoodLog(int userId, String meal, String name, float grams, float portions,
                            int calories, float protein, float fat, float carbs) {
@@ -357,8 +390,6 @@ public class dbConnect extends SQLiteOpenHelper {
         );
     }
 
-    // ================= USER FOODS API =================
-
     public static class UserFoodRow {
         public int id;
         public String name;
@@ -459,8 +490,6 @@ public class dbConnect extends SQLiteOpenHelper {
         );
     }
 
-    // ================= FAVORITES API =================
-
     public boolean isFavorite(int userId, String foodKey) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -470,7 +499,7 @@ public class dbConnect extends SQLiteOpenHelper {
                 new String[]{String.valueOf(userId), foodKey}
         );
 
-        boolean ok = c.getCount() > 0;
+        boolean ok = c.moveToFirst();
         c.close();
 
         return ok;
@@ -547,8 +576,6 @@ public class dbConnect extends SQLiteOpenHelper {
 
         return list;
     }
-
-    // ================= HELPERS =================
 
     private String normalizeMeal(String meal) {
         if (meal == null) {

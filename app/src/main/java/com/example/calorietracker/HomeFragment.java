@@ -1,5 +1,6 @@
 package com.example.calorietracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
 
@@ -31,6 +33,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        MaterialButton btnLogout = view.findViewById(R.id.btnLogout);
 
         MaterialCardView cardBreakfast = view.findViewById(R.id.cardBreakfast);
         MaterialCardView cardLunch     = view.findViewById(R.id.cardLunch);
@@ -72,6 +76,8 @@ public class HomeFragment extends Fragment {
 
         hideMealKcalChips();
 
+        btnLogout.setOnClickListener(v -> logoutUser());
+
         cardBreakfast.setOnClickListener(v -> openMealPage("breakfast"));
         cardLunch.setOnClickListener(v -> openMealPage("lunch"));
         cardDinner.setOnClickListener(v -> openMealPage("dinner"));
@@ -87,6 +93,17 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         refreshUI();
+    }
+
+    private void logoutUser() {
+        FirebaseAuth.getInstance().signOut();
+        new SessionManager(requireContext()).logout();
+
+        Intent intent = new Intent(requireContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+
+        requireActivity().finish();
     }
 
     private void hideMealKcalChips() {

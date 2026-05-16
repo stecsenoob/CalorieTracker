@@ -15,6 +15,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -24,14 +26,18 @@ public class RegisterActivity extends AppCompatActivity {
     private MaterialButton btnRegister;
     private TextView btnLogin;
 
+    private FirebaseAuth mAuth;
     private dbConnect db;
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        db = new dbConnect(this);
+        mAuth = FirebaseAuth.getInstance();
+        db = new dbConnect(RegisterActivity.this);
+        session = new SessionManager(RegisterActivity.this);
 
         edtEmail = findViewById(R.id.email);
         edtPass = findViewById(R.id.password);
@@ -58,10 +64,10 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         });
 
-        btnRegister.setOnClickListener(v -> doRegister());
+        btnRegister.setOnClickListener(v -> registerWithFirebase());
     }
 
-    private void doRegister() {
+    private void registerWithFirebase() {
         clearAllErrors();
 
         String email = txt(edtEmail).trim();
@@ -104,22 +110,48 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        if (db.userExists(email)) {
-            tilEmail.setError("Email already registered");
-            edtEmail.requestFocus();
-            return;
-        }
+        btnRegister.setEnabled(false);
+        btnRegister.setText("Registering...");
 
-        Users newUser = new Users(email, pass, repass);
-        db.addUser(newUser);
+        mAuth.createUserWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(task -> {
+                    btnRegister.setEnabled(true);
+                    btnRegister.setText("Register");
 
-        showSuccessSnackbar("Registration successful!");
+                    if (task.isSuccessful()) {
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }, 1200);
+                        if (firebaseUser == null || firebaseUser.getEmail() == null) {
+                            tilEmail.setError("Registration failed. Try again.");
+                            edtEmail.requestFocus();
+                            return;
+                        }
+
+                        String firebaseEmail = firebaseUser.getEmail();
+                        String firebaseUid = firebaseUser.getUid();
+
+                        int localUserId = db.getOrCreateLocalUserId(firebaseEmail);
+                        session.saveFirebaseUser(localUserId, firebaseEmail, firebaseUid);
+
+                        showSuccessSnackbar("Registration successful!");
+
+                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                            Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }, 1000);
+
+                    } else {
+                        String error = "Registration failed";
+
+                        if (task.getException() != null && task.getException().getMessage() != null) {
+                            error = task.getException().getMessage();
+                        }
+
+                        tilEmail.setError(error);
+                        edtEmail.requestFocus();
+                    }
+                });
     }
 
     private void clearAllErrors() {
