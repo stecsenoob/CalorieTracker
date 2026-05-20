@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- plate -->
+    <path
+        android:fillColor="#E7EDF2"
+        android:pathData="M24,61C24,53 34,48 48,48C62,48 72,53 72,61C72,69 62,74 48,74C34,74 24,69 24,61Z"/>
+
+    <path
+        android:fillColor="#F8FAFB"
+        android:pathData="M31,60C31,55 38,52 48,52C58,52 65,55 65,60C65,65 58,68 48,68C38,68 31,65 31,60Z"/>
+
+    <!-- sarma rolls -->
+    <path
+        android:fillColor="#8CAA55"
+        android:pathData="M27,43
+            C27,37 32,33 39,33
+            H55
+            C62,33 67,37 67,43
+            C67,49 62,53 55,53
+            H39
+            C32,53 27,49 27,43Z"/>
+
+    <path
+        android:fillColor="#789647"
+        android:pathData="M33,56
+            C33,51 38,48 44,48
+            H61
+            C67,48 71,51 71,56
+            C71,61 67,64 61,64
+            H44
+            C38,64 33,61 33,56Z"/>
+
+    <!-- cabbage leaf veins -->
+    <path
+        android:fillColor="#5F7D3A"
+        android:pathData="M33,43H61V45H33Z
+                          M39,36C42,40 42,47 39,51H41C44,47 44,40 41,36Z
+                          M55,36C52,40 52,47 55,51H53C50,47 50,40 53,36Z
+                          M39,56H65V58H39Z
+                          M46,50C49,54 49,60 46,63H48C51,60 51,54 48,50Z"/>
+
+    <!-- sauce / paprika spots -->
+    <path
+        android:fillColor="#C85432"
+        android:pathData="M43,42m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0
+                          M57,47m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0
+                          M52,57m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0"/>
+
+</vector>

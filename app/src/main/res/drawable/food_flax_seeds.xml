@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- flax seeds -->
+    <path
+        android:fillColor="#9A6A3F"
+        android:pathData="M31,35m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M40,32m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M49,34m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M58,35m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M66,42m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M34,47m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M43,46m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M52,47m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M61,50m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M37,59m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M47,59m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0
+                          M57,60m-2.2,0a2.2,3.4 0,1 1,4.4 0a2.2,3.4 0,1 1,-4.4 0"/>
+
+    <!-- seed highlights -->
+    <path
+        android:fillColor="#C08A55"
+        android:pathData="M31,32H32V37H31Z
+                          M40,29H41V34H40Z
+                          M49,31H50V36H49Z
+                          M58,32H59V37H58Z
+                          M43,43H44V48H43Z
+                          M52,44H53V49H52Z
+                          M47,56H48V61H47Z"/>
+
+</vector>

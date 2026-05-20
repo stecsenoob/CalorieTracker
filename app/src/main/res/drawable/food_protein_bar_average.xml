@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- wrapper shadow -->
+    <path
+        android:fillColor="#DCD6C8"
+        android:pathData="M24,37H72C74.2,37 76,38.8 76,41V61C76,63.2 74.2,65 72,65H24C21.8,65 20,63.2 20,61V41C20,38.8 21.8,37 24,37Z"/>
+
+    <!-- wrapper -->
+    <path
+        android:fillColor="#6C63FF"
+        android:pathData="M22,34H74C76.2,34 78,35.8 78,38V58C78,60.2 76.2,62 74,62H22C19.8,62 18,60.2 18,58V38C18,35.8 19.8,34 22,34Z"/>
+
+    <!-- wrapper fold sides -->
+    <path
+        android:fillColor="#5148D9"
+        android:pathData="M18,38L27,48L18,58Z
+                          M78,38L69,48L78,58Z"/>
+
+    <!-- protein label -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M31,40H65C66.1,40 67,40.9 67,42V54C67,55.1 66.1,56 65,56H31C29.9,56 29,55.1 29,54V42C29,40.9 29.9,40 31,40Z"/>
+
+    <!-- bar graphic -->
+    <path
+        android:fillColor="#8B5A3C"
+        android:pathData="M34,47H62V51H34Z"/>
+
+    <!-- protein dots -->
+    <path
+        android:fillColor="#D8A56A"
+        android:pathData="M39,49m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M48,49m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M57,49m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0"/>
+
+    <!-- small shine -->
+    <path
+        android:fillColor="#918AFF"
+        android:pathData="M25,36H58C61,36 63,38 63,40H24C22.5,40 21,38.5 21,37.5C21,36.7 22.5,36 25,36Z"/>
+
+</vector>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- jar shadow -->
+    <path
+        android:fillColor="#D8D0C4"
+        android:pathData="M33,77C33,74 40,72 48,72C56,72 63,74 63,77C63,80 56,82 48,82C40,82 33,80 33,77Z"/>
+
+    <!-- lid -->
+    <path
+        android:fillColor="#3E7CCF"
+        android:pathData="M31,22H65C67.2,22 69,23.8 69,26V33H27V26C27,23.8 28.8,22 31,22Z"/>
+
+    <!-- jar glass -->
+    <path
+        android:fillColor="#FFFDF6"
+        android:pathData="M30,31H66C68.2,31 70,32.8 70,35V69C70,71.2 68.2,73 66,73H30C27.8,73 26,71.2 26,69V35C26,32.8 27.8,31 30,31Z"/>
+
+    <!-- mayonnaise fill -->
+    <path
+        android:fillColor="#F6E8C3"
+        android:pathData="M29,39H67V68C67,69.1 66.1,70 65,70H31C29.9,70 29,69.1 29,68Z"/>
+
+    <!-- creamy wave -->
+    <path
+        android:fillColor="#FFF3D8"
+        android:pathData="M29,40
+            C34,37 39,43 44,40
+            C49,37 54,43 59,40
+            C63,38 66,40 67,43
+            V50H29Z"/>
+
+    <!-- clean label -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,50H62C63.1,50 64,50.9 64,52V63C64,64.1 63.1,65 62,65H34C32.9,65 32,64.1 32,63V52C32,50.9 32.9,50 34,50Z"/>
+
+    <!-- mayo color band -->
+    <path
+        android:fillColor="#F0DCA8"
+        android:pathData="M36,55H60V60H36Z"/>
+
+    <!-- jar shine -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,35C34,33 38,33 40,35V47C38,45 34,45 32,47Z"/>
+
+</vector>

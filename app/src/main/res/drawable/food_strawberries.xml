@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- back dark side -->
+    <path
+        android:fillColor="#C91E29"
+        android:pathData="M32,35
+            C25,39 21,47 20,57
+            C19,68 25,77 35,80
+            C47,84 63,78 70,66
+            C76,56 75,45 68,38
+            C60,30 44,28 32,35Z"/>
+
+    <!-- main strawberry body -->
+    <path
+        android:fillColor="#EF252D"
+        android:pathData="M44,31
+            C34,31 27,37 24,47
+            C20,59 25,72 36,78
+            C44,83 54,82 62,76
+            C72,68 76,54 72,43
+            C68,34 59,30 50,31
+            C48,31 46,31 44,31Z"/>
+
+    <!-- right soft shade -->
+    <path
+        android:fillColor="#D91F2A"
+        android:pathData="M60,34
+            C68,39 72,48 71,58
+            C70,67 64,75 56,79
+            C62,69 64,56 63,47
+            C62,41 61,37 60,34Z"/>
+
+    <!-- left soft highlight area -->
+    <path
+        android:fillColor="#FF4147"
+        android:pathData="M35,37
+            C42,33 53,34 58,41
+            C61,45 60,51 56,56
+            C49,63 36,64 29,58
+            C28,50 30,42 35,37Z"/>
+
+    <!-- bottom darker curve -->
+    <path
+        android:fillColor="#C91E29"
+        android:pathData="M27,68
+            C36,74 51,74 65,67
+            C60,77 50,82 39,80
+            C33,79 29,75 27,68Z"/>
+
+    <!-- connected green leaves -->
+    <path
+        android:fillColor="#4E913B"
+        android:pathData="M42,34
+            C36,30 31,25 29,19
+            C37,20 43,25 46,33Z"/>
+
+    <path
+        android:fillColor="#70AE42"
+        android:pathData="M47,35
+            C43,28 43,20 47,14
+            C53,20 54,29 50,36Z"/>
+
+    <path
+        android:fillColor="#6DAA3F"
+        android:pathData="M52,35
+            C57,27 65,23 72,24
+            C69,32 61,37 52,37Z"/>
+
+    <path
+        android:fillColor="#78B649"
+        android:pathData="M39,35
+            C32,34 26,31 22,26
+            C30,25 37,28 43,34Z"/>
+
+    <path
+        android:fillColor="#78B649"
+        android:pathData="M55,36
+            C63,35 70,37 75,42
+            C67,43 60,41 54,37Z"/>
+
+    <!-- center leaf connector -->
+    <path
+        android:fillColor="#7FB84A"
+        android:pathData="M40,33
+            C44,31 51,31 56,34
+            C54,39 50,42 46,43
+            C43,41 41,37 40,33Z"/>
+
+    <!-- small stem -->
+    <path
+        android:fillColor="#4E913B"
+        android:pathData="M49,14
+            C50,10 53,9 55,11
+            C54,18 52,25 50,32
+            L46,31
+            C47,25 48,19 49,14Z"/>
+
+    <!-- seeds -->
+    <path
+        android:fillColor="#F8D47A"
+        android:pathData="M36,42C37.3,40.8 39.2,41 39.8,42.4C40.3,43.7 39.5,45.3 38,45.9C36.5,46.4 35.2,45.7 35,44.4C34.9,43.5 35.3,42.7 36,42Z
+                          M50,41C51.3,39.8 53.2,40 53.8,41.4C54.3,42.7 53.5,44.3 52,44.9C50.5,45.4 49.2,44.7 49,43.4C48.9,42.5 49.3,41.7 50,41Z
+                          M62,46C63.3,44.8 65.2,45 65.8,46.4C66.3,47.7 65.5,49.3 64,49.9C62.5,50.4 61.2,49.7 61,48.4C60.9,47.5 61.3,46.7 62,46Z
+                          M32,53C33.3,51.8 35.2,52 35.8,53.4C36.3,54.7 35.5,56.3 34,56.9C32.5,57.4 31.2,56.7 31,55.4C30.9,54.5 31.3,53.7 32,53Z
+                          M45,52C46.3,50.8 48.2,51 48.8,52.4C49.3,53.7 48.5,55.3 47,55.9C45.5,56.4 44.2,55.7 44,54.4C43.9,53.5 44.3,52.7 45,52Z
+                          M58,55C59.3,53.8 61.2,54 61.8,55.4C62.3,56.7 61.5,58.3 60,58.9C58.5,59.4 57.2,58.7 57,57.4C56.9,56.5 57.3,55.7 58,55Z
+                          M37,64C38.3,62.8 40.2,63 40.8,64.4C41.3,65.7 40.5,67.3 39,67.9C37.5,68.4 36.2,67.7 36,66.4C35.9,65.5 36.3,64.7 37,64Z
+                          M50,64C51.3,62.8 53.2,63 53.8,64.4C54.3,65.7 53.5,67.3 52,67.9C50.5,68.4 49.2,67.7 49,66.4C48.9,65.5 49.3,64.7 50,64Z
+                          M45,73C46.3,71.8 48.2,72 48.8,73.4C49.3,74.7 48.5,76.3 47,76.9C45.5,77.4 44.2,76.7 44,75.4C43.9,74.5 44.3,73.7 45,73Z"/>
+
+</vector>

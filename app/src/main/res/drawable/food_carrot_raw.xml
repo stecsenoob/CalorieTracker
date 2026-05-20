@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- carrot body -->
+    <path
+        android:fillColor="#F68B1F"
+        android:pathData="M36,24
+            C44,21 53,23 59,29
+            C65,35 66,43 62,50
+            C57,58 48,68 39,78
+            C35,82 29,82 25,78
+            C21,74 21,68 24,62
+            C30,52 34,41 36,24Z" />
+
+    <!-- carrot highlight -->
+    <path
+        android:fillColor="#FFA843"
+        android:pathData="M39,29
+            C44,27 49,28 53,32
+            C56,35 56,40 54,45
+            C50,52 44,59 37,67
+            C34,70 31,71 29,69
+            C31,60 35,48 39,29Z" />
+
+    <!-- soft shine -->
+    <path
+        android:fillColor="#FFB85E"
+        android:pathData="M40,31
+            C43,30 46,30 48,31
+            C43,41 39,53 34,65
+            C33,63 33,60 34,57
+            C36,49 38,40 40,31Z" />
+
+    <!-- carrot marks -->
+    <path
+        android:fillColor="#EA7414"
+        android:pathData="M45,36C48,34 52,34 55,36C52,37 48,37 45,36Z
+                          M39,47C43,44 48,44 52,47C48,48 43,48 39,47Z
+                          M45,58C48,56 52,56 55,58C52,59 48,59 45,58Z
+                          M35,67C37,66 39,66 41,68C39,69 37,69 35,67Z" />
+
+    <!-- left leaf -->
+    <path
+        android:fillColor="#57B913"
+        android:pathData="M34,25
+            C29,18 29,12 36,9
+            C42,11 44,18 40,25Z" />
+
+    <!-- middle leaf -->
+    <path
+        android:fillColor="#73CC1D"
+        android:pathData="M44,23
+            C42,14 45,8 52,8
+            C58,12 58,19 51,25Z" />
+
+    <!-- right leaf -->
+    <path
+        android:fillColor="#4EAD10"
+        android:pathData="M52,27
+            C52,20 57,16 64,17
+            C68,22 66,28 60,32Z" />
+
+    <!-- stem base -->
+    <path
+        android:fillColor="#5EA917"
+        android:pathData="M36,24C41,22 47,22 52,25C48,28 41,28 36,24Z" />
+
+</vector>

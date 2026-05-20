@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- soft background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- cucumber body -->
+    <path
+        android:fillColor="#4FAE57"
+        android:pathData="M27,59C22,54 22,46 27,41L46,22C51,17 59,17 64,22C69,27 69,35 64,40L45,59C40,64 32,64 27,59Z" />
+
+    <!-- inner lighter area -->
+    <path
+        android:fillColor="#6CC16F"
+        android:pathData="M31,56C27,52 27,46 31,42L48,25C52,21 58,21 62,25C66,29 66,35 62,39L45,56C41,60 35,60 31,56Z" />
+
+    <!-- highlight -->
+    <path
+        android:fillColor="#89D68B"
+        android:pathData="M36,52C33,49 33,45 36,42L50,28C53,25 57,25 60,28C56,28 53,30 50,33L39,44C36,47 35,49 36,52Z" />
+
+    <!-- seeds / texture -->
+    <path
+        android:fillColor="#DCEFC9"
+        android:pathData="M43,34m-1.2,0a1.2,1.8 0,1 1,2.4 0a1.2,1.8 0,1 1,-2.4 0
+                          M49,39m-1.2,0a1.2,1.8 0,1 1,2.4 0a1.2,1.8 0,1 1,-2.4 0
+                          M54,29m-1.2,0a1.2,1.8 0,1 1,2.4 0a1.2,1.8 0,1 1,-2.4 0
+                          M38,47m-1.2,1.8a1.2,1.8 0,1 1,2.4 0a1.2,1.8 0,1 1,-2.4 0" />
+
+    <!-- end tips -->
+    <path
+        android:fillColor="#3E8D46"
+        android:pathData="M25,57C23,55 23,52 25,50C27,52 27,55 25,57Z
+                          M66,24C68,26 68,29 66,31C64,29 64,26 66,24Z" />
+
+</vector>

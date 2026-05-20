@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- bowl shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M25,68C30,64 66,64 71,68C67,72 29,72 25,68Z" />
+
+    <!-- bowl outer -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M24,55H72C70,66 61,74 48,74C35,74 26,66 24,55Z" />
+
+    <!-- bowl inner -->
+    <path
+        android:fillColor="#EEF2F6"
+        android:pathData="M28,50C28,42 37,37 48,37C59,37 68,42 68,50C68,55 59,58 48,58C37,58 28,55 28,50Z" />
+
+    <!-- brown rice mound base -->
+    <path
+        android:fillColor="#B78655"
+        android:pathData="M28,50C28,42 35,36 43,36C46,32 53,31 58,35C65,35 70,40 70,48C70,53 66,57 61,58H36C31,58 28,55 28,50Z" />
+
+    <!-- fluffy brown rice clusters -->
+    <path
+        android:fillColor="#C99867"
+        android:pathData="M33,47m-3.6,0a3.6,3.6 0,1 1,7.2 0a3.6,3.6 0,1 1,-7.2 0
+                          M40,43m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0
+                          M48,41m-4.4,0a4.4,4.4 0,1 1,8.8 0a4.4,4.4 0,1 1,-8.8 0
+                          M57,43m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0
+                          M64,47m-3.6,0a3.6,3.6 0,1 1,7.2 0a3.6,3.6 0,1 1,-7.2 0
+                          M36,53m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0
+                          M46,55m-4.8,0a4.8,4.8 0,1 1,9.6 0a4.8,4.8 0,1 1,-9.6 0
+                          M58,54m-4.2,0a4.2,4.2 0,1 1,8.4 0a4.2,4.2 0,1 1,-8.4 0" />
+
+    <!-- darker grain accents -->
+    <path
+        android:fillColor="#9A6E43"
+        android:pathData="M34,46m-0.9,0a0.9,0.9 0,1 1,1.8 0a0.9,0.9 0,1 1,-1.8 0
+                          M41,44m-0.9,0a0.9,0.9 0,1 1,1.8 0a0.9,0.9 0,1 1,-1.8 0
+                          M49,42m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M57,44m-0.9,0a0.9,0.9 0,1 1,1.8 0a0.9,0.9 0,1 1,-1.8 0
+                          M38,54m-0.9,0a0.9,0.9 0,1 1,1.8 0a0.9,0.9 0,1 1,-1.8 0
+                          M48,55m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M59,54m-0.9,0a0.9,0.9 0,1 1,1.8 0a0.9,0.9 0,1 1,-1.8 0" />
+
+    <!-- soft top highlight -->
+    <path
+        android:fillColor="#DAB183"
+        android:pathData="M34,42C41,40 54,40 63,44C55,44 42,44 34,46Z" />
+
+</vector>

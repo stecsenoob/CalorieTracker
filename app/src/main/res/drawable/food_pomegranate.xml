@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- whole pomegranate behind -->
+    <path
+        android:fillColor="#B71F35"
+        android:pathData="M56,29
+            C67,29 76,38 76,49
+            C76,61 67,70 56,70
+            C44,70 35,61 35,49
+            C35,38 44,29 56,29Z"/>
+
+    <!-- crown behind -->
+    <path
+        android:fillColor="#9E1B2E"
+        android:pathData="M49,27
+            L52,20
+            L56,26
+            L61,20
+            L63,28
+            C59,31 53,31 49,27Z"/>
+
+    <!-- whole fruit highlight -->
+    <path
+        android:fillColor="#D43A4F"
+        android:pathData="M51,35
+            C56,32 63,34 67,39
+            C61,38 55,40 51,45
+            C49,42 48.8,38 51,35Z"/>
+
+    <!-- front half rind -->
+    <path
+        android:fillColor="#C9253D"
+        android:pathData="M24,51
+            C24,38 34,28 47,28
+            C60,28 70,38 70,51
+            C70,64 60,74 47,74
+            C34,74 24,64 24,51Z"/>
+
+    <!-- crown front -->
+    <path
+        android:fillColor="#AD2034"
+        android:pathData="M39,29
+            L42,20
+            L47,27
+            L52,20
+            L55,29
+            C51,32 43,32 39,29Z"/>
+
+    <!-- inside flesh -->
+    <path
+        android:fillColor="#F6D1C5"
+        android:pathData="M30,51
+            C30,42 38,34 47,34
+            C56,34 64,42 64,51
+            C64,60 56,68 47,68
+            C38,68 30,60 30,51Z"/>
+
+    <!-- red seeds -->
+    <path
+        android:fillColor="#C9253D"
+        android:pathData="M39,43m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0
+                          M48,41m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0
+                          M56,45m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0
+                          M36,52m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0
+                          M45,51m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0
+                          M54,53m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0
+                          M40,60m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0
+                          M49,61m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0
+                          M57,60m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0"/>
+
+    <!-- seed highlights -->
+    <path
+        android:fillColor="#F77A8A"
+        android:pathData="M38,42m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0
+                          M47,40m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0
+                          M44,50m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0
+                          M53,52m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0
+                          M48,60m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"/>
+
+</vector>

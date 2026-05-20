@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- can body -->
+    <path
+        android:fillColor="#BFC8D2"
+        android:pathData="M24,34C24,30 35,27 48,27C61,27 72,30 72,34V58C72,62 61,65 48,65C35,65 24,62 24,58Z" />
+
+    <!-- can rim -->
+    <path
+        android:fillColor="#D8E0E8"
+        android:pathData="M48,27m-24,0a24,7 0,1 1,48 0a24,7 0,1 1,-48 0" />
+
+    <!-- oil -->
+    <path
+        android:fillColor="#E6C95C"
+        android:pathData="M28,36C28,33 37,31 48,31C59,31 68,33 68,36V50C68,53 59,55 48,55C37,55 28,53 28,50Z" />
+
+    <!-- tuna chunks -->
+    <path
+        android:fillColor="#C89064"
+        android:pathData="M33,38C36,35 42,35 45,38C43,42 36,42 33,38Z" />
+    <path
+        android:fillColor="#C89064"
+        android:pathData="M47,39C50,36 57,36 61,39C58,43 51,43 47,39Z" />
+    <path
+        android:fillColor="#C89064"
+        android:pathData="M37,46C40,43 46,43 49,46C46,49 40,49 37,46Z" />
+    <path
+        android:fillColor="#C89064"
+        android:pathData="M51,47C54,44 60,44 63,47C60,50 54,50 51,47Z" />
+
+    <!-- label -->
+    <path
+        android:fillColor="#E8A94C"
+        android:pathData="M30,57H66V67H30Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,60H58V64H38Z" />
+
+</vector>

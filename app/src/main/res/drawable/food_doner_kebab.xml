@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- wrap bread -->
+    <path
+        android:fillColor="#E5B66D"
+        android:pathData="M30,31
+            C39,24 55,24 65,31
+            C70,38 72,50 69,63
+            C66,75 57,80 48,80
+            C39,80 30,75 27,63
+            C24,50 25,38 30,31Z"/>
+
+    <!-- inside opening -->
+    <path
+        android:fillColor="#F7E0AE"
+        android:pathData="M34,34
+            C42,29 54,29 62,34
+            C65,39 66,47 64,55
+            C58,51 51,49 45,50
+            C39,50 34,53 30,56
+            C29,47 30,39 34,34Z"/>
+
+    <!-- lettuce -->
+    <path
+        android:fillColor="#66B94C"
+        android:pathData="M31,38
+            C35,34 39,40 43,37
+            C47,34 51,40 55,37
+            C59,34 63,38 65,41
+            C60,44 55,43 50,42
+            C44,41 38,44 31,42Z"/>
+
+    <!-- doner meat strips -->
+    <path
+        android:fillColor="#8B4E32"
+        android:pathData="M37,43H46C47.5,43 48.5,44 48,45.5C47.5,47 46,48 44,48H36C34.5,48 33.5,47 34,45.5C34.5,44 35.5,43 37,43Z"/>
+
+    <path
+        android:fillColor="#A45D38"
+        android:pathData="M51,42H61C62.5,42 63.5,43 63,44.5C62.5,46 61,47 59,47H50C48.5,47 47.5,46 48,44.5C48.5,43 49.5,42 51,42Z"/>
+
+    <path
+        android:fillColor="#7C432B"
+        android:pathData="M40,51H51C52.5,51 53.5,52 53,53.5C52.5,55 51,56 49,56H39C37.5,56 36.5,55 37,53.5C37.5,52 38.5,51 40,51Z"/>
+
+    <!-- tomato pieces -->
+    <path
+        android:fillColor="#E2473D"
+        android:pathData="M35,49m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0
+                          M58,51m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0"/>
+
+    <!-- onion / sauce -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,47m-1.6,0a1.6,1.2 0,1 1,3.2 0a1.6,1.2 0,1 1,-3.2 0
+                          M54,55m-1.6,0a1.6,1.2 0,1 1,3.2 0a1.6,1.2 0,1 1,-3.2 0"/>
+
+    <!-- bread shade -->
+    <path
+        android:fillColor="#D39A54"
+        android:pathData="M31,56
+            C37,61 43,65 48,79
+            C39,80 30,75 27,63
+            C25,54 25,45 28,37
+            C28,45 29,51 31,56Z"/>
+
+    <!-- bread highlight -->
+    <path
+        android:fillColor="#F0CE91"
+        android:pathData="M35,33
+            C43,29 54,30 61,35
+            C54,33 44,33 36,37
+            C34,38 33.5,35 35,33Z"/>
+
+</vector>

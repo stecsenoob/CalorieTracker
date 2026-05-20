@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M23,69C29,65 67,65 73,69C68,73 28,73 23,69Z" />
+
+    <!-- toast crust -->
+    <path
+        android:fillColor="#A96532"
+        android:pathData="M28,38C28,28 36,22 46,22H50C60,22 68,28 68,38V63C68,69 63,74 57,74H39C33,74 28,69 28,63Z" />
+
+    <!-- toast inside -->
+    <path
+        android:fillColor="#D9974E"
+        android:pathData="M34,40C34,33 39,28 46,28H50C57,28 62,33 62,40V61C62,65 59,68 55,68H41C37,68 34,65 34,61Z" />
+
+    <!-- toasted brown spots -->
+    <path
+        android:fillColor="#7D431F"
+        android:pathData="M42,44m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0
+                          M54,54m-3.5,0a3.5,3.5 0,1 1,7 0a3.5,3.5 0,1 1,-7 0
+                          M44,62m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0" />
+
+    <!-- butter square -->
+    <path
+        android:fillColor="#F6D35D"
+        android:pathData="M43,49H53V59H43Z" />
+
+    <!-- butter highlight -->
+    <path
+        android:fillColor="#FFE98C"
+        android:pathData="M45,51H51V54H45Z" />
+
+</vector>

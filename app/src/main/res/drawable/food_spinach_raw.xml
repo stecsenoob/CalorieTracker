@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- soft background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- left leaf -->
+    <path
+        android:fillColor="#4FAE57"
+        android:pathData="M30,60C23,54 22,43 28,35C34,28 43,27 49,31C48,39 45,47 40,53C37,57 34,59 30,60Z" />
+
+    <!-- right leaf -->
+    <path
+        android:fillColor="#5CBD5F"
+        android:pathData="M66,58C59,60 51,58 46,52C41,46 39,38 40,30C47,26 56,28 62,35C68,42 69,51 66,58Z" />
+
+    <!-- front leaf -->
+    <path
+        android:fillColor="#77CD70"
+        android:pathData="M48,67C39,64 33,56 33,47C33,38 39,31 48,29C57,31 63,38 63,47C63,56 57,64 48,67Z" />
+
+    <!-- stems -->
+    <path
+        android:fillColor="#79B95D"
+        android:pathData="M46,63C46,58 46,53 47,48H50C50,53 50,58 50,63C50,67 49,71 48,74C47,71 46,67 46,63Z
+                          M39,56L41,54L47,63L45,65Z
+                          M56,56L58,58L51,65L49,63Z" />
+
+    <!-- leaf veins -->
+    <path
+        android:fillColor="#3E9147"
+        android:pathData="M46,34H49V60H46Z
+                          M34,42L42,46L41,48L33,45Z
+                          M55,42L57,45L49,48L48,46Z
+                          M39,54L46,55L45,57L38,57Z
+                          M51,55L58,57L57,59L50,57Z" />
+
+</vector>

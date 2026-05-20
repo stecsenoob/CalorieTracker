@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- plate -->
+    <path
+        android:fillColor="#E8EDF2"
+        android:pathData="M25,61C25,53 35,48 48,48C61,48 71,53 71,61C71,69 61,74 48,74C35,74 25,69 25,61Z"/>
+
+    <path
+        android:fillColor="#F8FAFB"
+        android:pathData="M31,60C31,55 38,52 48,52C58,52 65,55 65,60C65,65 58,68 48,68C38,68 31,65 31,60Z"/>
+
+    <!-- pepper body left -->
+    <path
+        android:fillColor="#D63D2E"
+        android:pathData="M30,34
+            C30,28 35,24 42,25
+            C49,26 53,32 52,40
+            C51,50 45,59 37,61
+            C30,58 27,48 28,40
+            C28.3,37.5 29,35.5 30,34Z"/>
+
+    <!-- pepper body right -->
+    <path
+        android:fillColor="#E94B35"
+        android:pathData="M48,35
+            C48,28 54,24 61,26
+            C68,28 71,36 69,45
+            C67,55 59,62 51,61
+            C46,56 44,47 45,40
+            C45.5,38 46.5,36 48,35Z"/>
+
+    <!-- rice/meat filling -->
+    <path
+        android:fillColor="#EACB8E"
+        android:pathData="M34,33C37,29 45,29 49,34C45,37 38,37 34,33Z
+                          M51,34C55,30 63,31 66,36C61,38 55,38 51,34Z"/>
+
+    <!-- filling dots -->
+    <path
+        android:fillColor="#9A5B36"
+        android:pathData="M39,33m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M44,34m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M57,35m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M62,35m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0"/>
+
+    <!-- pepper highlights -->
+    <path
+        android:fillColor="#FF7359"
+        android:pathData="M33,38C36,32 42,30 47,33C42,37 38,43 36,51C33,48 31.8,42 33,38Z
+                          M52,39C55,33 62,32 66,37C62,40 58,47 56,55C52,51 50.5,44 52,39Z"/>
+
+    <!-- stems -->
+    <path
+        android:fillColor="#4F9A3E"
+        android:pathData="M38,24C41,20 47,21 50,25C46,28 41,28 38,24Z
+                          M57,25C60,21 66,22 68,27C64,30 59,29 57,25Z"/>
+
+</vector>

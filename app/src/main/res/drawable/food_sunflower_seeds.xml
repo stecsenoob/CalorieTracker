@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- seeds pile -->
+    <path
+        android:fillColor="#2E2A24"
+        android:pathData="M31,35m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M40,32m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M49,34m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M58,35m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M66,41m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M34,46m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M43,45m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M52,46m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M61,49m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M37,58m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M47,58m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0
+                          M57,59m-2,0a2,4 0,1 1,4 0a2,4 0,1 1,-4 0"/>
+
+    <!-- light stripes -->
+    <path
+        android:fillColor="#A68A55"
+        android:pathData="M31,32H32V38H31Z
+                          M40,29H41V35H40Z
+                          M49,31H50V37H49Z
+                          M58,32H59V38H58Z
+                          M43,42H44V48H43Z
+                          M52,43H53V49H52Z
+                          M47,55H48V61H47Z"/>
+
+</vector>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M22,70C28,66 68,66 74,70C69,74 27,74 22,70Z" />
+
+    <!-- back pita -->
+    <path
+        android:fillColor="#DDBB78"
+        android:pathData="M31,45C31,34 39,27 50,27C62,27 70,35 70,47C70,59 61,67 49,67C38,67 31,58 31,45Z" />
+
+    <!-- front pita -->
+    <path
+        android:fillColor="#E8C987"
+        android:pathData="M24,50C24,38 34,30 47,30C61,30 72,39 72,52C72,64 62,72 48,72C34,72 24,63 24,50Z" />
+
+    <!-- inner soft area -->
+    <path
+        android:fillColor="#F3DDA6"
+        android:pathData="M31,50C31,42 38,36 48,36C58,36 65,42 65,52C65,60 58,66 48,66C38,66 31,59 31,50Z" />
+
+    <!-- pita pocket line -->
+    <path
+        android:fillColor="#C7985E"
+        android:pathData="M32,48C39,53 58,54 66,48C63,57 56,62 47,62C39,62 34,57 32,48Z" />
+
+    <!-- toasted spots -->
+    <path
+        android:fillColor="#C99558"
+        android:pathData="M39,42m-3,0a3,2 0,1 1,6 0a3,2 0,1 1,-6 0
+                          M55,44m-3,0a3,2 0,1 1,6 0a3,2 0,1 1,-6 0
+                          M46,57m-2.5,0a2.5,1.8 0,1 1,5 0a2.5,1.8 0,1 1,-5 0" />
+
+    <!-- highlight -->
+    <path
+        android:fillColor="#F8E7BD"
+        android:pathData="M35,40C42,34 55,35 62,42C53,39 43,39 35,44Z" />
+
+</vector>

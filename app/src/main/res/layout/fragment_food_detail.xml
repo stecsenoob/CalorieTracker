@@ -7,7 +7,6 @@
     android:background="#FFFFFF"
     android:padding="16dp">
 
-    <!-- Back -->
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="28dp"
@@ -17,9 +16,8 @@
         android:rotation="180"
         app:tint="#7E57C2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- FOOD CARD -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardFood"
         android:layout_width="0dp"
@@ -29,6 +27,7 @@
         app:cardElevation="4dp"
         app:strokeWidth="1dp"
         app:strokeColor="#EEEAF7"
+        app:cardBackgroundColor="#F4ECFB"
         app:layout_constraintTop_toBottomOf="@id/btnBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -39,7 +38,6 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Title -->
             <TextView
                 android:id="@+id/tvFoodTitle"
                 android:layout_width="wrap_content"
@@ -47,18 +45,17 @@
                 android:text="Apple"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="#111111"/>
+                android:textColor="#111111" />
 
             <TextView
                 android:id="@+id/tvFoodPortion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1 medium (182g)"
+                android:text="100g"
                 android:textSize="14sp"
                 android:textColor="#777777"
-                android:layout_marginTop="4dp"/>
+                android:layout_marginTop="4dp" />
 
-            <!-- Calories badge -->
             <TextView
                 android:id="@+id/tvFoodCalories"
                 android:layout_width="wrap_content"
@@ -70,106 +67,77 @@
                 android:background="@drawable/bg_calorie_badge"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="6dp"
-                android:layout_marginTop="12dp"/>
+                android:layout_marginTop="12dp" />
 
-            <!-- Macros -->
-            <LinearLayout
-                android:id="@+id/rowMacros"
+            <HorizontalScrollView
+                android:id="@+id/macrosScroll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:scrollbars="none"
+                android:overScrollMode="never">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:id="@+id/rowMacros"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Protein"
-                        android:textSize="12sp"
-                        android:textColor="#777777"/>
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvProtein"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0.5g"
+                        android:layout_marginEnd="7dp"
+                        android:background="@drawable/bg_chip_protein"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="Protein: 0.5g"
                         android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:textColor="#333333"/>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="38dp"
-                    android:layout_gravity="center"
-                    android:background="#EEEAF7"/>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fat"
-                        android:textSize="12sp"
-                        android:textColor="#777777"/>
+                        android:textSize="14sp"
+                        android:textColor="#111111"
+                        android:maxLines="1" />
 
                     <TextView
                         android:id="@+id/tvFat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0.3g"
+                        android:layout_marginEnd="7dp"
+                        android:background="@drawable/bg_chip_fat"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="Fat: 0.3g"
                         android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:textColor="#333333"/>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="38dp"
-                    android:layout_gravity="center"
-                    android:background="#EEEAF7"/>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Carbs"
-                        android:textSize="12sp"
-                        android:textColor="#777777"/>
+                        android:textSize="14sp"
+                        android:textColor="#111111"
+                        android:maxLines="1" />
 
                     <TextView
                         android:id="@+id/tvCarbs"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="25g"
+                        android:background="@drawable/bg_chip_carbs"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="Carbs: 25g"
                         android:textStyle="bold"
-                        android:textSize="16sp"
-                        android:textColor="#333333"/>
+                        android:textSize="14sp"
+                        android:textColor="#111111"
+                        android:maxLines="1" />
+
                 </LinearLayout>
-            </LinearLayout>
+
+            </HorizontalScrollView>
 
         </LinearLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Portion count -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPortionCount"
         android:layout_width="0dp"
@@ -192,10 +160,10 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:text="1"
-            android:padding="12dp"/>
+            android:padding="12dp" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Grams/ml -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilGrams"
         android:layout_width="0dp"
@@ -218,12 +186,9 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:text="100"
-            android:padding="12dp"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:padding="12dp" />
 
-    <!-- Buttons (ALL SAME LIGHT PURPLE + SMALLER) -->
-    <!-- Color used: #F0EAFB (light purple like your cards) -->
-    <!-- Text: #7E57C2 -->
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddBreakfast"
@@ -244,7 +209,7 @@
         android:textColor="#7E57C2"
         app:layout_constraintTop_toBottomOf="@id/tilGrams"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddLunch"
@@ -265,7 +230,7 @@
         android:textColor="#7E57C2"
         app:layout_constraintTop_toBottomOf="@id/btnAddBreakfast"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddDinner"
@@ -286,7 +251,7 @@
         android:textColor="#7E57C2"
         app:layout_constraintTop_toBottomOf="@id/btnAddLunch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddSnacks"
@@ -307,6 +272,6 @@
         android:textColor="#7E57C2"
         app:layout_constraintTop_toBottomOf="@id/btnAddDinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M22,68C27,61 69,61 74,68C69,75 27,75 22,68Z" />
+
+    <!-- mozzarella slices -->
+    <path
+        android:fillColor="#FFFDFC"
+        android:pathData="M34,50m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    <path
+        android:fillColor="#FBF8F1"
+        android:pathData="M48,44m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    <path
+        android:fillColor="#FFFDF9"
+        android:pathData="M61,52m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+
+    <!-- highlights -->
+    <path
+        android:fillColor="#F1EDE5"
+        android:pathData="M30,46C33,44 37,44 40,46C37,47 33,47 30,46Z
+                          M44,40C47,38 51,38 54,40C51,41 47,41 44,40Z
+                          M57,48C60,46 64,46 67,48C64,49 60,49 57,48Z" />
+
+    <!-- basil leaf -->
+    <path
+        android:fillColor="#61B567"
+        android:pathData="M57,31C61,28 66,29 69,34C64,36 60,35 57,31Z" />
+
+</vector>

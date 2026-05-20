@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M22,69C28,65 68,65 74,69C69,73 27,73 22,69Z" />
+
+    <!-- rye loaf back -->
+    <path
+        android:fillColor="#6F3F24"
+        android:pathData="M24,50C24,38 35,30 48,30C61,30 72,38 72,50V62C72,68 66,73 60,73H36C30,73 24,68 24,62Z" />
+
+    <!-- rye loaf inner -->
+    <path
+        android:fillColor="#8D5C38"
+        android:pathData="M30,51C30,42 38,36 48,36C58,36 66,42 66,51V61C66,65 62,68 58,68H38C34,68 30,65 30,61Z" />
+
+    <!-- cut slice highlight -->
+    <path
+        android:fillColor="#A87448"
+        android:pathData="M35,46C41,42 54,42 61,47C53,46 43,46 35,50Z" />
+
+    <!-- rye seeds / darker spots -->
+    <path
+        android:fillColor="#4D2B19"
+        android:pathData="M38,50m-1.2,0a1.2,1.6 0,1 1,2.4 0a1.2,1.6 0,1 1,-2.4 0
+                          M48,47m-1.2,0a1.2,1.6 0,1 1,2.4 0a1.2,1.6 0,1 1,-2.4 0
+                          M56,53m-1.2,0a1.2,1.6 0,1 1,2.4 0a1.2,1.6 0,1 1,-2.4 0
+                          M43,61m-1.1,0a1.1,1.5 0,1 1,2.2 0a1.1,1.5 0,1 1,-2.2 0
+                          M54,63m-1.1,0a1.1,1.5 0,1 1,2.2 0a1.1,1.5 0,1 1,-2.2 0" />
+
+</vector>

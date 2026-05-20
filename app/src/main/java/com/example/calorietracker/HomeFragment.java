@@ -1,14 +1,18 @@
 package com.example.calorietracker;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,8 +45,7 @@ public class HomeFragment extends Fragment {
         MaterialCardView cardDinner    = view.findViewById(R.id.cardDinner);
         MaterialCardView cardSnacks    = view.findViewById(R.id.cardSnacks);
 
-        MaterialButton btnScanFood = view.findViewById(R.id.btnScanFood);
-        MaterialButton btnScanBarcode = view.findViewById(R.id.btnScanBarcode);
+        MaterialButton btnOpenScanDialog = view.findViewById(R.id.btnOpenScanDialog);
 
         tvBreakfastSub = view.findViewById(R.id.tvBreakfastSub);
         tvLunchSub     = view.findViewById(R.id.tvLunchSub);
@@ -83,8 +86,7 @@ public class HomeFragment extends Fragment {
         cardDinner.setOnClickListener(v -> openMealPage("dinner"));
         cardSnacks.setOnClickListener(v -> openMealPage("snacks"));
 
-        btnScanFood.setOnClickListener(v -> openScanFoodPage());
-        btnScanBarcode.setOnClickListener(v -> openBarcodeScannerPage());
+        btnOpenScanDialog.setOnClickListener(v -> showScanChoiceBottomSheet());
 
         refreshUI();
     }
@@ -119,6 +121,95 @@ public class HomeFragment extends Fragment {
                 .replace(R.id.frameLayout, MealFragment.newInstance(mealType))
                 .addToBackStack(null)
                 .commit();
+    }
+
+
+    private void showScanChoiceBottomSheet() {
+        BottomSheetDialog sheet = new BottomSheetDialog(requireContext());
+
+        LinearLayout root = new LinearLayout(requireContext());
+        root.setOrientation(LinearLayout.VERTICAL);
+        root.setPadding(dp(22), dp(14), dp(22), dp(28));
+        root.setBackgroundColor(Color.WHITE);
+
+        View handle = new View(requireContext());
+        LinearLayout.LayoutParams handleLp = new LinearLayout.LayoutParams(dp(44), dp(5));
+        handleLp.gravity = Gravity.CENTER_HORIZONTAL;
+        handleLp.setMargins(0, 0, 0, dp(18));
+        handle.setLayoutParams(handleLp);
+        handle.setBackgroundColor(Color.parseColor("#E7DFF6"));
+        root.addView(handle);
+
+        TextView title = new TextView(requireContext());
+        title.setText("Choose scan option");
+        title.setTextSize(22f);
+        title.setTypeface(null, android.graphics.Typeface.BOLD);
+        title.setTextColor(Color.parseColor("#111111"));
+        root.addView(title);
+
+        TextView subtitle = new TextView(requireContext());
+        subtitle.setText("Select how you want to add food using the camera.");
+        subtitle.setTextSize(14f);
+        subtitle.setTextColor(Color.parseColor("#777777"));
+        LinearLayout.LayoutParams subtitleLp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        subtitleLp.setMargins(0, dp(5), 0, dp(18));
+        subtitle.setLayoutParams(subtitleLp);
+        root.addView(subtitle);
+
+        MaterialButton scanFood = new MaterialButton(requireContext());
+        scanFood.setText("Scan Food");
+        scanFood.setTextSize(16f);
+        scanFood.setTypeface(null, android.graphics.Typeface.BOLD);
+        scanFood.setTextColor(Color.WHITE);
+        scanFood.setAllCaps(false);
+        scanFood.setIconResource(R.drawable.outline_photo_camera_24);
+        scanFood.setIconTintResource(android.R.color.white);
+        scanFood.setIconPadding(dp(8));
+        scanFood.setCornerRadius(dp(18));
+        scanFood.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("#7B1FA2")));
+        LinearLayout.LayoutParams btnLp1 = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                dp(56)
+        );
+        btnLp1.setMargins(0, 0, 0, dp(10));
+        scanFood.setLayoutParams(btnLp1);
+        root.addView(scanFood);
+
+        MaterialButton scanBarcode = new MaterialButton(requireContext());
+        scanBarcode.setText("Scan Barcode");
+        scanBarcode.setTextSize(16f);
+        scanBarcode.setTypeface(null, android.graphics.Typeface.BOLD);
+        scanBarcode.setTextColor(Color.parseColor("#7B1FA2"));
+        scanBarcode.setAllCaps(false);
+        scanBarcode.setIconResource(R.drawable.ic_barcode);
+        scanBarcode.setIconTint(android.content.res.ColorStateList.valueOf(Color.parseColor("#7B1FA2")));
+        scanBarcode.setIconPadding(dp(8));
+        scanBarcode.setCornerRadius(dp(18));
+        scanBarcode.setStrokeWidth(dp(1));
+        scanBarcode.setStrokeColor(android.content.res.ColorStateList.valueOf(Color.parseColor("#D7BDEB")));
+        scanBarcode.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.parseColor("#F5EFFB")));
+        LinearLayout.LayoutParams btnLp2 = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                dp(56)
+        );
+        scanBarcode.setLayoutParams(btnLp2);
+        root.addView(scanBarcode);
+
+        scanFood.setOnClickListener(v -> {
+            sheet.dismiss();
+            openScanFoodPage();
+        });
+
+        scanBarcode.setOnClickListener(v -> {
+            sheet.dismiss();
+            openBarcodeScannerPage();
+        });
+
+        sheet.setContentView(root);
+        sheet.show();
     }
 
     private void openScanFoodPage() {
@@ -177,5 +268,9 @@ public class HomeFragment extends Fragment {
         tvP.setText(String.format(Locale.ROOT, "Protein %.1fg", t.protein));
         tvF.setText(String.format(Locale.ROOT, "Fat %.1fg", t.fat));
         tvC.setText(String.format(Locale.ROOT, "Carbs %.1fg", t.carbs));
+    }
+
+    private int dp(int value) {
+        return (int) (value * getResources().getDisplayMetrics().density + 0.5f);
     }
 }

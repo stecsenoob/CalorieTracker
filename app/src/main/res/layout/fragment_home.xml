@@ -12,8 +12,8 @@
         android:id="@+id/btnLogout"
         android:layout_width="42dp"
         android:layout_height="42dp"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
         android:backgroundTint="#F5EFFB"
         android:contentDescription="Log out"
         android:insetLeft="0dp"
@@ -29,8 +29,27 @@
         app:iconPadding="0dp"
         app:iconSize="22dp"
         app:iconTint="#7B1FA2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAppTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="56dp"
+        android:paddingEnd="56dp"
+        android:text="CalorieTracker"
+        android:textColor="#111111"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnLogout"
+        app:layout_constraintBottom_toBottomOf="@id/btnLogout" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/homeScrollView"
@@ -40,9 +59,9 @@
         android:clipToPadding="false"
         android:fillViewport="true"
         android:paddingTop="8dp"
-        android:paddingBottom="24dp"
+        android:paddingBottom="8dp"
         app:layout_constraintTop_toBottomOf="@id/btnLogout"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnOpenScanDialog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -80,8 +99,8 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_breakfast"
-                        app:tint="#7E57C2"
                         android:contentDescription="@null"
+                        app:tint="#7E57C2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -90,8 +109,8 @@
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:src="@drawable/ic_chevron_right"
-                        app:tint="#B0B0B0"
                         android:contentDescription="@null"
+                        app:tint="#B0B0B0"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -224,8 +243,8 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/outline_food_bank_24"
-                        app:tint="#7E57C2"
                         android:contentDescription="@null"
+                        app:tint="#7E57C2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -234,8 +253,8 @@
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:src="@drawable/ic_chevron_right"
-                        app:tint="#B0B0B0"
                         android:contentDescription="@null"
+                        app:tint="#B0B0B0"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -368,8 +387,8 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/outline_meal_dinner_24"
-                        app:tint="#7E57C2"
                         android:contentDescription="@null"
+                        app:tint="#7E57C2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -378,8 +397,8 @@
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:src="@drawable/ic_chevron_right"
-                        app:tint="#B0B0B0"
                         android:contentDescription="@null"
+                        app:tint="#B0B0B0"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -512,8 +531,8 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/outline_fastfood_24"
-                        app:tint="#7E57C2"
                         android:contentDescription="@null"
+                        app:tint="#7E57C2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -522,8 +541,8 @@
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:src="@drawable/ic_chevron_right"
-                        app:tint="#B0B0B0"
                         android:contentDescription="@null"
+                        app:tint="#B0B0B0"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -635,14 +654,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
+                android:backgroundTint="#F5EFFB"
                 app:cardCornerRadius="14dp"
                 app:cardElevation="2dp"
                 app:strokeWidth="1dp"
                 app:strokeColor="#EAEAEA"
-                android:backgroundTint="#F5EFFB"
                 app:layout_constraintTop_toBottomOf="@id/cardSnacks"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -738,64 +758,31 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ================= ACTION BUTTONS ROW ================= -->
-            <LinearLayout
-                android:id="@+id/rowScanButtons"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="12dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginBottom="28dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/cardGrandTotal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnScanFood"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="6dp"
-                    android:text="Scan Food"
-                    android:textAllCaps="false"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#7B1FA2"
-                    app:cornerRadius="18dp"
-                    app:icon="@drawable/outline_photo_camera_24"
-                    app:iconTint="#FFFFFF"
-                    app:iconSize="22dp"
-                    app:iconGravity="textStart"
-                    app:iconPadding="6dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnScanBarcode"
-                    android:layout_width="0dp"
-                    android:layout_height="54dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="6dp"
-                    android:text="Barcode"
-                    android:textAllCaps="false"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:textColor="#7B1FA2"
-                    android:backgroundTint="#F5EFFB"
-                    app:cornerRadius="18dp"
-                    app:strokeWidth="1dp"
-                    app:strokeColor="#D7BDEB"
-                    app:icon="@drawable/ic_barcode"
-                    app:iconTint="#7B1FA2"
-                    app:iconSize="22dp"
-                    app:iconGravity="textStart"
-                    app:iconPadding="6dp" />
-
-            </LinearLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOpenScanDialog"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="18dp"
+        android:text="+"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#7B1FA2"
+        android:insetLeft="0dp"
+        android:insetRight="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="0dp"
+        android:elevation="8dp"
+        app:cornerRadius="34dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

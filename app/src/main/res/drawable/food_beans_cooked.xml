@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- cooked beans -->
+    <path
+        android:fillColor="#B77B4A"
+        android:pathData="M30,33C26,33 23,36 23,40C23,44 26,47 30,47C34,47 37,44 37,40C37,36 34,33 30,33Z" />
+    <path
+        android:fillColor="#B77B4A"
+        android:pathData="M45,30C41,30 38,33 38,37C38,41 41,44 45,44C49,44 52,41 52,37C52,33 49,30 45,30Z" />
+    <path
+        android:fillColor="#B77B4A"
+        android:pathData="M60,33C56,33 53,36 53,40C53,44 56,47 60,47C64,47 67,44 67,40C67,36 64,33 60,33Z" />
+    <path
+        android:fillColor="#B77B4A"
+        android:pathData="M36,44C32,44 29,47 29,51C29,55 32,58 36,58C40,58 43,55 43,51C43,47 40,44 36,44Z" />
+    <path
+        android:fillColor="#B77B4A"
+        android:pathData="M52,44C48,44 45,47 45,51C45,55 48,58 52,58C56,58 59,55 59,51C59,47 56,44 52,44Z" />
+    <path
+        android:fillColor="#B77B4A"
+        android:pathData="M66,47C62,47 59,50 59,54C59,58 62,61 66,61C70,61 73,58 73,54C73,50 70,47 66,47Z" />
+    <path
+        android:fillColor="#B77B4A"
+        android:pathData="M29,57C25,57 22,60 22,64C22,68 25,71 29,71C33,71 36,68 36,64C36,60 33,57 29,57Z" />
+    <path
+        android:fillColor="#B77B4A"
+        android:pathData="M45,58C41,58 38,61 38,65C38,69 41,72 45,72C49,72 52,69 52,65C52,61 49,58 45,58Z" />
+    <path
+        android:fillColor="#B77B4A"
+        android:pathData="M60,58C56,58 53,61 53,65C53,69 56,72 60,72C64,72 67,69 67,65C67,61 64,58 60,58Z" />
+
+    <!-- bean highlights -->
+    <path
+        android:fillColor="#D8A26D"
+        android:pathData="M29,35m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M44,32m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M59,35m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M35,46m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M51,46m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M65,49m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M28,59m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M44,60m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M59,60m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0" />
+
+</vector>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- bowl -->
+    <path
+        android:fillColor="#DDE3EA"
+        android:pathData="M23,52H73C72,67 62,76 48,76C34,76 24,67 23,52Z"/>
+
+    <path
+        android:fillColor="#F4F7FA"
+        android:pathData="M23,50C23,45 34,41 48,41C62,41 73,45 73,50C73,55 62,59 48,59C34,59 23,55 23,50Z"/>
+
+    <!-- tomato sauce -->
+    <path
+        android:fillColor="#C95732"
+        android:pathData="M28,49C28,45 37,42 48,42C59,42 68,45 68,49C68,53 59,56 48,56C37,56 28,53 28,49Z"/>
+
+    <!-- beans -->
+    <path
+        android:fillColor="#E7B07A"
+        android:pathData="M34,47m-4,0a4,3 0,1 1,8 0a4,3 0,1 1,-8 0
+                          M45,45m-4,0a4,3 0,1 1,8 0a4,3 0,1 1,-8 0
+                          M56,47m-4,0a4,3 0,1 1,8 0a4,3 0,1 1,-8 0
+                          M39,52m-4,0a4,3 0,1 1,8 0a4,3 0,1 1,-8 0
+                          M51,52m-4,0a4,3 0,1 1,8 0a4,3 0,1 1,-8 0
+                          M61,52m-4,0a4,3 0,1 1,8 0a4,3 0,1 1,-8 0"/>
+
+    <!-- sauce shine -->
+    <path
+        android:fillColor="#E87545"
+        android:pathData="M32,47C36,44 43,44 48,45C42,46 37,48 34,51C32,50 31.5,48.5 32,47Z"/>
+
+</vector>

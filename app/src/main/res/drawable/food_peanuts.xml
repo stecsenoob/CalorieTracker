@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- peanut 1 -->
+    <path
+        android:fillColor="#C98862"
+        android:pathData="M24,45C24,39 28,35 34,35C38,35 42,37 43,41C47,41 50,44 50,49C50,55 46,59 40,59C36,59 32,57 31,53C27,53 24,50 24,45Z"/>
+    <path
+        android:fillColor="#E0A98A"
+        android:pathData="M28,41C30,39 33,38 36,39C34,43 34,47 36,51C32,51 28,48 27,44Z"/>
+
+    <!-- peanut 2 -->
+    <path
+        android:fillColor="#D0926E"
+        android:pathData="M44,31C44,26 48,22 54,22C58,22 62,24 63,28C67,28 70,31 70,36C70,42 66,46 60,46C56,46 52,44 51,40C47,40 44,37 44,31Z"/>
+    <path
+        android:fillColor="#E7B596"
+        android:pathData="M48,28C50,26 53,25 56,26C54,30 54,34 56,38C52,38 48,35 47,31Z"/>
+
+    <!-- peanut 3 -->
+    <path
+        android:fillColor="#C6835A"
+        android:pathData="M31,62C31,56 35,52 41,52C45,52 49,54 50,58C54,58 57,61 57,66C57,72 53,76 47,76C43,76 39,74 38,70C34,70 31,67 31,62Z"/>
+    <path
+        android:fillColor="#DFA987"
+        android:pathData="M35,58C37,56 40,55 43,56C41,60 41,64 43,68C39,68 35,65 34,61Z"/>
+
+    <!-- peanut 4 -->
+    <path
+        android:fillColor="#D59A73"
+        android:pathData="M53,53C53,47 57,43 63,43C67,43 71,45 72,49C76,49 79,52 79,57C79,63 75,67 69,67C65,67 61,65 60,61C56,61 53,58 53,53Z"/>
+    <path
+        android:fillColor="#E8B799"
+        android:pathData="M57,49C59,47 62,46 65,47C63,51 63,55 65,59C61,59 57,56 56,52Z"/>
+
+    <!-- shell texture lines -->
+    <path
+        android:fillColor="#B67049"
+        android:pathData="M31,41C35,42 39,44 42,48C38,47 34,47 29,46Z
+                          M51,28C55,29 59,31 62,35C58,34 54,34 49,33Z
+                          M38,58C42,59 46,61 49,65C45,64 41,64 36,63Z
+                          M60,49C64,50 68,52 71,56C67,55 63,55 58,54Z"/>
+
+</vector>

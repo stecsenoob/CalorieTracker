@@ -1,7 +1,9 @@
 package com.example.calorietracker;
 
 import android.Manifest;
+
 import androidx.appcompat.app.AlertDialog;
+
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,7 +14,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -45,10 +46,6 @@ public class ScanFoodFragment extends Fragment {
 
     private static final String SERVER_URL = "https://food-ai-server-wfc9.onrender.com/analyze-food";
 
-    private ImageView imgFoodPreview;
-    private TextView tvImagePlaceholderIcon;
-    private TextView tvImagePlaceholder;
-
     private TextView tvResultTitle;
     private TextView tvResultSubtitle;
     private TextView tvFoodValue;
@@ -57,6 +54,7 @@ public class ScanFoodFragment extends Fragment {
     private TextView tvProteinValue;
     private TextView tvCarbsValue;
     private TextView tvFatValue;
+    private TextView tvInsightValue;
     private TextView tvConfidenceValue;
     private TextView tvNoteValue;
 
@@ -65,7 +63,6 @@ public class ScanFoodFragment extends Fragment {
     private CheckBox cbSaveToMyFoods;
 
     private MaterialButton btnTakePhoto;
-    private MaterialButton btnAnalyzeFood;
     private MaterialButton btnSaveFood;
     private MaterialButton btnBack;
 
@@ -131,16 +128,16 @@ public class ScanFoodFragment extends Fragment {
                         hasSavedFood = false;
 
                         resetAnalyzedValues();
-                        showImagePreview(currentPhotoUri);
 
                         cardQuantity.setVisibility(View.GONE);
+                        disableSaveButton();
 
                         showInfoState(
                                 "Photo Captured",
-                                "Your food image is ready.\n\nTap Analyze Food to estimate calories, protein, carbs, and fat."
+                                "Your photo was captured successfully.\n\nAnalyzing food now..."
                         );
 
-                        disableSaveButton();
+                        analyzeFoodWithAI();
 
                     } else {
                         showInfoState(
@@ -156,10 +153,6 @@ public class ScanFoodFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        imgFoodPreview = view.findViewById(R.id.imgFoodPreview);
-        tvImagePlaceholderIcon = view.findViewById(R.id.tvImagePlaceholderIcon);
-        tvImagePlaceholder = view.findViewById(R.id.tvImagePlaceholder);
-
         tvResultTitle = view.findViewById(R.id.tvResultTitle);
         tvResultSubtitle = view.findViewById(R.id.tvResultSubtitle);
         tvFoodValue = view.findViewById(R.id.tvFoodValue);
@@ -168,6 +161,7 @@ public class ScanFoodFragment extends Fragment {
         tvProteinValue = view.findViewById(R.id.tvProteinValue);
         tvCarbsValue = view.findViewById(R.id.tvCarbsValue);
         tvFatValue = view.findViewById(R.id.tvFatValue);
+        tvInsightValue = view.findViewById(R.id.tvInsightValue);
         tvConfidenceValue = view.findViewById(R.id.tvConfidenceValue);
         tvNoteValue = view.findViewById(R.id.tvNoteValue);
 
@@ -176,7 +170,6 @@ public class ScanFoodFragment extends Fragment {
         cbSaveToMyFoods = view.findViewById(R.id.cbSaveToMyFoods);
 
         btnTakePhoto = view.findViewById(R.id.btnTakePhoto);
-        btnAnalyzeFood = view.findViewById(R.id.btnAnalyzeFood);
         btnSaveFood = view.findViewById(R.id.btnSaveFood);
         btnBack = view.findViewById(R.id.btnBack);
 
@@ -192,23 +185,11 @@ public class ScanFoodFragment extends Fragment {
             checkCameraPermissionAndOpenCamera();
         });
 
-        btnAnalyzeFood.setOnClickListener(v -> {
-            if (!hasPhoto || currentPhotoUri == null) {
-                showInfoState(
-                        "Photo Required",
-                        "Please take a food photo first.\n\nAfter the image appears, tap Analyze Food."
-                );
-                return;
-            }
-
-            analyzeFoodWithAI();
-        });
-
         btnSaveFood.setOnClickListener(v -> {
             if (!hasAnalyzedFood) {
                 showInfoState(
                         "Analysis Required",
-                        "Please analyze the food before saving it to a meal."
+                        "Please take a photo first. The app will analyze it automatically."
                 );
                 return;
             }
@@ -287,15 +268,15 @@ public class ScanFoodFragment extends Fragment {
         return File.createTempFile(fileName, ".jpg", storageDir);
     }
 
-    private void showImagePreview(Uri imageUri) {
-        imgFoodPreview.setImageURI(imageUri);
-        imgFoodPreview.setVisibility(View.VISIBLE);
-
-        tvImagePlaceholderIcon.setVisibility(View.GONE);
-        tvImagePlaceholder.setVisibility(View.GONE);
-    }
-
     private void analyzeFoodWithAI() {
+        if (!hasPhoto || currentPhotoUri == null) {
+            showInfoState(
+                    "Photo Required",
+                    "Please take a food photo first."
+            );
+            return;
+        }
+
         setLoadingState(true);
 
         executorService.execute(() -> {
@@ -482,13 +463,55 @@ public class ScanFoodFragment extends Fragment {
         tvCarbsValue.setText("Carbs\n" + formatDouble(currentCarbs) + "g");
         tvFatValue.setText("Fat\n" + formatDouble(currentFat) + "g");
 
+        tvInsightValue.setText(generateNutritionInsight());
+
         tvConfidenceValue.setText("Confidence: " + capitalize(analyzedConfidence));
-        tvNoteValue.setText(analyzedNote + "\n\nNutrition values are estimates. You can edit grams before saving.");
+        tvNoteValue.setText("Nutrition values are estimates. You can edit grams before saving.");
+    }
+
+    private String generateNutritionInsight() {
+        if (analyzedNote != null && !analyzedNote.trim().isEmpty()) {
+            return analyzedNote.trim();
+        }
+
+        if (currentCalories <= 0 && currentProtein <= 0 && currentCarbs <= 0 && currentFat <= 0) {
+            return "Not enough nutrition data is available for this food.";
+        }
+
+        StringBuilder insight = new StringBuilder();
+
+        if (currentCalories >= 600) {
+            insight.append("Watch portion: This food is high in calories for the estimated quantity. ");
+        } else if (currentCalories >= 300) {
+            insight.append("Moderate choice: This food has a moderate amount of calories. ");
+        } else {
+            insight.append("Good choice: This food is relatively lower in calories for the estimated quantity. ");
+        }
+
+        if (currentProtein >= 25) {
+            insight.append("It also provides a good amount of protein. ");
+        } else if (currentProtein >= 10) {
+            insight.append("It contains a moderate amount of protein. ");
+        }
+
+        if (currentCarbs >= 60) {
+            insight.append("It is high in carbohydrates, so portion size matters. ");
+        } else if (currentCarbs >= 30) {
+            insight.append("It has a moderate amount of carbohydrates. ");
+        }
+
+        if (currentFat >= 25) {
+            insight.append("It is also high in fat, so it can add calories quickly. ");
+        } else if (currentFat >= 10) {
+            insight.append("It has a moderate amount of fat. ");
+        }
+
+        return insight.toString().trim();
     }
 
     private void showEmptyResultState() {
         tvResultTitle.setText("No food analyzed yet");
-        tvResultSubtitle.setText("Take a photo and tap Analyze Food.");
+        tvResultSubtitle.setText("Take a photo and the app will analyze it automatically.");
 
         tvFoodValue.setText("-");
         tvQuantityValue.setText("-");
@@ -498,6 +521,7 @@ public class ScanFoodFragment extends Fragment {
         tvCarbsValue.setText("Carbs\n-");
         tvFatValue.setText("Fat\n-");
 
+        tvInsightValue.setText("Nutrition insight will appear here after analysis.");
         tvConfidenceValue.setText("Confidence: -");
         tvNoteValue.setText("Nutrition values will appear here after analysis.");
     }
@@ -514,6 +538,7 @@ public class ScanFoodFragment extends Fragment {
         tvCarbsValue.setText("Carbs\n-");
         tvFatValue.setText("Fat\n-");
 
+        tvInsightValue.setText("Nutrition insight is available after food analysis.");
         tvConfidenceValue.setText("Status: Attention needed");
         tvNoteValue.setText(message);
     }
@@ -530,6 +555,7 @@ public class ScanFoodFragment extends Fragment {
         tvCarbsValue.setText("Carbs\n-");
         tvFatValue.setText("Fat\n-");
 
+        tvInsightValue.setText("No nutrition insight is available because the analysis failed.");
         tvConfidenceValue.setText("Status: Try again");
         tvNoteValue.setText(
                 "What you can try:\n" +
@@ -552,6 +578,7 @@ public class ScanFoodFragment extends Fragment {
         tvCarbsValue.setText("Carbs\n" + formatDouble(currentCarbs) + "g");
         tvFatValue.setText("Fat\n" + formatDouble(currentFat) + "g");
 
+        tvInsightValue.setText(generateNutritionInsight());
         tvConfidenceValue.setText("Meal: " + mealLabel);
 
         if (savedToMyFoods) {
@@ -681,11 +708,10 @@ public class ScanFoodFragment extends Fragment {
 
     private void setLoadingState(boolean isLoading) {
         if (isLoading) {
-            btnAnalyzeFood.setEnabled(false);
             btnTakePhoto.setEnabled(false);
             btnSaveFood.setEnabled(false);
 
-            btnAnalyzeFood.setText("Analyzing...");
+            btnTakePhoto.setText("Analyzing...");
 
             tvResultTitle.setText("Analyzing Food Image");
             tvResultSubtitle.setText("Please wait while the app estimates nutrition values.");
@@ -695,13 +721,12 @@ public class ScanFoodFragment extends Fragment {
             tvProteinValue.setText("Protein\n-");
             tvCarbsValue.setText("Carbs\n-");
             tvFatValue.setText("Fat\n-");
+            tvInsightValue.setText("Analyzing nutrition data...");
             tvConfidenceValue.setText("Status: Processing");
             tvNoteValue.setText("This may take a few seconds.");
         } else {
-            btnAnalyzeFood.setEnabled(true);
             btnTakePhoto.setEnabled(true);
-
-            btnAnalyzeFood.setText("Analyze Food");
+            btnTakePhoto.setText("Take Photo and Analyze");
 
             if (hasAnalyzedFood && !hasSavedFood) {
                 enableSaveButton();

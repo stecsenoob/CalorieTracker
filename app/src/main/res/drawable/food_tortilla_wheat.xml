@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M22,69C28,65 68,65 74,69C69,73 27,73 22,69Z" />
+
+    <!-- tortilla base -->
+    <path
+        android:fillColor="#E8C987"
+        android:pathData="M48,25C33,25 22,35 22,49C22,63 33,73 48,73C63,73 74,63 74,49C74,35 63,25 48,25Z" />
+
+    <!-- inner soft area -->
+    <path
+        android:fillColor="#F2DCA7"
+        android:pathData="M48,31C37,31 29,38 29,49C29,60 37,67 48,67C59,67 67,60 67,49C67,38 59,31 48,31Z" />
+
+    <!-- brown toasted spots -->
+    <path
+        android:fillColor="#C79A5B"
+        android:pathData="M38,40m-3,0a3,2 0,1 1,6 0a3,2 0,1 1,-6 0
+                          M55,43m-3.5,0a3.5,2.2 0,1 1,7 0a3.5,2.2 0,1 1,-7 0
+                          M44,56m-3,0a3,2 0,1 1,6 0a3,2 0,1 1,-6 0
+                          M58,57m-2.5,0a2.5,1.8 0,1 1,5 0a2.5,1.8 0,1 1,-5 0
+                          M35,52m-2.5,0a2.5,1.8 0,1 1,5 0a2.5,1.8 0,1 1,-5 0" />
+
+    <!-- folded edge highlight -->
+    <path
+        android:fillColor="#F8E8BD"
+        android:pathData="M31,45C37,36 53,33 64,42C54,39 42,39 31,45Z" />
+
+</vector>

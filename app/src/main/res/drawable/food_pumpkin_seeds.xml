@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- pumpkin seeds -->
+    <path
+        android:fillColor="#79A957"
+        android:pathData="M32,35C35,29 43,29 46,35C43,41 35,41 32,35Z
+                          M48,32C51,26 59,26 62,32C59,38 51,38 48,32Z
+                          M58,45C61,39 69,39 72,45C69,51 61,51 58,45Z
+                          M27,48C30,42 38,42 41,48C38,54 30,54 27,48Z
+                          M43,50C46,44 54,44 57,50C54,56 46,56 43,50Z
+                          M34,63C37,57 45,57 48,63C45,69 37,69 34,63Z
+                          M53,63C56,57 64,57 67,63C64,69 56,69 53,63Z"/>
+
+    <!-- highlights -->
+    <path
+        android:fillColor="#A6D27A"
+        android:pathData="M35,34C37,33 41,33 43,35C40,36 37,36 35,34Z
+                          M51,31C53,30 57,30 59,32C56,33 53,33 51,31Z
+                          M46,49C48,48 52,48 54,50C51,51 48,51 46,49Z
+                          M37,62C39,61 43,61 45,63C42,64 39,64 37,62Z"/>
+
+</vector>

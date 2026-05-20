@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M20,69C26,61 70,61 76,69C70,76 26,76 20,69Z" />
+
+    <!-- mackerel body -->
+    <path
+        android:fillColor="#667482"
+        android:pathData="M18,49
+            C24,40 36,35 50,35
+            C60,35 68,38 74,44
+            C70,47 68,50 68,54
+            C68,58 70,61 74,64
+            C68,70 60,73 50,73
+            C36,73 24,68 18,59
+            C22,56 24,53 24,49
+            C24,45 22,42 18,49Z" />
+
+    <!-- inner body -->
+    <path
+        android:fillColor="#8F9CA8"
+        android:pathData="M25,49
+            C30,43 39,39 50,39
+            C59,39 66,41 71,46
+            C67,49 65,51 65,54
+            C65,57 67,60 71,62
+            C66,67 59,69 50,69
+            C39,69 30,65 25,58
+            C28,55 29,52 29,49
+            C29,46 28,43 25,49Z" />
+
+    <!-- tail -->
+    <path
+        android:fillColor="#4F5B66"
+        android:pathData="M70,46L80,41L76,50L80,59L70,62C73,58 74,54 74,54C74,54 73,50 70,46Z" />
+
+    <!-- top fin -->
+    <path
+        android:fillColor="#4A5560"
+        android:pathData="M44,36L50,28L57,37C52,36 48,36 44,36Z" />
+
+    <!-- bottom fin -->
+    <path
+        android:fillColor="#5C6873"
+        android:pathData="M43,63L49,69L55,63C50,64 46,64 43,63Z" />
+
+    <!-- belly -->
+    <path
+        android:fillColor="#CCD4DB"
+        android:pathData="M31,57C37,61 47,62 58,60C55,66 42,67 33,62C31,61 30,59 31,57Z" />
+
+    <!-- eye -->
+    <path
+        android:fillColor="#FFFDF9"
+        android:pathData="M31,49m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0" />
+    <path
+        android:fillColor="#1F1F1F"
+        android:pathData="M31,49m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0" />
+
+    <!-- mouth - darker and more visible -->
+    <path
+        android:fillColor="#39434C"
+        android:pathData="M22,51C24,50 27,50 29,51C27,53 24,53 22,51Z" />
+
+    <!-- gill -->
+    <path
+        android:fillColor="#596570"
+        android:pathData="M35,44C37,47 37,52 35,55C33,52 33,47 35,44Z" />
+
+    <!-- mackerel stripes -->
+    <path
+        android:fillColor="#4D5862"
+        android:pathData="M39,42C44,40 50,40 56,42C51,44 44,44 39,42Z" />
+    <path
+        android:fillColor="#4D5862"
+        android:pathData="M42,48C48,46 56,46 62,48C56,50 48,50 42,48Z" />
+    <path
+        android:fillColor="#4D5862"
+        android:pathData="M40,54C46,52 54,52 60,54C54,56 46,56 40,54Z" />
+
+    <!-- highlight -->
+    <path
+        android:fillColor="#A8B3BE"
+        android:pathData="M39,40C46,38 56,39 63,43C56,42 47,42 39,45C38,43 38,41 39,40Z" />
+
+</vector>

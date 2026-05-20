@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- bowl shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M24,68C29,64 67,64 72,68C68,72 28,72 24,68Z" />
+
+    <!-- bowl -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M24,56H72C70,67 61,74 48,74C35,74 26,67 24,56Z" />
+
+    <!-- bowl inner -->
+    <path
+        android:fillColor="#EEF2F6"
+        android:pathData="M28,49C28,42 37,37 48,37C59,37 68,42 68,49C68,54 59,57 48,57C37,57 28,54 28,49Z" />
+
+    <!-- muesli oats base -->
+    <path
+        android:fillColor="#D8B178"
+        android:pathData="M29,49C29,42 37,38 48,38C59,38 67,42 67,49C67,53 60,56 48,56C36,56 29,53 29,49Z" />
+
+    <!-- oats -->
+    <path
+        android:fillColor="#E7C58E"
+        android:pathData="M34,44m-2.5,0a2.5,1.6 0,1 1,5 0a2.5,1.6 0,1 1,-5 0
+                          M43,42m-2.8,0a2.8,1.7 0,1 1,5.6 0a2.8,1.7 0,1 1,-5.6 0
+                          M52,43m-2.8,0a2.8,1.7 0,1 1,5.6 0a2.8,1.7 0,1 1,-5.6 0
+                          M61,45m-2.5,0a2.5,1.6 0,1 1,5 0a2.5,1.6 0,1 1,-5 0
+                          M39,51m-2.8,0a2.8,1.7 0,1 1,5.6 0a2.8,1.7 0,1 1,-5.6 0
+                          M50,52m-3,0a3,1.8 0,1 1,6 0a3,1.8 0,1 1,-6 0" />
+
+    <!-- raisins / dried fruit -->
+    <path
+        android:fillColor="#B85B4D"
+        android:pathData="M39,46m-1.6,0a1.6,2 0,1 1,3.2 0a1.6,2 0,1 1,-3.2 0
+                          M56,47m-1.5,0a1.5,1.9 0,1 1,3 0a1.5,1.9 0,1 1,-3 0
+                          M46,51m-1.6,0a1.6,2 0,1 1,3.2 0a1.6,2 0,1 1,-3.2 0" />
+
+    <!-- nuts -->
+    <path
+        android:fillColor="#A8794F"
+        android:pathData="M47,44m-1.8,0a1.8,1.4 0,1 1,3.6 0a1.8,1.4 0,1 1,-3.6 0
+                          M58,52m-1.8,0a1.8,1.4 0,1 1,3.6 0a1.8,1.4 0,1 1,-3.6 0
+                          M34,50m-1.8,0a1.8,1.4 0,1 1,3.6 0a1.8,1.4 0,1 1,-3.6 0" />
+
+</vector>

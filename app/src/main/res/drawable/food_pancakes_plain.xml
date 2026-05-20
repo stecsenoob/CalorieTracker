@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M22,70C28,66 68,66 74,70C69,74 27,74 22,70Z" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M21,67C27,60 69,60 75,67C69,74 27,74 21,67Z" />
+
+    <!-- pancake bottom -->
+    <path
+        android:fillColor="#C98945"
+        android:pathData="M28,59C28,53 37,49 48,49C59,49 68,53 68,59C68,65 59,69 48,69C37,69 28,65 28,59Z" />
+
+    <!-- pancake middle -->
+    <path
+        android:fillColor="#D99D52"
+        android:pathData="M26,51C26,45 36,41 48,41C60,41 70,45 70,51C70,57 60,61 48,61C36,61 26,57 26,51Z" />
+
+    <!-- pancake top -->
+    <path
+        android:fillColor="#E9B96A"
+        android:pathData="M28,43C28,37 37,33 48,33C59,33 68,37 68,43C68,49 59,53 48,53C37,53 28,49 28,43Z" />
+
+    <!-- toasted spots -->
+    <path
+        android:fillColor="#C1813D"
+        android:pathData="M39,42m-3,0a3,2 0,1 1,6 0a3,2 0,1 1,-6 0
+                          M53,44m-3.2,0a3.2,2.1 0,1 1,6.4 0a3.2,2.1 0,1 1,-6.4 0
+                          M46,37m-2.5,0a2.5,1.8 0,1 1,5 0a2.5,1.8 0,1 1,-5 0" />
+
+    <!-- butter -->
+    <path
+        android:fillColor="#F7D75A"
+        android:pathData="M43,28H54V38H43Z" />
+
+    <!-- butter highlight -->
+    <path
+        android:fillColor="#FFE98E"
+        android:pathData="M45,30H52V33H45Z" />
+
+    <!-- syrup -->
+    <path
+        android:fillColor="#9B5C2B"
+        android:pathData="M44,38H55V46C55,49 52,51 49,51C46,51 44,49 44,46Z" />
+
+    <path
+        android:fillColor="#B87136"
+        android:pathData="M48,51C51,51 53,49 54,47V58C54,61 52,63 49,63C46,63 45,61 45,58V47C46,49 47,51 48,51Z" />
+
+</vector>

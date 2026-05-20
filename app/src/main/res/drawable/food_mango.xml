@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- leaf -->
+    <path
+        android:fillColor="#5CB44B"
+        android:pathData="M51,23C56,18 64,17 70,21C66,27 58,29 51,27Z"/>
+
+    <!-- stem -->
+    <path
+        android:fillColor="#6C452A"
+        android:pathData="M47,21C47,18 49,16 51,16C53,16 54,18 54,21V27H47Z"/>
+
+    <!-- mango body -->
+    <path
+        android:fillColor="#F2A12A"
+        android:pathData="M47,25
+            C59,25 69,33 71,45
+            C73,57 66,69 55,73
+            C43,77 30,72 25,61
+            C20,50 23,38 31,31
+            C35,27 41,25 47,25Z"/>
+
+    <!-- inner highlight -->
+    <path
+        android:fillColor="#FFC04D"
+        android:pathData="M47,30
+            C56,30 64,36 66,46
+            C68,55 63,64 54,68
+            C45,71 35,68 30,59
+            C26,50 28,40 35,34
+            C38,31 42,30 47,30Z"/>
+
+    <!-- shine -->
+    <path
+        android:fillColor="#FFD77A"
+        android:pathData="M35,39C38,35 42,33 46,33C41,39 38,45 37,52C34,49 33,44 35,39Z"/>
+
+</vector>

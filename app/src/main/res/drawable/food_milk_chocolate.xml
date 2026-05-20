@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- wrapper -->
+    <path
+        android:fillColor="#6AA9E3"
+        android:pathData="M29,25H67C69.2,25 71,26.8 71,29V67C71,69.2 69.2,71 67,71H29C26.8,71 25,69.2 25,67V29C25,26.8 26.8,25 29,25Z"/>
+
+    <!-- chocolate -->
+    <path
+        android:fillColor="#8B5A3C"
+        android:pathData="M31,31H65C66.7,31 68,32.3 68,34V66C68,67.7 66.7,69 65,69H31C29.3,69 28,67.7 28,66V34C28,32.3 29.3,31 31,31Z"/>
+
+    <!-- chocolate squares -->
+    <path
+        android:fillColor="#A06C49"
+        android:pathData="M32,32H42V42H32Z
+                          M43,32H53V42H43Z
+                          M54,32H64V42H54Z
+                          M32,43H42V53H32Z
+                          M43,43H53V53H43Z
+                          M54,43H64V53H54Z
+                          M32,54H42V64H32Z
+                          M43,54H53V64H43Z
+                          M54,54H64V64H54Z"/>
+
+    <!-- milk splash -->
+    <path
+        android:fillColor="#FFFDF9"
+        android:pathData="M37,23C39,20 43,20 45,23C47,20 51,20 53,23C56,22 59,24 59,27C59,31 55,33 51,32C49,35 44,35 42,32C38,33 34,31 34,27C34,25 35,23.5 37,23Z"/>
+
+</vector>

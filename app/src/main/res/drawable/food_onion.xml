@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- onion body -->
+    <path
+        android:fillColor="#D7B45B"
+        android:pathData="M48,20
+            C53,24 57,30 61,35
+            C65,40 67,46 67,53
+            C67,66 58,75 48,75
+            C38,75 29,66 29,53
+            C29,46 31,40 35,35
+            C39,30 43,24 48,20Z" />
+
+    <!-- highlight -->
+    <path
+        android:fillColor="#E9CA73"
+        android:pathData="M48,25
+            C51,28 54,33 57,38
+            C60,42 61,47 61,53
+            C61,63 55,70 48,70
+            C41,70 35,63 35,53
+            C35,47 36,42 39,38
+            C42,33 45,28 48,25Z" />
+
+    <!-- top sprout -->
+    <path
+        android:fillColor="#7AAE4C"
+        android:pathData="M46,18C45,13 48,9 53,8C55,13 53,18 49,20Z" />
+
+    <!-- root -->
+    <path
+        android:fillColor="#9A7A35"
+        android:pathData="M44,74C45,77 47,79 48,81C49,79 51,77 52,74Z" />
+
+    <!-- inner lines -->
+    <path
+        android:fillColor="#C9A64C"
+        android:pathData="M41,31C39,40 39,58 42,68C38,62 37,56 37,49C37,42 38,36 41,31Z
+                          M55,31C58,36 59,42 59,49C59,56 58,62 54,68C57,58 57,40 55,31Z
+                          M48,26C50,33 51,45 50,67H46C45,45 46,33 48,26Z" />
+
+</vector>

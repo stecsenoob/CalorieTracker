@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- cooked zucchini slices -->
+    <path
+        android:fillColor="#6DA84C"
+        android:pathData="M35,52m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    <path
+        android:fillColor="#7CB65A"
+        android:pathData="M48,42m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    <path
+        android:fillColor="#679F48"
+        android:pathData="M60,53m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+
+    <!-- inner soft centers -->
+    <path
+        android:fillColor="#CDE2A4"
+        android:pathData="M35,52m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0
+                          M48,42m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0
+                          M60,53m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0" />
+
+    <!-- seeds -->
+    <path
+        android:fillColor="#E9E7C3"
+        android:pathData="M32,50m-1,0a1,1.6 0,1 1,2 0a1,1.6 0,1 1,-2 0
+                          M38,54m-1,0a1,1.6 0,1 1,2 0a1,1.6 0,1 1,-2 0
+                          M45,40m-1,0a1,1.6 0,1 1,2 0a1,1.6 0,1 1,-2 0
+                          M51,44m-1,0a1,1.6 0,1 1,2 0a1,1.6 0,1 1,-2 0
+                          M57,51m-1,0a1,1.6 0,1 1,2 0a1,1.6 0,1 1,-2 0
+                          M63,55m-1,0a1,1.6 0,1 1,2 0a1,1.6 0,1 1,-2 0" />
+
+</vector>

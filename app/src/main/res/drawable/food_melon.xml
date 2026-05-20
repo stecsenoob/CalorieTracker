@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- whole melon -->
+    <path
+        android:fillColor="#E1C27A"
+        android:pathData="M39,30C51,26 64,33 68,45C72,57 65,69 53,72C41,76 28,69 24,57C20,45 27,33 39,30Z"/>
+
+    <!-- melon stripes -->
+    <path
+        android:fillColor="#C9A960"
+        android:pathData="M37,33C39,41 39,56 36,67H39C42,56 42,41 40,32Z
+                          M48,30C50,40 50,58 48,70H50C52,58 52,40 50,30Z
+                          M58,33C60,42 60,55 57,66H60C63,55 63,42 61,33Z"/>
+
+    <!-- melon slice -->
+    <path
+        android:fillColor="#8DCB6B"
+        android:pathData="M44,46C57,46 67,55 67,67H44Z"/>
+
+    <!-- rind -->
+    <path
+        android:fillColor="#5EAF54"
+        android:pathData="M42,67C42,54 53,44 67,44V48C56,48 47,56 46,67Z"/>
+
+    <!-- seeds -->
+    <path
+        android:fillColor="#F5E7C8"
+        android:pathData="M52,57m-1.2,0a1.2,2 0,1 1,2.4 0a1.2,2 0,1 1,-2.4 0
+                          M58,60m-1.2,0a1.2,2 0,1 1,2.4 0a1.2,2 0,1 1,-2.4 0
+                          M50,63m-1.2,0a1.2,2 0,1 1,2.4 0a1.2,2 0,1 1,-2.4 0"/>
+
+</vector>

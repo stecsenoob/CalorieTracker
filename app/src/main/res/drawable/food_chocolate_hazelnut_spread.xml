@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- jar lid -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M29,22H67C69.2,22 71,23.8 71,26V33H25V26C25,23.8 26.8,22 29,22Z"/>
+
+    <!-- lid shadow -->
+    <path
+        android:fillColor="#E8E2D6"
+        android:pathData="M25,30H71V34H25Z"/>
+
+    <!-- jar glass -->
+    <path
+        android:fillColor="#F8EFE4"
+        android:pathData="M30,32H66C68.2,32 70,33.8 70,36V69C70,71.2 68.2,73 66,73H30C27.8,73 26,71.2 26,69V36C26,33.8 27.8,32 30,32Z"/>
+
+    <!-- chocolate spread -->
+    <path
+        android:fillColor="#6B3A24"
+        android:pathData="M29,40H67V68C67,69.1 66.1,70 65,70H31C29.9,70 29,69.1 29,68Z"/>
+
+    <!-- spread shine -->
+    <path
+        android:fillColor="#8A4F31"
+        android:pathData="M29,40
+            C34,37 39,43 44,40
+            C49,37 54,43 59,40
+            C63,38 66,40 67,42
+            V49H29Z"/>
+
+    <!-- white label -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M33,49H63C64.1,49 65,49.9 65,51V63C65,64.1 64.1,65 63,65H33C31.9,65 31,64.1 31,63V51C31,49.9 31.9,49 33,49Z"/>
+
+    <!-- chocolate stripe -->
+    <path
+        android:fillColor="#6B3A24"
+        android:pathData="M35,55H61V60H35Z"/>
+
+    <!-- hazelnut icon -->
+    <path
+        android:fillColor="#B8743C"
+        android:pathData="M43,54
+            C43,50 46,47 50,47
+            C54,47 57,50 57,54
+            C57,58 54,61 50,61
+            C46,61 43,58 43,54Z"/>
+
+    <path
+        android:fillColor="#D8B17D"
+        android:pathData="M46,51
+            C48,49 52,49 54,51
+            C53,54 50,56 47,55
+            C46,54 45.5,52.5 46,51Z"/>
+
+    <!-- jar shine -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,36C34,34 38,34 40,36V46C38,44 34,44 32,46Z"/>
+
+</vector>

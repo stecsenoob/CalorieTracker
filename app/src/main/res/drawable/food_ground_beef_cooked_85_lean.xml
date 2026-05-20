@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- bowl -->
+    <path
+        android:fillColor="#D35C4D"
+        android:pathData="M25,56H71C69,66 61,73 48,73C35,73 27,66 25,56Z" />
+
+    <path
+        android:fillColor="#E06C5D"
+        android:pathData="M29,56H67C66,60 62,63 48,64C34,63 30,60 29,56Z" />
+
+    <!-- minced beef pile -->
+    <path
+        android:fillColor="#8E4A36"
+        android:pathData="M29,46C29,37 38,31 48,31C58,31 67,37 67,46C67,52 61,56 55,56H41C35,56 29,52 29,46Z" />
+
+    <!-- textured lumps -->
+    <path
+        android:fillColor="#A85A42"
+        android:pathData="M35,40C37,37 41,36 44,38C47,40 47,44 44,46C41,48 37,47 35,44C34,43 34,41 35,40Z" />
+
+    <path
+        android:fillColor="#A85A42"
+        android:pathData="M46,37C49,34 54,34 57,37C60,40 59,45 55,47C51,49 46,47 45,43C44,41 44,39 46,37Z" />
+
+    <path
+        android:fillColor="#A85A42"
+        android:pathData="M39,46C42,44 46,44 48,47C50,50 49,54 45,55C41,56 37,54 36,50C36,49 37,47 39,46Z" />
+
+    <path
+        android:fillColor="#A85A42"
+        android:pathData="M52,46C55,44 59,45 61,48C63,51 61,55 57,56C53,57 49,55 49,51C49,49 50,47 52,46Z" />
+
+    <!-- highlight -->
+    <path
+        android:fillColor="#B96A50"
+        android:pathData="M40,35C45,33 53,34 58,39C52,37 45,37 39,41C38,39 39,36 40,35Z" />
+
+</vector>

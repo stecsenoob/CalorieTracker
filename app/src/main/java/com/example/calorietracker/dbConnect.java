@@ -15,7 +15,7 @@ import java.util.List;
 public class dbConnect extends SQLiteOpenHelper {
 
     private static final String dbName = "findFriendsManager";
-    private static final int dbVersion = 5;
+    private static final int dbVersion = 6;
 
     private static final String USERS_TABLE = "users";
     private static final String U_ID = "id";
@@ -45,6 +45,7 @@ public class dbConnect extends SQLiteOpenHelper {
     public static final String F_P = "protein";
     public static final String F_F = "fat";
     public static final String F_C = "carbs";
+    public static final String F_CATEGORY = "category";
     public static final String F_CREATED = "created_at";
 
     public static final String FAV_TABLE = "favorites";
@@ -101,6 +102,7 @@ public class dbConnect extends SQLiteOpenHelper {
                 F_P + " REAL NOT NULL, " +
                 F_F + " REAL NOT NULL, " +
                 F_C + " REAL NOT NULL, " +
+                F_CATEGORY + " TEXT NOT NULL DEFAULT 'Traditional/Prepared', " +
                 F_CREATED + " INTEGER NOT NULL, " +
                 "FOREIGN KEY(" + F_USER_ID + ") REFERENCES " + USERS_TABLE + "(" + U_ID + ")" +
                 ")";
@@ -399,11 +401,32 @@ public class dbConnect extends SQLiteOpenHelper {
         public float protein;
         public float fat;
         public float carbs;
+        public String category;
     }
 
     public long addUserFood(int userId, String name, String portion, float baseGrams,
                             int calories, float protein, float fat, float carbs) {
+        return addUserFood(
+                userId,
+                name,
+                portion,
+                baseGrams,
+                calories,
+                protein,
+                fat,
+                carbs,
+                "Traditional/Prepared"
+        );
+    }
+
+    public long addUserFood(int userId, String name, String portion, float baseGrams,
+                            int calories, float protein, float fat, float carbs,
+                            String category) {
         SQLiteDatabase db = this.getWritableDatabase();
+
+        if (category == null || category.trim().isEmpty()) {
+            category = "Traditional/Prepared";
+        }
 
         ContentValues v = new ContentValues();
         v.put(F_USER_ID, userId);
@@ -414,6 +437,7 @@ public class dbConnect extends SQLiteOpenHelper {
         v.put(F_P, protein);
         v.put(F_F, fat);
         v.put(F_C, carbs);
+        v.put(F_CATEGORY, category);
         v.put(F_CREATED, System.currentTimeMillis());
 
         return db.insert(FOODS_TABLE, null, v);
@@ -454,7 +478,7 @@ public class dbConnect extends SQLiteOpenHelper {
 
         Cursor c = db.rawQuery(
                 "SELECT " + F_ID + ", " + F_NAME + ", " + F_PORTION + ", " + F_BASE_GRAMS + ", " +
-                        F_CAL + ", " + F_P + ", " + F_F + ", " + F_C +
+                        F_CAL + ", " + F_P + ", " + F_F + ", " + F_C + ", " + F_CATEGORY +
                         " FROM " + FOODS_TABLE +
                         " WHERE " + F_USER_ID + "=? ORDER BY " + F_CREATED + " DESC",
                 new String[]{String.valueOf(userId)}
@@ -472,6 +496,7 @@ public class dbConnect extends SQLiteOpenHelper {
             r.protein = c.getFloat(5);
             r.fat = c.getFloat(6);
             r.carbs = c.getFloat(7);
+            r.category = c.getString(8);
             list.add(r);
         }
 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- bottle shadow -->
+    <path
+        android:fillColor="#D8D0C4"
+        android:pathData="M33,77C33,74 40,72 48,72C56,72 63,74 63,77C63,80 56,82 48,82C40,82 33,80 33,77Z"/>
+
+    <!-- cap -->
+    <path
+        android:fillColor="#3F6F2A"
+        android:pathData="M42,18H54C56,18 57,19 57,21V28H39V21C39,19 40,18 42,18Z"/>
+
+    <!-- bottle glass -->
+    <path
+        android:fillColor="#D7E8B8"
+        android:pathData="M41,27H55L62,70C62.6,73.5 60.1,76 56,76H40C35.9,76 33.4,73.5 34,70Z"/>
+
+    <!-- olive oil fill -->
+    <path
+        android:fillColor="#B8B83F"
+        android:pathData="M37,43H59L62,70C62.4,72.7 60.3,73 56,73H40C35.7,73 33.6,72.7 34,70Z"/>
+
+    <!-- darker oil shade -->
+    <path
+        android:fillColor="#9FA034"
+        android:pathData="M53,43H59L62,70C62.4,72.7 60.3,73 56,73H52Z"/>
+
+    <!-- label -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,47H58C59.1,47 60,47.9 60,49V61C60,62.1 59.1,63 58,63H38C36.9,63 36,62.1 36,61V49C36,47.9 36.9,47 38,47Z"/>
+
+    <!-- olive icon -->
+    <path
+        android:fillColor="#5E8F3E"
+        android:pathData="M48,51
+            C52,51 55,54 55,57
+            C55,60 52,62 48,62
+            C44,62 41,60 41,57
+            C41,54 44,51 48,51Z"/>
+
+    <path
+        android:fillColor="#D6C56D"
+        android:pathData="M48,55m-1.3,0a1.3,1.3 0,1 1,2.6 0a1.3,1.3 0,1 1,-2.6 0"/>
+
+    <!-- glass shine -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M39,31H43L42,68H38Z"/>
+
+</vector>

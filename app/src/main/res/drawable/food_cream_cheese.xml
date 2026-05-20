@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- tub body -->
+    <path
+        android:fillColor="#E2E7ED"
+        android:pathData="M26,38H70V62C70,67 65,72 60,72H36C31,72 26,67 26,62Z" />
+
+    <!-- lid -->
+    <path
+        android:fillColor="#CBD3DB"
+        android:pathData="M24,34C24,31 35,28 48,28C61,28 72,31 72,34C72,37 61,40 48,40C35,40 24,37 24,34Z" />
+
+    <!-- cream cheese top -->
+    <path
+        android:fillColor="#FFFDFC"
+        android:pathData="M31,45C31,40 39,37 48,37C57,37 65,40 65,45C65,50 57,53 48,53C39,53 31,50 31,45Z" />
+
+    <!-- creamy swirl -->
+    <path
+        android:fillColor="#F4F0E8"
+        android:pathData="M39,44C42,40 49,39 55,42C51,42 47,43 44,45C47,44 52,45 55,48C49,50 41,49 39,44Z" />
+
+    <!-- label -->
+    <path
+        android:fillColor="#B783D8"
+        android:pathData="M33,57H63V65H33Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,59H56V63H40Z" />
+
+</vector>

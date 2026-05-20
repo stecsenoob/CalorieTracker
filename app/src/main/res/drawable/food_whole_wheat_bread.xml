@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M23,68C29,64 67,64 73,68C68,72 28,72 23,68Z" />
+
+    <!-- back slice crust -->
+    <path
+        android:fillColor="#9E6638"
+        android:pathData="M30,36C30,27 37,22 46,22H50C59,22 66,27 66,36V63C66,68 62,72 57,72H39C34,72 30,68 30,63Z" />
+
+    <!-- back slice inside -->
+    <path
+        android:fillColor="#C7965E"
+        android:pathData="M36,38C36,32 41,28 46,28H50C55,28 60,32 60,38V61C60,64 57,67 54,67H42C39,67 36,64 36,61Z" />
+
+    <!-- front slice crust -->
+    <path
+        android:fillColor="#87552F"
+        android:pathData="M24,42C24,34 31,29 40,29H44C53,29 60,34 60,42V66C60,70 56,74 52,74H32C28,74 24,70 24,66Z" />
+
+    <!-- front slice inside -->
+    <path
+        android:fillColor="#B9824E"
+        android:pathData="M30,44C30,39 34,35 40,35H44C50,35 54,39 54,44V64C54,67 51,69 48,69H36C33,69 30,67 30,64Z" />
+
+    <!-- grain/seeds -->
+    <path
+        android:fillColor="#6F4427"
+        android:pathData="M36,45m-1.2,0a1.2,1.8 0,1 1,2.4 0a1.2,1.8 0,1 1,-2.4 0
+                          M44,48m-1.2,0a1.2,1.8 0,1 1,2.4 0a1.2,1.8 0,1 1,-2.4 0
+                          M39,56m-1.1,0a1.1,1.7 0,1 1,2.2 0a1.1,1.7 0,1 1,-2.2 0
+                          M48,61m-1.1,0a1.1,1.7 0,1 1,2.2 0a1.1,1.7 0,1 1,-2.2 0" />
+
+    <!-- highlight -->
+    <path
+        android:fillColor="#D0A06A"
+        android:pathData="M34,40C39,37 47,37 52,41C45,40 39,41 34,44Z" />
+
+</vector>

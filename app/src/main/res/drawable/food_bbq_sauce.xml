@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- bottle shadow -->
+    <path
+        android:fillColor="#D8D0C4"
+        android:pathData="M33,77C33,74 40,72 48,72C56,72 63,74 63,77C63,80 56,82 48,82C40,82 33,80 33,77Z"/>
+
+    <!-- cap -->
+    <path
+        android:fillColor="#4A2A1E"
+        android:pathData="M39,18H57C59,18 60,19 60,21V28H36V21C36,19 37,18 39,18Z"/>
+
+    <!-- bottle neck -->
+    <path
+        android:fillColor="#6B3326"
+        android:pathData="M40,27H56V38H40Z"/>
+
+    <!-- bottle body -->
+    <path
+        android:fillColor="#7A3A2B"
+        android:pathData="M35,36H61C64,36 66,39 66,42V69C66,73 63,76 59,76H37C33,76 30,73 30,69V42C30,39 32,36 35,36Z"/>
+
+    <!-- bbq dark shade -->
+    <path
+        android:fillColor="#55271D"
+        android:pathData="M55,37H61C64,37 66,40 66,43V69C66,73 63,76 59,76H54Z"/>
+
+    <!-- label -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M35,48H61C62.1,48 63,48.9 63,50V63C63,64.1 62.1,65 61,65H35C33.9,65 33,64.1 33,63V50C33,48.9 33.9,48 35,48Z"/>
+
+    <!-- bbq sauce band -->
+    <path
+        android:fillColor="#7A3A2B"
+        android:pathData="M37,55H59V60H37Z"/>
+
+    <!-- flame icon -->
+    <path
+        android:fillColor="#E85D2A"
+        android:pathData="M48,51
+            C52,55 55,58 55,62
+            C55,66 52,69 48,69
+            C44,69 41,66 41,62
+            C41,58 44,56 46,53
+            C46,56 48,58 50,59
+            C50,56 49,53 48,51Z"/>
+
+    <path
+        android:fillColor="#FFC247"
+        android:pathData="M48,58
+            C50,60 51,62 51,64
+            C51,66 50,67 48,67
+            C46,67 45,66 45,64
+            C45,62 46,60 48,58Z"/>
+
+    <!-- shine -->
+    <path
+        android:fillColor="#A2513A"
+        android:pathData="M35,41C37,39 40,39 42,41V68C40,66 37,66 35,68Z"/>
+
+</vector>

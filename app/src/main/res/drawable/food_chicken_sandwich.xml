@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- top bread -->
+    <path
+        android:fillColor="#E5B66D"
+        android:pathData="M24,37
+            C27,27 37,22 49,23
+            C61,24 70,30 73,40
+            C74,44 72,47 68,47
+            H29
+            C25,47 23,43 24,37Z"/>
+
+    <!-- bread highlight -->
+    <path
+        android:fillColor="#F0CE91"
+        android:pathData="M31,36
+            C36,29 46,27 56,29
+            C62,30 67,33 70,39
+            C60,35 47,34 34,38
+            C32,39 30,38 31,36Z"/>
+
+    <!-- sesame -->
+    <path
+        android:fillColor="#FFF1C7"
+        android:pathData="M38,34m-1.3,0a1.3,0.8 0,1 1,2.6 0a1.3,0.8 0,1 1,-2.6 0
+                          M50,31m-1.3,0a1.3,0.8 0,1 1,2.6 0a1.3,0.8 0,1 1,-2.6 0
+                          M61,36m-1.3,0a1.3,0.8 0,1 1,2.6 0a1.3,0.8 0,1 1,-2.6 0"/>
+
+    <!-- lettuce -->
+    <path
+        android:fillColor="#69B84A"
+        android:pathData="M24,48
+            C29,43 34,51 39,47
+            C44,43 49,52 54,48
+            C60,43 65,50 72,47
+            V54H24Z"/>
+
+    <!-- chicken fillet -->
+    <path
+        android:fillColor="#D99A55"
+        android:pathData="M27,53
+            C33,48 46,49 54,51
+            C62,53 69,55 71,61
+            C64,66 51,66 41,64
+            C32,62 26,59 27,53Z"/>
+
+    <!-- chicken highlight -->
+    <path
+        android:fillColor="#F0C083"
+        android:pathData="M34,54
+            C41,51 53,52 62,56
+            C55,56 46,56 38,58
+            C35,59 33,57 34,54Z"/>
+
+    <!-- tomato -->
+    <path
+        android:fillColor="#E2473D"
+        android:pathData="M29,62H68C70,62 71,63 71,65C71,67 69,68 66,68H31C28,68 26,67 26,65C26,63 27,62 29,62Z"/>
+
+    <!-- bottom bread -->
+    <path
+        android:fillColor="#DDA65E"
+        android:pathData="M27,67H69C71.2,67 73,68.8 73,71C73,73.2 71.2,75 69,75H27C24.8,75 23,73.2 23,71C23,68.8 24.8,67 27,67Z"/>
+
+</vector>

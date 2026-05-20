@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- banana main body - bigger -->
+    <path
+        android:fillColor="#F4D04E"
+        android:pathData="M22,59
+            C32,74 59,76 73,57
+            C66,62 54,63 43,59
+            C32,55 24,45 23,33
+            C15,41 14,52 22,59Z"/>
+
+    <!-- banana lower shade - bigger -->
+    <path
+        android:fillColor="#E6BC32"
+        android:pathData="M27,57
+            C36,68 56,68 68,57
+            C60,61 47,61 37,57
+            C31,55 27,50 25,44
+            C24,49 24,54 27,57Z"/>
+
+    <!-- stem - bigger -->
+    <path
+        android:fillColor="#7B4A20"
+        android:pathData="M22,33
+            C26,29 29,25 30,21
+            L36,24
+            C33,29 30,33 26,37Z"/>
+
+</vector>

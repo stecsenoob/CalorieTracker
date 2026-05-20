@@ -1,6 +1,7 @@
 package com.example.calorietracker;
 
 import android.app.AlertDialog;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -142,17 +143,53 @@ public class FavoritesFragment extends Fragment {
         public void onBindViewHolder(@NonNull VH holder, int position) {
             dbConnect.FavoriteFoodRow item = items.get(position);
 
+            holder.itemView.setMinimumHeight(dp(holder.itemView, 76));
+
+            holder.ivFood.setImageResource(getFoodImageRes(holder.itemView, item.name));
+            holder.ivFood.setClipToOutline(true);
+
             holder.tvTitle.setText(item.name);
+            holder.tvTitle.setTextSize(17f);
+            holder.tvTitle.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+            holder.tvTitle.setIncludeFontPadding(true);
+            holder.tvTitle.setMaxLines(1);
 
-            String line1 = item.portion + " • " + item.calories + " kcal";
-            String line2 = "Protein: " + format1(item.protein) + "g | " +
-                    "Fat: " + format1(item.fat) + "g | " +
-                    "Carbs: " + format1(item.carbs) + "g";
+            holder.tvPortionKcal.setText(String.format(
+                    Locale.US,
+                    "%s • %d kcal",
+                    item.portion,
+                    item.calories
+            ));
 
-            holder.tvSub.setText(line1 + "\n" + line2);
+            holder.tvProteinChip.setText(String.format(
+                    Locale.US,
+                    "Protein: %.1fg",
+                    item.protein
+            ));
+
+            holder.tvFatChip.setText(String.format(
+                    Locale.US,
+                    "Fat: %.1fg",
+                    item.fat
+            ));
+
+            holder.tvCarbsChip.setText(String.format(
+                    Locale.US,
+                    "Carbs: %.1fg",
+                    item.carbs
+            ));
 
             holder.ivFav.setImageResource(R.drawable.baseline_favorite_24);
             holder.ivFav.setColorFilter(0xFFE53935);
+
+            if (holder.cardDelete != null) {
+                holder.cardDelete.setVisibility(View.GONE);
+                holder.cardDelete.setOnClickListener(null);
+            }
+
+            if (holder.ivDelete != null) {
+                holder.ivDelete.setOnClickListener(null);
+            }
 
             holder.ivFav.setOnClickListener(v -> {
                 if (actions != null) {
@@ -173,20 +210,51 @@ public class FavoritesFragment extends Fragment {
         }
 
         static class VH extends RecyclerView.ViewHolder {
-            TextView tvTitle, tvSub;
-            ImageView ivFav;
+            ImageView ivFood, ivFav, ivDelete;
+            TextView tvTitle, tvPortionKcal, tvProteinChip, tvFatChip, tvCarbsChip;
+            View cardDelete;
 
             VH(@NonNull View itemView) {
                 super(itemView);
 
+                ivFood = itemView.findViewById(R.id.ivFood);
                 tvTitle = itemView.findViewById(R.id.tvTitle);
-                tvSub = itemView.findViewById(R.id.tvSub);
+                tvPortionKcal = itemView.findViewById(R.id.tvPortionKcal);
+                tvProteinChip = itemView.findViewById(R.id.tvProteinChip);
+                tvFatChip = itemView.findViewById(R.id.tvFatChip);
+                tvCarbsChip = itemView.findViewById(R.id.tvCarbsChip);
                 ivFav = itemView.findViewById(R.id.ivFav);
+                ivDelete = itemView.findViewById(R.id.ivDelete);
+                cardDelete = itemView.findViewById(R.id.cardDelete);
             }
         }
 
-        private static String format1(float v) {
-            return String.format(Locale.ROOT, "%.1f", v);
+        private static int getFoodImageRes(View view, String foodName) {
+            if (foodName == null || foodName.trim().isEmpty()) {
+                return android.R.drawable.ic_menu_gallery;
+            }
+
+            String drawableName = "food_" + foodName
+                    .toLowerCase(Locale.ROOT)
+                    .trim()
+                    .replaceAll("[^a-z0-9]+", "_")
+                    .replaceAll("^_+|_+$", "");
+
+            int resId = view.getResources().getIdentifier(
+                    drawableName,
+                    "drawable",
+                    view.getContext().getPackageName()
+            );
+
+            if (resId == 0) {
+                return android.R.drawable.ic_menu_gallery;
+            }
+
+            return resId;
+        }
+
+        private static int dp(View view, int value) {
+            return (int) (value * view.getResources().getDisplayMetrics().density + 0.5f);
         }
     }
 }

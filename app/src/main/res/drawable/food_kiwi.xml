@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- kiwi outer skin -->
+    <path
+        android:fillColor="#8A5A2E"
+        android:pathData="M48,22C62,22 74,34 74,48C74,62 62,74 48,74C34,74 22,62 22,48C22,34 34,22 48,22Z"/>
+
+    <!-- kiwi green flesh -->
+    <path
+        android:fillColor="#76C943"
+        android:pathData="M48,28C59,28 68,37 68,48C68,59 59,68 48,68C37,68 28,59 28,48C28,37 37,28 48,28Z"/>
+
+    <!-- light green center -->
+    <path
+        android:fillColor="#B8E96C"
+        android:pathData="M48,34C56,34 62,40 62,48C62,56 56,62 48,62C40,62 34,56 34,48C34,40 40,34 48,34Z"/>
+
+    <!-- white center -->
+    <path
+        android:fillColor="#FFF7D8"
+        android:pathData="M48,42m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0"/>
+
+    <!-- seeds -->
+    <path
+        android:fillColor="#2F2A22"
+        android:pathData="M48,32m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M57,36m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M62,47m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M58,58m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M48,64m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M38,58m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M34,48m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M38,36m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0"/>
+
+</vector>

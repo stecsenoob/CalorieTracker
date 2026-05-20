@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M22,69C28,65 68,65 74,69C69,73 27,73 22,69Z" />
+
+    <!-- left horn -->
+    <path
+        android:fillColor="#C98236"
+        android:pathData="M22,50C25,39 34,32 44,34C38,40 35,50 37,59C30,59 24,56 22,50Z" />
+
+    <!-- right horn -->
+    <path
+        android:fillColor="#C98236"
+        android:pathData="M74,50C71,39 62,32 52,34C58,40 61,50 59,59C66,59 72,56 74,50Z" />
+
+    <!-- main croissant -->
+    <path
+        android:fillColor="#E0A24A"
+        android:pathData="M27,51C30,38 38,29 48,29C58,29 66,38 69,51C63,62 54,67 48,67C42,67 33,62 27,51Z" />
+
+    <!-- center segment -->
+    <path
+        android:fillColor="#F0B85B"
+        android:pathData="M38,48C39,38 43,32 48,32C53,32 57,38 58,48C57,58 53,63 48,63C43,63 39,58 38,48Z" />
+
+    <!-- left segment -->
+    <path
+        android:fillColor="#D9953F"
+        android:pathData="M29,50C31,42 36,36 42,34C39,42 38,52 41,60C36,59 32,56 29,50Z" />
+
+    <!-- right segment -->
+    <path
+        android:fillColor="#D9953F"
+        android:pathData="M67,50C65,42 60,36 54,34C57,42 58,52 55,60C60,59 64,56 67,50Z" />
+
+    <!-- darker bottom -->
+    <path
+        android:fillColor="#B96F2F"
+        android:pathData="M28,53C36,64 60,64 68,53C65,63 56,70 48,70C40,70 31,63 28,53Z" />
+
+    <!-- glossy highlights -->
+    <path
+        android:fillColor="#F7CB79"
+        android:pathData="M38,35C44,30 53,31 59,37C52,35 45,35 38,39Z" />
+    <path
+        android:fillColor="#F6C36D"
+        android:pathData="M31,45C34,39 38,36 42,35C39,41 37,47 37,52C34,51 32,49 31,45Z" />
+
+</vector>

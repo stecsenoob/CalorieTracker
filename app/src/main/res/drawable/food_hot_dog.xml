@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- bun -->
+    <path
+        android:fillColor="#E7BE73"
+        android:pathData="M20,52C20,42 28,35 38,35H58C68,35 76,42 76,52C76,62 68,69 58,69H38C28,69 20,62 20,52Z" />
+
+    <!-- bun inner -->
+    <path
+        android:fillColor="#F0CC89"
+        android:pathData="M24,52C24,44 31,39 39,39H57C65,39 72,44 72,52C72,60 65,65 57,65H39C31,65 24,60 24,52Z" />
+
+    <!-- sausage -->
+    <path
+        android:fillColor="#B75743"
+        android:pathData="M25,52C25,47 29,44 34,44H62C67,44 71,47 71,52C71,57 67,60 62,60H34C29,60 25,57 25,52Z" />
+
+    <!-- mustard -->
+    <path
+        android:fillColor="#F1CC3E"
+        android:pathData="M29,50C33,47 37,54 41,50C45,46 49,54 53,50C57,46 61,53 66,50L66,53C61,56 57,49 53,53C49,57 45,49 41,53C37,57 33,50 29,53Z" />
+
+    <!-- ketchup -->
+    <path
+        android:fillColor="#D94B45"
+        android:pathData="M30,55C34,52 38,59 42,55C46,51 50,59 54,55C58,51 62,58 66,55L66,57C62,60 58,54 54,58C50,62 46,54 42,58C38,62 34,55 30,57Z" />
+
+</vector>

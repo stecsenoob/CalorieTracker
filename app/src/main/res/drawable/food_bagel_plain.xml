@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M24,69C29,65 67,65 72,69C68,72 28,72 24,69Z" />
+
+    <!-- bagel outer -->
+    <path
+        android:fillColor="#C98745"
+        android:pathData="M48,26C33,26 22,36 22,50C22,64 33,74 48,74C63,74 74,64 74,50C74,36 63,26 48,26Z" />
+
+    <!-- bagel inner bread -->
+    <path
+        android:fillColor="#E2A65C"
+        android:pathData="M48,32C37,32 29,39 29,50C29,61 37,68 48,68C59,68 67,61 67,50C67,39 59,32 48,32Z" />
+
+    <!-- hole -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,42C43,42 39,45 39,50C39,55 43,58 48,58C53,58 57,55 57,50C57,45 53,42 48,42Z" />
+
+    <!-- toasted top -->
+    <path
+        android:fillColor="#B87338"
+        android:pathData="M32,42C39,34 57,34 64,42C56,39 40,39 32,42Z" />
+
+    <!-- sesame dots -->
+    <path
+        android:fillColor="#F6DCA8"
+        android:pathData="M38,37m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M45,35m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M53,36m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0
+                          M60,40m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0" />
+
+</vector>

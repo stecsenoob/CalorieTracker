@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M23,66C28,60 68,60 73,66C68,73 28,73 23,66Z" />
+
+    <!-- darker beef sausages -->
+    <path
+        android:fillColor="#A6563C"
+        android:pathData="M27,51C27,45 32,41 38,41H55C61,41 66,45 66,51C66,57 61,61 55,61H38C32,61 27,57 27,51Z" />
+
+    <path
+        android:fillColor="#934934"
+        android:pathData="M32,37C32,32 36,28 42,28H61C67,28 71,32 71,37C71,42 67,46 61,46H42C36,46 32,42 32,37Z" />
+
+    <!-- glossy top -->
+    <path
+        android:fillColor="#C36F52"
+        android:pathData="M35,33C41,31 52,31 61,34C57,36 46,37 35,33Z" />
+
+    <path
+        android:fillColor="#BE684C"
+        android:pathData="M31,46C36,44 46,44 55,47C51,49 40,49 31,46Z" />
+
+    <!-- end caps -->
+    <path
+        android:fillColor="#6F3325"
+        android:pathData="M32,37m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0" />
+    <path
+        android:fillColor="#6F3325"
+        android:pathData="M71,37m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0" />
+    <path
+        android:fillColor="#6F3325"
+        android:pathData="M27,51m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0" />
+    <path
+        android:fillColor="#6F3325"
+        android:pathData="M66,51m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0" />
+
+</vector>

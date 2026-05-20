@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- almonds -->
+    <path
+        android:fillColor="#A86E3D"
+        android:pathData="M31,39C36,29 47,28 52,37C48,48 36,51 31,39Z"/>
+    <path
+        android:fillColor="#B9824D"
+        android:pathData="M49,35C57,29 67,33 68,43C59,51 49,47 49,35Z"/>
+    <path
+        android:fillColor="#9D6437"
+        android:pathData="M29,55C36,47 47,49 50,59C42,67 31,65 29,55Z"/>
+    <path
+        android:fillColor="#B77B48"
+        android:pathData="M50,57C57,48 68,50 70,60C62,68 52,67 50,57Z"/>
+
+    <!-- almond lines -->
+    <path
+        android:fillColor="#7C4A28"
+        android:pathData="M38,36C40,39 43,41 47,42C43,43 38,41 35,38Z
+                          M55,37C58,40 62,41 65,42C61,44 55,42 52,39Z
+                          M36,55C39,58 43,59 46,60C42,62 36,60 33,57Z
+                          M56,57C59,60 63,61 66,61C63,64 57,62 54,59Z"/>
+
+</vector>

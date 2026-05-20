@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M22,68C27,60 69,60 74,68C69,75 27,75 22,68Z" />
+
+    <!-- meatballs -->
+    <path
+        android:fillColor="#8E5238"
+        android:pathData="M33,53m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    <path
+        android:fillColor="#9A5C40"
+        android:pathData="M49,43m-11,0a11,11 0,1 1,22 0a11,11 0,1 1,-22 0" />
+    <path
+        android:fillColor="#7F472F"
+        android:pathData="M62,55m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+
+    <!-- highlights -->
+    <path
+        android:fillColor="#B87556"
+        android:pathData="M29,48C32,46 36,46 39,49C35,49 32,50 29,52C28,51 28,49 29,48Z" />
+
+    <path
+        android:fillColor="#BD7D5D"
+        android:pathData="M45,38C49,36 54,37 57,41C52,40 48,41 44,44C43,42 43,40 45,38Z" />
+
+    <path
+        android:fillColor="#A86748"
+        android:pathData="M58,50C61,48 65,48 68,51C64,51 61,52 58,54C57,53 57,51 58,50Z" />
+
+</vector>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- bowl -->
+    <path
+        android:fillColor="#DDE4EA"
+        android:pathData="M23,52H73C72,67 62,76 48,76C34,76 24,67 23,52Z"/>
+
+    <path
+        android:fillColor="#F7FAFC"
+        android:pathData="M23,50C23,44 34,40 48,40C62,40 73,44 73,50C73,56 62,60 48,60C34,60 23,56 23,50Z"/>
+
+    <!-- lettuce base -->
+    <path
+        android:fillColor="#7BC255"
+        android:pathData="M29,49
+            C29,45 37,42 48,42
+            C59,42 67,45 67,49
+            C67,53 59,56 48,56
+            C37,56 29,53 29,49Z"/>
+
+    <!-- darker greens -->
+    <path
+        android:fillColor="#62A844"
+        android:pathData="M32,47
+            C35,44 38,49 41,46
+            C44,43 47,49 50,46
+            C53,43 56,49 59,46
+            C62,43 65,47 66,49
+            C61,52 55,52 49,51
+            C42,50 36,51 32,47Z"/>
+
+    <!-- chicken pieces -->
+    <path
+        android:fillColor="#D9A068"
+        android:pathData="M36,45
+            C39,42 44,42 46,45
+            C44,48 39,49 36,47Z
+            M52,48
+            C55,45 60,45 62,49
+            C59,51 54,51 52,48Z"/>
+
+    <!-- parmesan / cheese flakes -->
+    <path
+        android:fillColor="#FFF6DA"
+        android:pathData="M41,52H47L45,55H39Z
+                          M55,43H60L58,46H53Z
+                          M49,46H53L51,49H47Z"/>
+
+    <!-- croutons -->
+    <path
+        android:fillColor="#C7904D"
+        android:pathData="M33,50H37V54H33Z
+                          M58,51H62V55H58Z
+                          M45,43H49V47H45Z"/>
+
+    <!-- dressing dots -->
+    <path
+        android:fillColor="#F2E5BA"
+        android:pathData="M35,46m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M48,52m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M60,47m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0"/>
+
+</vector>

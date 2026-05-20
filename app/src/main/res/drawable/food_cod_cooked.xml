@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- soft background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M22,69C27,61 69,61 74,69C69,76 27,76 22,69Z" />
+
+    <!-- cod fillet outer -->
+    <path
+        android:fillColor="#E5D8C2"
+        android:pathData="M24,50C24,39 34,31 48,31C62,31 72,39 72,50C72,61 62,68 48,68C34,68 24,61 24,50Z" />
+
+    <!-- cod fillet inner -->
+    <path
+        android:fillColor="#F7F0E4"
+        android:pathData="M30,50C30,42 38,37 48,37C58,37 66,42 66,50C66,58 58,62 48,62C38,62 30,58 30,50Z" />
+
+    <!-- flaky lines -->
+    <path
+        android:fillColor="#D2C2A8"
+        android:pathData="M35,42C40,40 47,40 54,42C48,44 40,44 35,42Z" />
+    <path
+        android:fillColor="#D2C2A8"
+        android:pathData="M33,49C40,47 49,47 57,49C49,51 40,51 33,49Z" />
+    <path
+        android:fillColor="#D2C2A8"
+        android:pathData="M35,56C41,54 49,54 55,56C49,58 41,58 35,56Z" />
+
+    <!-- lemon wedge -->
+    <path
+        android:fillColor="#F3D34E"
+        android:pathData="M60,31L72,39C66,43 60,43 55,38Z" />
+    <path
+        android:fillColor="#FFF2A6"
+        android:pathData="M62,34L68,39C65,40 62,40 59,37Z" />
+
+    <!-- tiny herb leaf -->
+    <path
+        android:fillColor="#6EB46F"
+        android:pathData="M28,37C31,34 35,34 38,37C35,39 31,39 28,37Z" />
+
+</vector>

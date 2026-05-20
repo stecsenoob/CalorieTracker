@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- bowl -->
+    <path
+        android:fillColor="#DDE3EA"
+        android:pathData="M23,51H73C72,67 62,76 48,76C34,76 24,67 23,51Z"/>
+
+    <path
+        android:fillColor="#F6F8FA"
+        android:pathData="M23,50C23,44 34,40 48,40C62,40 73,44 73,50C73,56 62,60 48,60C34,60 23,56 23,50Z"/>
+
+    <!-- soup broth -->
+    <path
+        android:fillColor="#F5C15A"
+        android:pathData="M29,49C29,45 37,42 48,42C59,42 67,45 67,49C67,53 59,56 48,56C37,56 29,53 29,49Z"/>
+
+    <!-- chicken pieces -->
+    <path
+        android:fillColor="#F4E2C2"
+        android:pathData="M39,48
+            C39,45 42,43 45,44
+            C48,45 49,48 47,51
+            C44,53 40,52 39,48Z
+            M54,50
+            C54,47 57,45 60,46
+            C63,47 64,50 62,53
+            C59,55 55,54 54,50Z"/>
+
+    <!-- carrots -->
+    <path
+        android:fillColor="#F28C28"
+        android:pathData="M33,49m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0
+                          M50,46m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0
+                          M59,53m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0"/>
+
+    <!-- herbs -->
+    <path
+        android:fillColor="#5BA84A"
+        android:pathData="M43,46C45,44 48,44 50,46C47,48 45,48 43,46Z
+                          M35,52C37,50 40,50 42,52C39,54 37,54 35,52Z"/>
+
+    <!-- steam -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#D9CEC2"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M38,29C34,34 42,36 38,40
+                          M48,27C44,32 52,35 48,39
+                          M58,29C54,34 62,36 58,40"/>
+
+</vector>

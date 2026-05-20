@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- jar lid -->
+    <path
+        android:fillColor="#D99A23"
+        android:pathData="M31,23H65C67.2,23 69,24.8 69,27V33H27V27C27,24.8 28.8,23 31,23Z"/>
+
+    <!-- jar glass -->
+    <path
+        android:fillColor="#FFF3D2"
+        android:pathData="M30,31H66C68.2,31 70,32.8 70,35V68C70,70.2 68.2,72 66,72H30C27.8,72 26,70.2 26,68V35C26,32.8 27.8,31 30,31Z"/>
+
+    <!-- honey fill -->
+    <path
+        android:fillColor="#F4B332"
+        android:pathData="M29,45H67V67C67,68.1 66.1,69 65,69H31C29.9,69 29,68.1 29,67Z"/>
+
+    <!-- honey drip top -->
+    <path
+        android:fillColor="#FFC94A"
+        android:pathData="M29,42
+            C34,39 39,45 44,42
+            C49,39 54,45 59,42
+            C63,40 66,42 67,44
+            V50H29Z"/>
+
+    <!-- label -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,50H62C63.1,50 64,50.9 64,52V62C64,63.1 63.1,64 62,64H34C32.9,64 32,63.1 32,62V52C32,50.9 32.9,50 34,50Z"/>
+
+    <!-- honey drop on label -->
+    <path
+        android:fillColor="#F4B332"
+        android:pathData="M48,52
+            C52,57 55,60 55,64
+            C55,68 52,71 48,71
+            C44,71 41,68 41,64
+            C41,60 44,57 48,52Z"/>
+
+    <!-- jar shine -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,35C34,33 38,33 40,35V46C38,44 34,44 32,46Z"/>
+
+</vector>

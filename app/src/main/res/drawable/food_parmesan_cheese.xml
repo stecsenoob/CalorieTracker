@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- parmesan wedge -->
+    <path
+        android:fillColor="#F0D78E"
+        android:pathData="M27,60L49,32L69,60Z" />
+
+    <!-- darker rind/base -->
+    <path
+        android:fillColor="#D5B86B"
+        android:pathData="M27,60H69V65C69,69 66,72 62,72H34C30,72 27,69 27,65Z" />
+
+    <!-- grated flakes -->
+    <path
+        android:fillColor="#FFF2C6"
+        android:pathData="M38,42L42,40L44,44L40,46Z
+                          M49,45L53,43L55,47L51,49Z
+                          M43,52L47,50L49,54L45,56Z
+                          M56,53L60,51L62,55L58,57Z" />
+
+    <!-- tiny holes -->
+    <path
+        android:fillColor="#E6C86F"
+        android:pathData="M44,41m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M53,50m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0" />
+
+</vector>

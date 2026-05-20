@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- soft background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M21,69C27,64 69,64 75,69C70,73 26,73 21,69Z" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M48,27C31,27 19,38 19,52C19,66 31,76 48,76C65,76 77,66 77,52C77,38 65,27 48,27Z" />
+
+    <!-- blue rim -->
+    <path
+        android:fillColor="#2F5FA7"
+        android:pathData="M48,29C32,29 21,39 21,52C21,65 32,74 48,74C64,74 75,65 75,52C75,39 64,29 48,29ZM48,32C62,32 72,41 72,52C72,63 62,71 48,71C34,71 24,63 24,52C24,41 34,32 48,32Z" />
+
+    <!-- tomato sauce base -->
+    <path
+        android:fillColor="#DA5B48"
+        android:pathData="M28,53C28,42 37,35 48,35C59,35 68,42 68,53C68,61 61,67 48,67C35,67 28,61 28,53Z" />
+
+    <!-- spaghetti loops -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F1B36B"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:pathData="M28,49C33,42 41,39 49,40C57,41 64,46 67,52" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F4BE78"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:pathData="M27,55C32,47 40,44 49,45C58,46 64,51 67,58" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#EFA95F"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:pathData="M31,58C36,51 43,49 50,50C57,51 61,55 63,61" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F3BB73"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:pathData="M33,44C38,38 46,36 54,37C60,38 65,42 67,47" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F2B065"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:pathData="M36,62C41,56 47,54 53,55C58,56 61,59 61,64" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F7C686"
+        android:strokeWidth="3.0"
+        android:strokeLineCap="round"
+        android:pathData="M24,52C29,44 37,40 46,41C55,42 63,48 71,57" />
+
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#EFA65D"
+        android:strokeWidth="3.0"
+        android:strokeLineCap="round"
+        android:pathData="M26,60C33,53 40,49 48,49C56,49 62,53 69,61" />
+
+    <!-- small tomato chunks -->
+    <path
+        android:fillColor="#D94A3A"
+        android:pathData="M34,44m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0
+                          M59,45m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0
+                          M63,55m-2.2,0a2.2,2.2 0,1 1,4.4 0a2.2,2.2 0,1 1,-4.4 0
+                          M39,61m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+
+    <!-- grated parmesan -->
+    <path
+        android:fillColor="#FFF7E9"
+        android:pathData="M42,43L45,44L44,47L41,46Z
+                          M47,46L50,47L49,50L46,49Z
+                          M52,44L55,45L54,48L51,47Z
+                          M39,50L42,51L41,54L38,53Z
+                          M46,52L49,53L48,56L45,55Z
+                          M53,51L56,52L55,55L52,54Z
+                          M44,58L47,59L46,62L43,61Z" />
+
+    <!-- parsley leaf -->
+    <path
+        android:fillColor="#4FAE58"
+        android:pathData="M50,49C54,44 61,44 64,49C60,53 54,54 50,49Z" />
+    <path
+        android:fillColor="#4FAE58"
+        android:pathData="M46,52C48,48 53,47 56,50C53,54 49,55 46,52Z" />
+    <path
+        android:fillColor="#3D8F45"
+        android:pathData="M50,56L56,50L57,52L51,58Z" />
+
+</vector>

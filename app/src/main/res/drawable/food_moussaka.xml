@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- baking dish -->
+    <path
+        android:fillColor="#DDE3EA"
+        android:pathData="M24,43H72C74.2,43 76,44.8 76,47V68C76,70.2 74.2,72 72,72H24C21.8,72 20,70.2 20,68V47C20,44.8 21.8,43 24,43Z"/>
+
+    <!-- moussaka base -->
+    <path
+        android:fillColor="#B86B3E"
+        android:pathData="M25,47H71V67H25Z"/>
+
+    <!-- potato/egg top layer -->
+    <path
+        android:fillColor="#E7C37C"
+        android:pathData="M25,40H71V50H25Z"/>
+
+    <!-- browned top spots -->
+    <path
+        android:fillColor="#C48745"
+        android:pathData="M31,44m-3,0a3,2 0,1 1,6 0a3,2 0,1 1,-6 0
+                          M43,43m-3,0a3,2 0,1 1,6 0a3,2 0,1 1,-6 0
+                          M56,44m-3,0a3,2 0,1 1,6 0a3,2 0,1 1,-6 0
+                          M66,45m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0"/>
+
+    <!-- meat layer -->
+    <path
+        android:fillColor="#8B4E32"
+        android:pathData="M25,54H71V61H25Z"/>
+
+    <!-- potato layer -->
+    <path
+        android:fillColor="#F0D79A"
+        android:pathData="M25,61H71V67H25Z"/>
+
+    <!-- dish shine -->
+    <path
+        android:fillColor="#F7FAFC"
+        android:pathData="M24,43H72C74.2,43 76,44.8 76,47V49H20V47C20,44.8 21.8,43 24,43Z"/>
+
+</vector>

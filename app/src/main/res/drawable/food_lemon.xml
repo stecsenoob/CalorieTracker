@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- lemon body -->
+    <path
+        android:fillColor="#F4C430"
+        android:pathData="M28,48
+            C28,36 37,27 49,27
+            C61,27 70,36 70,48
+            C70,60 61,69 49,69
+            C37,69 28,60 28,48Z"/>
+
+    <!-- pointed ends -->
+    <path
+        android:fillColor="#F4C430"
+        android:pathData="M25,48
+            C28,43 30,41 34,40
+            C33,45 33,51 34,56
+            C30,55 28,53 25,48Z
+            M73,48
+            C70,43 68,41 64,40
+            C65,45 65,51 64,56
+            C68,55 70,53 73,48Z"/>
+
+    <!-- inner highlight -->
+    <path
+        android:fillColor="#FFE36D"
+        android:pathData="M33,46
+            C35,37 42,31 51,31
+            C59,31 65,37 66,46
+            C61,41 54,39 47,40
+            C40,41 35,44 33,46Z"/>
+
+    <!-- right soft shade -->
+    <path
+        android:fillColor="#E2AD20"
+        android:pathData="M59,32
+            C66,37 70,45 68,54
+            C66,62 60,67 52,68
+            C58,61 61,50 59,32Z"/>
+
+    <!-- pores -->
+    <path
+        android:fillColor="#DFAE24"
+        android:pathData="M40,42m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M50,38m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M56,48m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M43,56m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M52,60m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0"/>
+
+</vector>

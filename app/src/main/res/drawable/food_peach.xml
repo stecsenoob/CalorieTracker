@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- stem -->
+    <path
+        android:fillColor="#7A4A2A"
+        android:pathData="M49,20
+            C49,17 51,15 53,15
+            C55,15 56,17 56,20
+            C56,23 54,26 52,29
+            L48,27
+            C48.5,25 49,22 49,20Z"/>
+
+    <!-- leaf -->
+    <path
+        android:fillColor="#64B44F"
+        android:pathData="M52,24
+            C58,18 67,18 73,23
+            C67,30 58,31 51,27
+            C50.8,26 51.1,24.9 52,24Z"/>
+
+    <!-- leaf shade -->
+    <path
+        android:fillColor="#4F9441"
+        android:pathData="M57,25
+            C62,24 66,23 70,23
+            C66,27 61,28 57,25Z"/>
+
+    <!-- peach main body -->
+    <path
+        android:fillColor="#F59A57"
+        android:pathData="M48,29
+            C42,27 35,29 30,34
+            C24,39 21,47 22,55
+            C23,67 32,76 44,77
+            C46,77.2 47,76.8 48,76
+            C49,76.8 50,77.2 52,77
+            C64,76 73,67 74,55
+            C75,47 72,39 66,34
+            C61,29 54,27 48,29Z"/>
+
+    <!-- inner lighter body -->
+    <path
+        android:fillColor="#FFB06A"
+        android:pathData="M48,33
+            C43,31.5 37.5,33 33.5,37
+            C28.5,41.8 26,48 27,55
+            C28,64.5 35.5,71.5 45,72
+            C46.5,72.1 47.4,71.7 48,71
+            C48.6,71.7 49.5,72.1 51,72
+            C60.5,71.5 68,64.5 69,55
+            C70,48 67.5,41.8 62.5,37
+            C58.5,33 53,31.5 48,33Z"/>
+
+    <!-- right soft shade -->
+    <path
+        android:fillColor="#E97C4B"
+        android:pathData="M59,34
+            C66,39 70,46 70,55
+            C69.5,64 63.5,71 55,74
+            C60,67 62,60 62,51
+            C62,44.5 61,39 59,34Z"/>
+
+    <!-- left blush -->
+    <path
+        android:fillColor="#F47A75"
+        android:pathData="M31,42
+            C35,36 42,34 48,35
+            C43,40 40,47 40,54
+            C40,60 42,66 46,70
+            C39,70 32.5,66 29.5,59
+            C27.3,53.8 27.7,47.5 31,42Z"/>
+
+    <!-- center crease -->
+    <path
+        android:fillColor="#E56E4E"
+        android:pathData="M49,34
+            C47,40 46.5,47 46.7,54
+            C46.9,61 47.5,67 49,72
+            C47.2,71.2 46,69 45.3,66
+            C43.6,58.5 43.8,47.5 45.5,40
+            C46.2,37 47.2,35 49,34Z"/>
+
+    <!-- top dent -->
+    <path
+        android:fillColor="#E87A59"
+        android:pathData="M41,32
+            C44,34 52,34 55,32
+            C53,36 44,36 41,32Z"/>
+
+    <!-- main highlight -->
+    <path
+        android:fillColor="#FFD3A0"
+        android:pathData="M34,39
+            C37,35.5 41,34 45,34.5
+            C42,37.5 39.5,42 38.5,47
+            C35.5,46 33.5,43 34,39Z"/>
+
+    <!-- small highlight -->
+    <path
+        android:fillColor="#FFE0B8"
+        android:pathData="M56,39
+            C58,37.8 60.5,38 61.5,40
+            C59.5,40.5 57.8,41.8 56.6,43.4
+            C55.4,42.4 55.2,40.3 56,39Z"/>
+
+</vector>

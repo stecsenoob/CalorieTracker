@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- can -->
+    <path
+        android:fillColor="#BFC8D2"
+        android:pathData="M22,35C22,31 34,28 48,28C62,28 74,31 74,35V58C74,62 62,65 48,65C34,65 22,62 22,58Z" />
+
+    <path
+        android:fillColor="#D8E0E8"
+        android:pathData="M48,28m-26,0a26,7 0,1 1,52 0a26,7 0,1 1,-52 0" />
+
+    <!-- oil -->
+    <path
+        android:fillColor="#E5D59A"
+        android:pathData="M26,36C26,33 35,32 48,32C61,32 70,33 70,36V50C70,53 61,54 48,54C35,54 26,53 26,50Z" />
+
+    <!-- sardines -->
+    <path
+        android:fillColor="#7E8FA1"
+        android:pathData="M30,43C34,39 42,39 46,43C42,47 34,47 30,43Z" />
+    <path
+        android:fillColor="#7E8FA1"
+        android:pathData="M45,41C49,37 57,37 61,41C57,45 49,45 45,41Z" />
+    <path
+        android:fillColor="#7E8FA1"
+        android:pathData="M36,49C40,45 48,45 52,49C48,53 40,53 36,49Z" />
+
+    <!-- fish shine -->
+    <path
+        android:fillColor="#B4C2CF"
+        android:pathData="M32,42C35,41 40,41 43,42C40,43 35,43 32,42Z" />
+    <path
+        android:fillColor="#B4C2CF"
+        android:pathData="M47,40C50,39 55,39 58,40C55,41 50,41 47,40Z" />
+
+    <!-- label -->
+    <path
+        android:fillColor="#6699CC"
+        android:pathData="M30,57H66V67H30Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,60H56V64H40Z" />
+
+</vector>

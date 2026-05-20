@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- left fig whole -->
+    <path
+        android:fillColor="#7B4A8E"
+        android:pathData="M33,29C40,29 45,35 45,43C45,55 39,63 33,68C27,63 21,55 21,43C21,35 26,29 33,29Z"/>
+
+    <path
+        android:fillColor="#9A67AC"
+        android:pathData="M33,33C38,33 41,37 41,43C41,52 37,58 33,62C29,58 25,52 25,43C25,37 28,33 33,33Z"/>
+
+    <!-- right fig half -->
+    <path
+        android:fillColor="#6F437F"
+        android:pathData="M63,28C70,28 75,34 75,42C75,54 69,63 63,68C57,63 51,54 51,42C51,34 56,28 63,28Z"/>
+
+    <!-- fig inside -->
+    <path
+        android:fillColor="#E86B87"
+        android:pathData="M63,33C67,33 70,37 70,42C70,50 66,57 63,60C60,57 56,50 56,42C56,37 59,33 63,33Z"/>
+
+    <!-- seeds -->
+    <path
+        android:fillColor="#F7C2B4"
+        android:pathData="M61,40m-1,0a1,1.4 0,1 1,2 0a1,1.4 0,1 1,-2 0
+                          M65,39m-1,0a1,1.4 0,1 1,2 0a1,1.4 0,1 1,-2 0
+                          M59,45m-1,0a1,1.4 0,1 1,2 0a1,1.4 0,1 1,-2 0
+                          M64,45m-1,0a1,1.4 0,1 1,2 0a1,1.4 0,1 1,-2 0
+                          M62,50m-1,0a1,1.4 0,1 1,2 0a1,1.4 0,1 1,-2 0
+                          M67,49m-1,0a1,1.4 0,1 1,2 0a1,1.4 0,1 1,-2 0"/>
+
+    <!-- stems -->
+    <path
+        android:fillColor="#6C452A"
+        android:pathData="M31,24C31,21 33,19 35,19C37,19 38,21 38,24V29H31Z
+                          M61,23C61,20 63,18 65,18C67,18 68,20 68,23V28H61Z"/>
+
+</vector>

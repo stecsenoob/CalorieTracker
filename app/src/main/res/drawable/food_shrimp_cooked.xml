@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M22,68C27,60 69,60 74,68C69,75 27,75 22,68Z" />
+
+    <!-- shrimp body -->
+    <path
+        android:fillColor="#F19A75"
+        android:pathData="M30,57C24,49 26,38 35,33C44,28 56,30 63,37C69,43 70,51 66,58C61,53 57,51 52,51C47,51 43,54 40,59C36,61 33,60 30,57Z" />
+
+    <!-- inner curl -->
+    <path
+        android:fillColor="#F7B391"
+        android:pathData="M35,54C31,48 32,41 39,37C46,33 54,35 59,40C64,45 64,51 61,56C57,52 53,50 49,50C45,50 41,52 39,56C37,56 36,55 35,54Z" />
+
+    <!-- shrimp segments -->
+    <path
+        android:fillColor="#E47F5D"
+        android:pathData="M38,37C40,40 40,44 38,47C36,45 35,41 38,37Z" />
+    <path
+        android:fillColor="#E47F5D"
+        android:pathData="M45,34C47,37 47,42 45,45C43,42 43,38 45,34Z" />
+    <path
+        android:fillColor="#E47F5D"
+        android:pathData="M53,35C55,38 55,43 53,46C51,43 51,38 53,35Z" />
+    <path
+        android:fillColor="#E47F5D"
+        android:pathData="M60,40C62,43 62,48 60,51C58,48 58,43 60,40Z" />
+
+    <!-- tail -->
+    <path
+        android:fillColor="#D86A4D"
+        android:pathData="M65,56L74,60L68,67L60,61Z" />
+
+    <!-- eye -->
+    <path
+        android:fillColor="#2B2B2B"
+        android:pathData="M37,40m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0" />
+
+</vector>

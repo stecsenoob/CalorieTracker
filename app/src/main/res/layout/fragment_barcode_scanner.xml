@@ -241,11 +241,35 @@
                     android:textStyle="bold"
                     android:textColor="#111111" />
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardProductImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone"
+                    android:backgroundTint="#F5EFFB"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#EAEAEA">
+
+                    <ImageView
+                        android:id="@+id/imgProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="false"
+                        android:background="#F5EFFB"
+                        android:contentDescription="@null"
+                        android:scaleType="fitCenter"
+                        android:padding="0dp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
                 <TextView
                     android:id="@+id/tvBarcodeValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="8dp"
                     android:text="Barcode: -"
                     android:textSize="13sp"
                     android:textColor="#777777" />
@@ -381,6 +405,28 @@
                         android:textColor="#333333" />
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvInsightLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Nutrition Insight"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#111111" />
+
+                <TextView
+                    android:id="@+id/tvInsightValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="#F5EFFB"
+                    android:padding="12dp"
+                    android:text="Nutrition insight will appear here after scanning."
+                    android:textSize="13sp"
+                    android:textColor="#555555"
+                    android:lineSpacingExtra="3dp" />
 
                 <TextView
                     android:id="@+id/tvSourceValue"

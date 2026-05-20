@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- wrapper -->
+    <path
+        android:fillColor="#B68DB6"
+        android:pathData="M29,25H67C69.2,25 71,26.8 71,29V67C71,69.2 69.2,71 67,71H29C26.8,71 25,69.2 25,67V29C25,26.8 26.8,25 29,25Z"/>
+
+    <!-- chocolate bar -->
+    <path
+        android:fillColor="#4A2B21"
+        android:pathData="M31,31H65C66.7,31 68,32.3 68,34V66C68,67.7 66.7,69 65,69H31C29.3,69 28,67.7 28,66V34C28,32.3 29.3,31 31,31Z"/>
+
+    <!-- chocolate squares -->
+    <path
+        android:fillColor="#5E372B"
+        android:pathData="M32,32H42V42H32Z
+                          M43,32H53V42H43Z
+                          M54,32H64V42H54Z
+                          M32,43H42V53H32Z
+                          M43,43H53V53H43Z
+                          M54,43H64V53H54Z
+                          M32,54H42V64H32Z
+                          M43,54H53V64H43Z
+                          M54,54H64V64H54Z"/>
+
+    <!-- highlights -->
+    <path
+        android:fillColor="#7A4A3A"
+        android:pathData="M34,34H40V40H34Z
+                          M45,34H51V40H45Z
+                          M56,34H62V40H56Z"/>
+
+    <!-- percent label -->
+    <path
+        android:fillColor="#F3D46A"
+        android:pathData="M33,24H63C65.2,24 67,25.8 67,28V34H29V28C29,25.8 30.8,24 33,24Z"/>
+
+    <!-- simple 70% mark -->
+    <path
+        android:fillColor="#5A3A1A"
+        android:pathData="M36,29H48V31H40L44,26H36Z
+                          M52,26m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0
+                          M58,31m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0
+                          M53,31L61,26"/>
+</vector>

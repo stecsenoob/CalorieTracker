@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- leaf -->
+    <path
+        android:fillColor="#69B34C"
+        android:pathData="M52,22
+            C58,16 67,16 73,22
+            C67,28 58,29 52,26
+            C50,24.5 50.5,23 52,22Z"/>
+
+    <!-- leaf inner vein -->
+    <path
+        android:fillColor="#4F8F38"
+        android:pathData="M54,24
+            C59,23 64,22 69,20
+            C65,23 61,25 56,27Z"/>
+
+    <!-- stem -->
+    <path
+        android:fillColor="#7A4A2A"
+        android:pathData="M46,18
+            C46,15 48,13 50,13
+            C52,13 53,15 53,18
+            C53,22 52,26 51,29
+            H47
+            C46,26 46,22 46,18Z"/>
+
+    <!-- apple body -->
+    <path
+        android:fillColor="#E53935"
+        android:pathData="M48,29
+            C43,26 36,26 31,30
+            C24,35 21,44 22,54
+            C23,66 31,75 41,77
+            C45,78 47,77 48,76
+            C49,77 51,78 55,77
+            C65,75 73,66 74,54
+            C75,44 72,35 65,30
+            C60,26 53,26 48,29Z"/>
+
+    <!-- right soft shade -->
+    <path
+        android:fillColor="#D62F2F"
+        android:pathData="M61,31
+            C67,35 71,43 71,53
+            C70,63 66,71 60,75
+            C64,66 65,54 64,44
+            C63.5,39 62.5,35 61,31Z"/>
+
+    <!-- bottom darker accent -->
+    <path
+        android:fillColor="#C62828"
+        android:pathData="M33,72
+            C38,74 43,73 48,74
+            C53,73 58,74 63,72
+            C60,76 55,78 48,76
+            C41,78 36,76 33,72Z"/>
+
+    <!-- top dent -->
+    <path
+        android:fillColor="#CF2F2F"
+        android:pathData="M41,31
+            C44,33 52,33 55,31
+            C53,35 44,35 41,31Z"/>
+
+    <!-- main highlight -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M31,40
+            C33,36 37,34 41,35
+            C43,35.5 43.5,37.5 42,39
+            C38,40.5 35,43 33.5,47
+            C32,49.5 29,48 29.5,44
+            C29.7,42.5 30.2,41.2 31,40Z"/>
+
+    <!-- small highlight -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M28,52
+            C29.2,50.8 31,50.8 32,52
+            C32.7,53 32.3,54.6 31,55.3
+            C29.7,56 28.3,55.4 27.8,54.2
+            C27.5,53.4 27.6,52.6 28,52Z"/>
+
+    <!-- tiny top shine -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M39,36m-1.8,0a1.8,1.8 0,1 1,3.6 0a1.8,1.8 0,1 1,-3.6 0"/>
+
+</vector>

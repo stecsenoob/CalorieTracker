@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- cheddar wedge -->
+    <path
+        android:fillColor="#F1B93E"
+        android:pathData="M26,61L50,31L70,61Z" />
+
+    <!-- bottom -->
+    <path
+        android:fillColor="#E3AA2F"
+        android:pathData="M26,61H70V66C70,69 67,72 63,72H33C29,72 26,69 26,66Z" />
+
+    <!-- holes -->
+    <path
+        android:fillColor="#D69A1F"
+        android:pathData="M47,42m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0
+                          M56,53m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0
+                          M40,55m-2.4,0a2.4,2.4 0,1 1,4.8 0a2.4,2.4 0,1 1,-4.8 0" />
+
+    <!-- highlight -->
+    <path
+        android:fillColor="#F7D063"
+        android:pathData="M36,53C41,45 47,39 54,35C49,42 45,48 42,55C40,55 38,54 36,53Z" />
+
+</vector>

@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Locale;
 
@@ -113,11 +114,14 @@ public class FoodDetailFragment extends Fragment {
 
     private void setupInputs() {
         etPortionCount.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
-            @Override public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
                 if (lock) return;
 
                 float portions = parseFloatSafe(s.toString(), 1f);
@@ -132,11 +136,14 @@ public class FoodDetailFragment extends Fragment {
         });
 
         etGrams.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
-            @Override public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
                 if (lock) return;
 
                 float grams = parseFloatSafe(s.toString(), baseGrams);
@@ -164,9 +171,10 @@ public class FoodDetailFragment extends Fragment {
         cNow = baseC * factor;
 
         tvCalories.setText(calNow + " kcal");
-        tvProtein.setText(String.format(Locale.ROOT, "%.1fg", pNow));
-        tvFat.setText(String.format(Locale.ROOT, "%.1fg", fNow));
-        tvCarbs.setText(String.format(Locale.ROOT, "%.1fg", cNow));
+
+        tvProtein.setText(String.format(Locale.ROOT, "Protein: %.1fg", pNow));
+        tvFat.setText(String.format(Locale.ROOT, "Fat: %.1fg", fNow));
+        tvCarbs.setText(String.format(Locale.ROOT, "Carbs: %.1fg", cNow));
     }
 
     private void addToMeal(String meal, MaterialButton clickedButton) {
@@ -197,14 +205,35 @@ public class FoodDetailFragment extends Fragment {
         }
 
         markButtonAsAdded(clickedButton, meal);
+        showAddedSnackbar(meal);
     }
 
     private void markButtonAsAdded(MaterialButton clickedButton, String meal) {
         resetMealButtons();
 
-        String mealLabel = meal.substring(0, 1).toUpperCase(Locale.ROOT) + meal.substring(1).toLowerCase(Locale.ROOT);
+        String mealLabel = formatMealLabel(meal);
         clickedButton.setText("Added to " + mealLabel);
         clickedButton.setAlpha(0.75f);
+    }
+
+    private void showAddedSnackbar(String meal) {
+        String mealLabel = formatMealLabel(meal);
+
+        Snackbar snackbar = Snackbar.make(
+                requireView(),
+                "Added to " + mealLabel,
+                Snackbar.LENGTH_SHORT
+        );
+
+        snackbar.setAnchorView(R.id.bottomNavigationView);
+        snackbar.show();
+    }
+
+    private String formatMealLabel(String meal) {
+        if (meal == null || meal.trim().isEmpty()) return "";
+
+        return meal.substring(0, 1).toUpperCase(Locale.ROOT)
+                + meal.substring(1).toLowerCase(Locale.ROOT);
     }
 
     private void resetMealButtons() {

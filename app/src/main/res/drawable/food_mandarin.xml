@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- mandarin body -->
+    <path
+        android:fillColor="#F28C18"
+        android:pathData="M48,30
+            C61,30 71,39 71,51
+            C71,64 61,73 48,73
+            C35,73 25,64 25,51
+            C25,39 35,30 48,30Z"/>
+
+    <!-- inner body -->
+    <path
+        android:fillColor="#FFA126"
+        android:pathData="M48,34
+            C58,34 66,42 66,51
+            C66,61 58,69 48,69
+            C38,69 30,61 30,51
+            C30,42 38,34 48,34Z"/>
+
+    <!-- right soft shade -->
+    <path
+        android:fillColor="#E57D0F"
+        android:pathData="M58,36
+            C64,40 67,45 67,52
+            C67,60 62,67 55,69
+            C60,62 62,49 58,36Z"/>
+
+    <!-- top dent / soft shadow -->
+    <path
+        android:fillColor="#DE760D"
+        android:pathData="M41,34
+            C45,36 51,36 55,34
+            C53,37 44,37 41,34Z"/>
+
+    <!-- pores / dots -->
+    <path
+        android:fillColor="#D66E0C"
+        android:pathData="M35,46m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M31,57m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M41,61m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M55,60m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M51,67m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M39,67m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0"/>
+
+    <!-- soft highlight -->
+    <path
+        android:fillColor="#FFC96F"
+        android:pathData="M36,40
+            C39,36 43,34.5 48,35
+            C43,39 39,45 38,52
+            C35,50 34,44 36,40Z"/>
+
+</vector>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- soft background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M27,71C31,68 65,68 69,71C65,74 31,74 27,71Z" />
+
+    <!-- lid -->
+    <path
+        android:fillColor="#F4F4F4"
+        android:pathData="M29,28C29,24 37,22 48,22C59,22 67,24 67,28C67,32 59,34 48,34C37,34 29,32 29,28Z" />
+
+    <!-- lid rim -->
+    <path
+        android:fillColor="#DDDDDD"
+        android:pathData="M31,29C31,26 38,24 48,24C58,24 65,26 65,29C65,31 58,33 48,33C38,33 31,31 31,29Z" />
+
+    <!-- tub body outer -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M31,30H65L63,67C63,70 57,73 48,73C39,73 33,70 33,67Z" />
+
+    <!-- tub body side shading -->
+    <path
+        android:fillColor="#F1F1F1"
+        android:pathData="M33,31H41L40,72C36,71 33,69 33,67Z" />
+
+    <!-- top opening -->
+    <path
+        android:fillColor="#FAFAFA"
+        android:pathData="M48,31m-16,0a16,4.5 0,1 1,32 0a16,4.5 0,1 1,-32 0" />
+
+    <!-- upper blue label -->
+    <path
+        android:fillColor="#0F5AA8"
+        android:pathData="M35,40H61V55H35Z" />
+
+    <!-- lower dark blue label -->
+    <path
+        android:fillColor="#173F8F"
+        android:pathData="M35,55H61V65H35Z" />
+
+    <!-- small white label blocks to suggest text -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,44H55V47H40Z
+                          M38,49H53V52H38Z
+                          M40,58H56V61H40Z" />
+
+    <!-- small red accent -->
+    <path
+        android:fillColor="#C93131"
+        android:pathData="M40,37C44,35 52,35 56,37C52,38 44,38 40,37Z" />
+
+    <!-- cream dollop on right side -->
+    <path
+        android:fillColor="#FFFDFC"
+        android:pathData="M57,39
+            C61,38 64,40 65,43
+            C66,46 64,49 61,50
+            C58,51 55,50 54,47
+            C53,44 54,41 57,39Z" />
+
+    <!-- dollop highlight -->
+    <path
+        android:fillColor="#F1EEE8"
+        android:pathData="M58,41C60,40 62,41 63,43C61,43 59,44 57,45C57,43 57,42 58,41Z" />
+
+    <!-- tiny side highlight on tub -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M35,33C36,33 37,34 37,35V63C37,64 36,64 35,64C34,64 34,63 34,62V36C34,34 34,33 35,33Z" />
+
+</vector>

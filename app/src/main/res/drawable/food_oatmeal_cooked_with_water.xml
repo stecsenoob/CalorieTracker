@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- bowl shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M24,68C29,64 67,64 72,68C68,72 28,72 24,68Z" />
+
+    <!-- bowl -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M24,56H72C70,67 61,74 48,74C35,74 26,67 24,56Z" />
+
+    <!-- bowl inner -->
+    <path
+        android:fillColor="#EEF2F6"
+        android:pathData="M28,49C28,42 37,37 48,37C59,37 68,42 68,49C68,54 59,57 48,57C37,57 28,54 28,49Z" />
+
+    <!-- oatmeal -->
+    <path
+        android:fillColor="#D8BE8F"
+        android:pathData="M29,49C29,42 37,38 48,38C59,38 67,42 67,49C67,53 60,56 48,56C36,56 29,53 29,49Z" />
+
+    <!-- creamy swirls -->
+    <path
+        android:fillColor="#EAD4AC"
+        android:pathData="M35,47C39,43 46,42 53,44C56,45 59,47 60,49C56,48 52,48 47,49C43,50 39,50 35,47Z" />
+
+    <path
+        android:fillColor="#F4E5C7"
+        android:pathData="M37,50C41,47 47,46 53,47C56,48 58,50 58,52C54,51 50,51 46,52C42,53 39,52 37,50Z" />
+
+    <!-- oats bits -->
+    <path
+        android:fillColor="#C9A673"
+        android:pathData="M38,44m-0.9,0a0.9,0.6 0,1 1,1.8 0a0.9,0.6 0,1 1,-1.8 0
+                          M46,43m-1,0a1,0.6 0,1 1,2 0a1,0.6 0,1 1,-2 0
+                          M55,45m-1,0a1,0.6 0,1 1,2 0a1,0.6 0,1 1,-2 0
+                          M43,52m-1,0a1,0.6 0,1 1,2 0a1,0.6 0,1 1,-2 0
+                          M52,51m-1,0a1,0.6 0,1 1,2 0a1,0.6 0,1 1,-2 0" />
+
+</vector>

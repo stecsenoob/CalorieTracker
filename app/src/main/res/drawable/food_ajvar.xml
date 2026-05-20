@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- jar lid -->
+    <path
+        android:fillColor="#B9432E"
+        android:pathData="M31,22H65C67.2,22 69,23.8 69,26V33H27V26C27,23.8 28.8,22 31,22Z"/>
+
+    <!-- lid shine -->
+    <path
+        android:fillColor="#D85A3E"
+        android:pathData="M32,24H61C64,24 66,26 66,28H30C30,26 30.8,24 32,24Z"/>
+
+    <!-- jar glass -->
+    <path
+        android:fillColor="#FFF2E8"
+        android:pathData="M30,31H66C68.2,31 70,32.8 70,35V69C70,71.2 68.2,73 66,73H30C27.8,73 26,71.2 26,69V35C26,32.8 27.8,31 30,31Z"/>
+
+    <!-- ajvar fill -->
+    <path
+        android:fillColor="#D9572E"
+        android:pathData="M29,39H67V68C67,69.1 66.1,70 65,70H31C29.9,70 29,69.1 29,68Z"/>
+
+    <!-- ajvar top wave -->
+    <path
+        android:fillColor="#F06A36"
+        android:pathData="M29,39
+            C34,36 39,42 44,39
+            C49,36 54,42 59,39
+            C63,37 66,39 67,42
+            V48H29Z"/>
+
+    <!-- clean label -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,50H62C63.1,50 64,50.9 64,52V63C64,64.1 63.1,65 62,65H34C32.9,65 32,64.1 32,63V52C32,50.9 32.9,50 34,50Z"/>
+
+    <!-- simple ajvar color band on label -->
+    <path
+        android:fillColor="#D9572E"
+        android:pathData="M36,55H60V60H36Z"/>
+
+    <!-- small lighter label shine -->
+    <path
+        android:fillColor="#F6D4C7"
+        android:pathData="M36,52H60V54H36Z"/>
+
+    <!-- jar shine -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,35C34,33 38,33 40,35V47C38,45 34,45 32,47Z"/>
+
+</vector>

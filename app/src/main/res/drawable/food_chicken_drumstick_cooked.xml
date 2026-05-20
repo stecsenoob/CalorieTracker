@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- soft background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#DADFE5"
+        android:pathData="M22,66C26,60 70,60 74,66C70,73 26,73 22,66Z" />
+
+    <!-- drumstick meat -->
+    <path
+        android:fillColor="#C67843"
+        android:pathData="M24,39C31,27 47,23 59,31C71,40 71,58 59,66C47,74 31,71 24,59C20,53 20,45 24,39Z" />
+
+    <!-- lighter inner meat -->
+    <path
+        android:fillColor="#E1A06A"
+        android:pathData="M30,40C36,32 47,30 55,36C64,43 64,55 55,61C47,66 37,64 31,56C27,51 27,45 30,40Z" />
+
+    <!-- roasted bottom -->
+    <path
+        android:fillColor="#9B572F"
+        android:pathData="M28,55C35,63 48,65 57,59C54,67 44,70 35,66C30,63 27,59 28,55Z" />
+
+    <!-- handle near bone -->
+    <path
+        android:fillColor="#D89A64"
+        android:pathData="M56,50C62,49 67,52 69,57C70,61 68,65 64,67C60,68 56,66 54,63C52,59 52,54 56,50Z" />
+
+    <!-- white bone -->
+    <path
+        android:fillColor="#FFFDFC"
+        android:pathData="M66,53C70,50 76,51 79,56C82,61 81,67 77,71C73,74 67,73 64,68C61,63 62,56 66,53Z" />
+
+    <!-- bone tips -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M78,56m-3.5,0a3.5,3.5 0,1 1,7 0a3.5,3.5 0,1 1,-7 0" />
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M78,69m-3.5,0a3.5,3.5 0,1 1,7 0a3.5,3.5 0,1 1,-7 0" />
+
+    <!-- highlight -->
+    <path
+        android:fillColor="#F0B886"
+        android:pathData="M38,32C45,28 55,30 60,37C52,34 44,35 37,41C36,38 36,34 38,32Z" />
+
+</vector>

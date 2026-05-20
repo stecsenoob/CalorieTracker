@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- bowl shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M24,68C29,64 67,64 72,68C68,72 28,72 24,68Z" />
+
+    <!-- bowl -->
+    <path
+        android:fillColor="#D8DDE4"
+        android:pathData="M24,56H72C70,67 61,74 48,74C35,74 26,67 24,56Z" />
+
+    <!-- bowl inner -->
+    <path
+        android:fillColor="#EEF2F6"
+        android:pathData="M28,49C28,42 37,37 48,37C59,37 68,42 68,49C68,54 59,57 48,57C37,57 28,54 28,49Z" />
+
+    <!-- granola base -->
+    <path
+        android:fillColor="#B47B4A"
+        android:pathData="M29,49C29,42 37,38 48,38C59,38 67,42 67,49C67,53 60,56 48,56C36,56 29,53 29,49Z" />
+
+    <!-- granola clusters -->
+    <path
+        android:fillColor="#C88C56"
+        android:pathData="M32,43L39,41L43,47L36,49Z
+                          M43,40L50,39L54,45L47,47Z
+                          M54,42L61,41L65,47L58,49Z
+                          M36,49L44,48L47,54L39,55Z
+                          M48,47L56,46L60,52L52,54Z" />
+
+    <!-- toasted highlights -->
+    <path
+        android:fillColor="#DFA870"
+        android:pathData="M34,43L38,42L40,45L36,46Z
+                          M45,40L49,40L51,43L47,44Z
+                          M56,42L60,42L62,45L58,46Z" />
+
+    <!-- raisins -->
+    <path
+        android:fillColor="#8E4B3D"
+        android:pathData="M41,51m-1.4,0a1.4,1.8 0,1 1,2.8 0a1.4,1.8 0,1 1,-2.8 0
+                          M57,50m-1.4,0a1.4,1.8 0,1 1,2.8 0a1.4,1.8 0,1 1,-2.8 0" />
+
+    <!-- nut bits -->
+    <path
+        android:fillColor="#F1D8A6"
+        android:pathData="M47,51m-1.4,0a1.4,1 0,1 1,2.8 0a1.4,1 0,1 1,-2.8 0
+                          M35,48m-1.3,0a1.3,1 0,1 1,2.6 0a1.3,1 0,1 1,-2.6 0" />
+
+</vector>

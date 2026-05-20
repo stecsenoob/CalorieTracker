@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- plate/shadow -->
+    <path
+        android:fillColor="#E1D9CA"
+        android:pathData="M24,66C24,60 34,56 48,56C62,56 72,60 72,66C72,72 62,76 48,76C34,76 24,72 24,66Z"/>
+
+    <path
+        android:fillColor="#F8FAFB"
+        android:pathData="M29,64C29,60 37,58 48,58C59,58 67,60 67,64C67,68 59,71 48,71C37,71 29,68 29,64Z"/>
+
+    <!-- butter block shadow side -->
+    <path
+        android:fillColor="#D9A92E"
+        android:pathData="M31,43L64,37L69,57L36,64Z"/>
+
+    <!-- butter block main -->
+    <path
+        android:fillColor="#F4C84B"
+        android:pathData="M27,36L60,30L64,49L31,56Z"/>
+
+    <!-- butter top highlight -->
+    <path
+        android:fillColor="#FFE58A"
+        android:pathData="M31,38L58,33L60,41L33,47Z"/>
+
+    <!-- butter front face -->
+    <path
+        android:fillColor="#E8B93B"
+        android:pathData="M31,56L64,49L69,57L36,64Z"/>
+
+    <!-- small shine -->
+    <path
+        android:fillColor="#FFF0A6"
+        android:pathData="M38,37L51,35L52,38L39,41Z"/>
+
+</vector>

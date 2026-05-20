@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- back mushroom stem -->
+    <path
+        android:fillColor="#E8D8BE"
+        android:pathData="M52,43H61V66C61,69 59,71 56,71C53,71 52,69 52,66Z" />
+
+    <!-- back mushroom cap -->
+    <path
+        android:fillColor="#C8A57A"
+        android:pathData="M56,28C66,28 73,35 73,44H39C39,35 46,28 56,28Z" />
+
+    <!-- back mushroom highlight -->
+    <path
+        android:fillColor="#DAB78B"
+        android:pathData="M56,31C63,31 68,35 69,41H43C44,35 49,31 56,31Z" />
+
+    <!-- front mushroom stem -->
+    <path
+        android:fillColor="#F3E5CE"
+        android:pathData="M29,46H41V71C41,74 38,76 35,76C32,76 29,74 29,71Z" />
+
+    <!-- front mushroom cap -->
+    <path
+        android:fillColor="#B88F68"
+        android:pathData="M35,29C47,29 55,37 55,47H15C15,37 23,29 35,29Z" />
+
+    <!-- front mushroom highlight -->
+    <path
+        android:fillColor="#CCA07A"
+        android:pathData="M35,32C43,32 49,37 50,43H20C21,37 27,32 35,32Z" />
+
+    <!-- underside lines -->
+    <path
+        android:fillColor="#A57E5A"
+        android:pathData="M24,43H46V45H24Z
+                          M48,41H66V43H48Z" />
+
+</vector>

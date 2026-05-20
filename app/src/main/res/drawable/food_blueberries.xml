@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- outer background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- blueberries -->
+    <path
+        android:fillColor="#3B74C7"
+        android:pathData="M35,38m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0
+                          M55,38m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0
+                          M45,57m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"/>
+
+    <!-- highlights -->
+    <path
+        android:fillColor="#5B90E2"
+        android:pathData="M33,36m-2.2,0a2.2,2.2 0,1 1,4.4 0a2.2,2.2 0,1 1,-4.4 0
+                          M53,36m-2.2,0a2.2,2.2 0,1 1,4.4 0a2.2,2.2 0,1 1,-4.4 0
+                          M43,55m-2.2,0a2.2,2.2 0,1 1,4.4 0a2.2,2.2 0,1 1,-4.4 0"/>
+
+    <!-- crowns -->
+    <path
+        android:fillColor="#2E5EA4"
+        android:pathData="M35,38L33,34L35,35L37,33L39,35L41,34L39,38Z
+                          M55,38L53,34L55,35L57,33L59,35L61,34L59,38Z
+                          M45,57L43,53L45,54L47,52L49,54L51,53L49,57Z"/>
+
+</vector>

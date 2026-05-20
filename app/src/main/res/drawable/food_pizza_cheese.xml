@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- crust -->
+    <path
+        android:fillColor="#C9823C"
+        android:pathData="M26,26
+            C42,20 60,23 73,35
+            C75,37 75,40 73,42
+            L48,76
+            C47,78 44,78 43,75
+            L24,31
+            C23,29 24,27 26,26Z"/>
+
+    <!-- cheese slice -->
+    <path
+        android:fillColor="#F5C84B"
+        android:pathData="M30,31
+            C43,27 58,29 69,39
+            L46,70Z"/>
+
+    <!-- melted cheese highlight -->
+    <path
+        android:fillColor="#FFD96B"
+        android:pathData="M35,34
+            C45,31 55,33 64,39
+            L47,62
+            C45,57 47,52 43,49
+            C39,46 35,42 35,34Z"/>
+
+    <!-- cheese holes -->
+    <path
+        android:fillColor="#E7A937"
+        android:pathData="M44,39m-2.3,0a2.3,2.3 0,1 1,4.6 0a2.3,2.3 0,1 1,-4.6 0
+                          M55,45m-2.3,0a2.3,2.3 0,1 1,4.6 0a2.3,2.3 0,1 1,-4.6 0
+                          M47,56m-2.3,0a2.3,2.3 0,1 1,4.6 0a2.3,2.3 0,1 1,-4.6 0"/>
+
+    <!-- crust highlight -->
+    <path
+        android:fillColor="#E3A85A"
+        android:pathData="M28,27
+            C43,23 59,25 71,36
+            C69,38 66,38 63,36
+            C53,30 41,29 31,31
+            C28,32 26,30 28,27Z"/>
+
+    <!-- cheese drip -->
+    <path
+        android:fillColor="#F5C84B"
+        android:pathData="M49,62
+            C53,65 53,70 49,73
+            C46,70 46,65 49,62Z"/>
+
+</vector>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- stem -->
+    <path
+        android:fillColor="#CBBE93"
+        android:pathData="M44,18C44,13 47,10 51,10C54,10 56,13 56,18C56,23 53,27 50,30H46C45,27 44,23 44,18Z" />
+
+    <!-- left clove -->
+    <path
+        android:fillColor="#F4E8CF"
+        android:pathData="M33,49C33,39 39,32 46,32C51,32 55,39 55,49C55,61 50,70 44,70C37,70 33,61 33,49Z" />
+
+    <!-- right clove -->
+    <path
+        android:fillColor="#FFF4DE"
+        android:pathData="M41,49C41,39 47,32 54,32C61,32 67,39 67,49C67,61 61,70 54,70C47,70 41,61 41,49Z" />
+
+    <!-- front center clove -->
+    <path
+        android:fillColor="#FFF8EA"
+        android:pathData="M37,56C37,46 42,39 48,39C54,39 59,46 59,56C59,66 54,73 48,73C42,73 37,66 37,56Z" />
+
+    <!-- bottom shadow -->
+    <path
+        android:fillColor="#E9D9B6"
+        android:pathData="M39,67C43,70 53,70 57,67C55,72 51,75 48,75C45,75 41,72 39,67Z" />
+
+    <!-- subtle lines -->
+    <path
+        android:fillColor="#E5D3AF"
+        android:pathData="M48,39C50,45 50,56 49,70H47C46,56 46,45 48,39Z
+                          M41,37C42,43 42,54 41,66C39,61 38,55 38,48C38,43 39,40 41,37Z
+                          M55,37C58,40 59,45 59,51C59,57 58,62 56,66C55,54 55,43 55,37Z" />
+
+</vector>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- bowl -->
+    <path
+        android:fillColor="#DDE3EA"
+        android:pathData="M23,52H73C72,67 62,76 48,76C34,76 24,67 23,52Z"/>
+
+    <path
+        android:fillColor="#F7FAFC"
+        android:pathData="M23,50C23,44 34,40 48,40C62,40 73,44 73,50C73,56 62,60 48,60C34,60 23,56 23,50Z"/>
+
+    <!-- stew sauce -->
+    <path
+        android:fillColor="#8E4F32"
+        android:pathData="M29,50C29,45 37,42 48,42C59,42 67,45 67,50C67,55 59,58 48,58C37,58 29,55 29,50Z"/>
+
+    <!-- beef cubes -->
+    <path
+        android:fillColor="#5D3425"
+        android:pathData="M36,47H45C46.7,47 48,48.3 48,50V54C48,55.7 46.7,57 45,57H36C34.3,57 33,55.7 33,54V50C33,48.3 34.3,47 36,47Z"/>
+
+    <path
+        android:fillColor="#6B3C2A"
+        android:pathData="M52,45H61C62.7,45 64,46.3 64,48V52C64,53.7 62.7,55 61,55H52C50.3,55 49,53.7 49,52V48C49,46.3 50.3,45 52,45Z"/>
+
+    <!-- potato cubes -->
+    <path
+        android:fillColor="#E2C47A"
+        android:pathData="M42,42H48C49.7,42 51,43.3 51,45V48C51,49.7 49.7,51 48,51H42C40.3,51 39,49.7 39,48V45C39,43.3 40.3,42 42,42Z"/>
+
+    <!-- carrot pieces -->
+    <path
+        android:fillColor="#E9822B"
+        android:pathData="M31,51m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0
+                          M58,56m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0
+                          M50,53m-2,0a2,1.5 0,1 1,4 0a2,1.5 0,1 1,-4 0"/>
+
+    <!-- peas/herbs -->
+    <path
+        android:fillColor="#5BA84A"
+        android:pathData="M35,44m-1.3,0a1.3,1.3 0,1 1,2.6 0a1.3,1.3 0,1 1,-2.6 0
+                          M55,43m-1.3,0a1.3,1.3 0,1 1,2.6 0a1.3,1.3 0,1 1,-2.6 0
+                          M64,52m-1.3,0a1.3,1.3 0,1 1,2.6 0a1.3,1.3 0,1 1,-2.6 0"/>
+
+    <!-- sauce shine -->
+    <path
+        android:fillColor="#A9643D"
+        android:pathData="M33,47C38,43 48,43 55,45C47,46 39,48 34,52C32.5,51 32,49 33,47Z"/>
+
+</vector>

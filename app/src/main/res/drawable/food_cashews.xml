@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- cashew 1 -->
+    <path
+        android:fillColor="#E8C786"
+        android:pathData="M25,41
+            C28,33 37,29 45,31
+            C52,33 56,39 54,46
+            C52,52 45,56 38,56
+            C34,56 31,55 28,53
+            C33,53 38,51 41,47
+            C44,43 43,38 39,35
+            C35,32 29,34 25,41Z"/>
+
+    <path
+        android:fillColor="#F4DEAE"
+        android:pathData="M31,38
+            C35,35 40,35 44,37
+            C40,37 37,39 35,42
+            C33,45 33,48 35,51
+            C31,49 29,43 31,38Z"/>
+
+    <!-- cashew 2 -->
+    <path
+        android:fillColor="#DDB46F"
+        android:pathData="M45,29
+            C49,22 58,20 66,22
+            C73,24 77,30 75,37
+            C73,43 66,47 59,47
+            C55,47 52,46 49,44
+            C54,44 59,42 62,38
+            C65,34 64,29 60,26
+            C56,23 50,24 45,29Z"/>
+
+    <path
+        android:fillColor="#F3DCA8"
+        android:pathData="M51,27
+            C55,24 60,24 64,26
+            C60,26 57,28 55,31
+            C53,34 53,37 55,40
+            C51,38 49,32 51,27Z"/>
+
+    <!-- cashew 3 -->
+    <path
+        android:fillColor="#EDCC8D"
+        android:pathData="M33,61
+            C37,53 46,50 54,52
+            C61,54 65,60 63,67
+            C61,73 54,77 47,77
+            C43,77 40,76 37,74
+            C42,74 47,72 50,68
+            C53,64 52,59 48,56
+            C44,53 38,55 33,61Z"/>
+
+    <path
+        android:fillColor="#F7E6BE"
+        android:pathData="M39,58
+            C43,55 48,55 52,57
+            C48,57 45,59 43,62
+            C41,65 41,68 43,71
+            C39,69 37,63 39,58Z"/>
+
+    <!-- cashew 4 -->
+    <path
+        android:fillColor="#D4A761"
+        android:pathData="M53,57
+            C57,49 66,47 74,49
+            C81,51 84,57 82,64
+            C80,70 73,74 66,74
+            C62,74 59,73 56,71
+            C61,71 66,69 69,65
+            C72,61 71,56 67,53
+            C63,50 57,51 53,57Z"/>
+
+    <path
+        android:fillColor="#F0D8A4"
+        android:pathData="M59,55
+            C63,52 68,52 72,54
+            C68,54 65,56 63,59
+            C61,62 61,65 63,68
+            C59,66 57,60 59,55Z"/>
+
+    <!-- soft shadows/details -->
+    <path
+        android:fillColor="#C69656"
+        android:pathData="M39,35
+            C43,38 44,43 41,47
+            C39,50 35,52 30,53
+            C35,50 38,47 39,43
+            C40,40 40,37 39,35Z
+            M60,26
+            C64,29 65,34 62,38
+            C60,41 56,43 51,44
+            C56,41 59,38 60,34
+            C61,31 61,28 60,26Z
+            M48,56
+            C52,59 53,64 50,68
+            C48,71 44,73 39,74
+            C44,71 47,68 48,64
+            C49,61 49,58 48,56Z
+            M67,53
+            C71,56 72,61 69,65
+            C67,68 63,70 58,71
+            C63,68 66,65 67,61
+            C68,58 68,55 67,53Z"/>
+
+</vector>

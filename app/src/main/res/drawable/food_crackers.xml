@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- cracker back -->
+    <path
+        android:fillColor="#D9A85F"
+        android:pathData="M25,32H57C59.2,32 61,33.8 61,36V56C61,58.2 59.2,60 57,60H25C22.8,60 21,58.2 21,56V36C21,33.8 22.8,32 25,32Z"/>
+
+    <!-- cracker front -->
+    <path
+        android:fillColor="#E8BE78"
+        android:pathData="M38,43H70C72.2,43 74,44.8 74,47V67C74,69.2 72.2,71 70,71H38C35.8,71 34,69.2 34,67V47C34,44.8 35.8,43 38,43Z"/>
+
+    <!-- cracker holes back -->
+    <path
+        android:fillColor="#B98245"
+        android:pathData="M30,39m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M41,39m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M52,39m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M35,52m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M47,52m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0"/>
+
+    <!-- cracker holes front -->
+    <path
+        android:fillColor="#C79251"
+        android:pathData="M44,50m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M55,50m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M66,50m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M44,62m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M55,62m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M66,62m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0"/>
+
+    <!-- edge highlights -->
+    <path
+        android:fillColor="#F2D49A"
+        android:pathData="M38,43H70C72.2,43 74,44.8 74,47V49H34V47C34,44.8 35.8,43 38,43Z"/>
+
+</vector>

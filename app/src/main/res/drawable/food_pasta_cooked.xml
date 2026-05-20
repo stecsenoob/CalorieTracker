@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- soft background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- plate shadow -->
+    <path
+        android:fillColor="#D8D1C6"
+        android:pathData="M21,69C27,64 69,64 75,69C70,73 26,73 21,69Z" />
+
+    <!-- plate -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M48,28C31,28 19,38 19,52C19,66 31,76 48,76C65,76 77,66 77,52C77,38 65,28 48,28Z" />
+
+    <!-- inner plate -->
+    <path
+        android:fillColor="#F8F8F8"
+        android:pathData="M48,32C34,32 24,41 24,52C24,63 34,71 48,71C62,71 72,63 72,52C72,41 62,32 48,32Z" />
+
+    <!-- sauce base -->
+    <path
+        android:fillColor="#D45A45"
+        android:pathData="M28,53C28,43 37,36 48,36C59,36 68,43 68,53C68,61 61,67 48,67C35,67 28,61 28,53Z" />
+
+    <!-- penne piece 1 -->
+    <path
+        android:fillColor="#F1BF64"
+        android:pathData="M31,43L41,40L48,48L38,51Z" />
+    <path
+        android:fillColor="#D99F47"
+        android:pathData="M34,44L39,43L43,47L38,48Z" />
+
+    <!-- penne piece 2 -->
+    <path
+        android:fillColor="#F4C86D"
+        android:pathData="M44,39L55,39L60,48L49,48Z" />
+    <path
+        android:fillColor="#DEAA4E"
+        android:pathData="M47,41L53,41L57,46L51,46Z" />
+
+    <!-- penne piece 3 -->
+    <path
+        android:fillColor="#F2C268"
+        android:pathData="M56,45L66,42L71,50L61,53Z" />
+    <path
+        android:fillColor="#DAA148"
+        android:pathData="M59,45L64,44L67,49L62,50Z" />
+
+    <!-- penne piece 4 -->
+    <path
+        android:fillColor="#F5CE77"
+        android:pathData="M34,53L45,52L49,60L38,61Z" />
+    <path
+        android:fillColor="#E0AE53"
+        android:pathData="M37,54L43,54L46,59L40,59Z" />
+
+    <!-- penne piece 5 -->
+    <path
+        android:fillColor="#F2C56E"
+        android:pathData="M48,52L59,50L64,58L53,61Z" />
+    <path
+        android:fillColor="#D89F47"
+        android:pathData="M51,52L56,51L60,56L55,57Z" />
+
+    <!-- penne piece 6 -->
+    <path
+        android:fillColor="#F3C76F"
+        android:pathData="M39,46L48,44L54,51L45,54Z" />
+    <path
+        android:fillColor="#DCA54D"
+        android:pathData="M42,46L47,45L50,49L45,50Z" />
+
+    <!-- tomato chunks -->
+    <path
+        android:fillColor="#C94135"
+        android:pathData="M35,41m-1.8,0a1.8,1.8 0,1 1,3.6 0a1.8,1.8 0,1 1,-3.6 0
+                          M60,44m-1.8,0a1.8,1.8 0,1 1,3.6 0a1.8,1.8 0,1 1,-3.6 0
+                          M55,59m-1.8,0a1.8,1.8 0,1 1,3.6 0a1.8,1.8 0,1 1,-3.6 0
+                          M40,59m-1.8,0a1.8,1.8 0,1 1,3.6 0a1.8,1.8 0,1 1,-3.6 0" />
+
+    <!-- parmesan flakes -->
+    <path
+        android:fillColor="#FFF5DA"
+        android:pathData="M42,43L45,44L44,47L41,46Z
+                          M52,44L55,45L54,48L51,47Z
+                          M46,50L49,51L48,54L45,53Z
+                          M57,52L60,53L59,56L56,55Z
+                          M39,55L42,56L41,59L38,58Z" />
+
+    <!-- herb leaf -->
+    <path
+        android:fillColor="#52AD58"
+        android:pathData="M53,37C57,34 62,35 65,40C60,42 56,41 53,37Z" />
+    <path
+        android:fillColor="#3E9044"
+        android:pathData="M56,41L61,37L62,39L57,43Z" />
+
+    <!-- subtle highlight -->
+    <path
+        android:fillColor="#F7D58B"
+        android:pathData="M38,39C45,36 56,36 63,40C55,40 46,40 38,43Z" />
+
+</vector>

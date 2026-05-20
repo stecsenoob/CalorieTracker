@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="2dp"
+    android:layout_marginEnd="2dp"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="18dp"
     app:cardElevation="2dp"
@@ -14,32 +16,169 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:minHeight="86dp"
+        android:paddingStart="12dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFoodImage"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E7DFF6"
+            app:cardBackgroundColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivFood"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
             android:text="Banana"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="17sp"
             android:textColor="#111111"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/cardFav" />
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@id/cardFoodImage"
+            app:layout_constraintTop_toTopOf="@id/cardFoodImage"
+            app:layout_constraintEnd_toStartOf="@id/cardDelete" />
 
-        <TextView
-            android:id="@+id/tvSub"
+        <LinearLayout
+            android:id="@+id/infoContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
-            android:text="1 medium (118g) • 105 kcal\nProtein: 1.3g | Fat: 0.4g | Carbs: 27.0g"
-            android:textSize="13sp"
-            android:lineSpacingExtra="2dp"
-            android:textColor="#6F6F6F"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/cardFoodImage"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
-            app:layout_constraintEnd_toStartOf="@id/cardFav" />
+            app:layout_constraintEnd_toStartOf="@id/cardDelete"
+            app:layout_constraintBottom_toBottomOf="@id/cardFoodImage">
+
+            <TextView
+                android:id="@+id/tvPortionKcal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100g • 89 kcal"
+                android:textSize="12.5sp"
+                android:textColor="#6F6F6F"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <HorizontalScrollView
+                android:id="@+id/chipsScroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:scrollbars="none"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:id="@+id/chipsRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvProteinChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/bg_chip_protein"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:text="Protein: 1.1g"
+                        android:textSize="11.5sp"
+                        android:textStyle="bold"
+                        android:textColor="#111111"
+                        android:maxLines="1" />
+
+                    <TextView
+                        android:id="@+id/tvFatChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/bg_chip_fat"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:text="Fat: 0.3g"
+                        android:textSize="11.5sp"
+                        android:textStyle="bold"
+                        android:textColor="#111111"
+                        android:maxLines="1" />
+
+                    <TextView
+                        android:id="@+id/tvCarbsChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_chip_carbs"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:text="Carbs: 22.8g"
+                        android:textSize="11.5sp"
+                        android:textStyle="bold"
+                        android:textColor="#111111"
+                        android:maxLines="1" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardDelete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#F3D0D0"
+            app:cardBackgroundColor="#FFFFFF"
+            app:layout_constraintEnd_toStartOf="@id/cardFav"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="@null"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="9dp"
+                app:tint="#E53935" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardFav"
@@ -51,7 +190,8 @@
             app:strokeColor="#E7DFF6"
             app:cardBackgroundColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageView
                 android:id="@+id/ivFav"
@@ -61,35 +201,8 @@
                 android:contentDescription="@null"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="8dp"
+                android:padding="9dp"
                 app:tint="#B0B0B0" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardDelete"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="0dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="#F3D0D0"
-            app:cardBackgroundColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardFav">
-
-            <ImageView
-                android:id="@+id/ivDelete"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_delete"
-                android:contentDescription="@null"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="8dp"
-                app:tint="#E53935" />
 
         </com.google.android.material.card.MaterialCardView>
 

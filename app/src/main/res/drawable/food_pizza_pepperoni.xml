@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- crust -->
+    <path
+        android:fillColor="#C9823C"
+        android:pathData="M26,26
+            C42,20 60,23 73,35
+            C75,37 75,40 73,42
+            L48,76
+            C47,78 44,78 43,75
+            L24,31
+            C23,29 24,27 26,26Z"/>
+
+    <!-- cheese -->
+    <path
+        android:fillColor="#F5C84B"
+        android:pathData="M30,31
+            C43,27 58,29 69,39
+            L46,70Z"/>
+
+    <!-- cheese shine -->
+    <path
+        android:fillColor="#FFD96B"
+        android:pathData="M35,34
+            C45,31 55,33 64,39
+            L47,62
+            C45,57 47,52 43,49
+            C39,46 35,42 35,34Z"/>
+
+    <!-- pepperoni -->
+    <path
+        android:fillColor="#C94135"
+        android:pathData="M43,39m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M56,46m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M47,58m-4.5,0a4.5,4.5 0,1 1,9 0a4.5,4.5 0,1 1,-9 0"/>
+
+    <!-- pepperoni highlights -->
+    <path
+        android:fillColor="#E85D4D"
+        android:pathData="M41,37m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M54,44m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0
+                          M45,56m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0"/>
+
+    <!-- crust highlight -->
+    <path
+        android:fillColor="#E3A85A"
+        android:pathData="M28,27
+            C43,23 59,25 71,36
+            C69,38 66,38 63,36
+            C53,30 41,29 31,31
+            C28,32 26,30 28,27Z"/>
+
+</vector>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- lid -->
+    <path
+        android:fillColor="#C84E3A"
+        android:pathData="M26,24H70C72.2,24 74,25.8 74,28V34H22V28C22,25.8 23.8,24 26,24Z"/>
+
+    <!-- jar body -->
+    <path
+        android:fillColor="#F2E6D5"
+        android:pathData="M28,33H68C70.2,33 72,34.8 72,37V66C72,68.2 70.2,70 68,70H28C25.8,70 24,68.2 24,66V37C24,34.8 25.8,33 28,33Z"/>
+
+    <!-- peanut butter fill -->
+    <path
+        android:fillColor="#C68A4C"
+        android:pathData="M29,39H67C68.7,39 70,40.3 70,42V64C70,65.7 68.7,67 67,67H29C27.3,67 26,65.7 26,64V42C26,40.3 27.3,39 29,39Z"/>
+
+    <!-- label -->
+    <path
+        android:fillColor="#F8F2EA"
+        android:pathData="M31,44H65C66.1,44 67,44.9 67,46V60C67,61.1 66.1,62 65,62H31C29.9,62 29,61.1 29,60V46C29,44.9 29.9,44 31,44Z"/>
+
+    <!-- peanuts on label -->
+    <path
+        android:fillColor="#D8A56A"
+        android:pathData="M37,51C37,47.7 39.6,45 43,45C45.5,45 47.7,46.6 48.4,48.9C51.5,48.5 54,50.8 54,53.7C54,57 51.4,59.7 48,59.7C45.5,59.7 43.4,58.2 42.6,55.9C39.6,56.2 37,53.9 37,51Z"/>
+    <path
+        android:fillColor="#E7C08B"
+        android:pathData="M40,49C41.1,47.8 42.8,47.5 44.3,48.1C43.2,50.1 43.2,52.5 44.4,54.4C42.2,54.4 40.1,52.7 39.7,50.7Z"/>
+
+    <!-- label text band -->
+    <path
+        android:fillColor="#D8452F"
+        android:pathData="M29,57H67V62H29Z"/>
+
+</vector>

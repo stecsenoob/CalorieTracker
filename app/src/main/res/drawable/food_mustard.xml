@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- bottle shadow -->
+    <path
+        android:fillColor="#D8D0C4"
+        android:pathData="M33,77C33,74 40,72 48,72C56,72 63,74 63,77C63,80 56,82 48,82C40,82 33,80 33,77Z"/>
+
+    <!-- cap -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:pathData="M39,18H57C59,18 60,19 60,21V28H36V21C36,19 37,18 39,18Z"/>
+
+    <!-- bottle neck -->
+    <path
+        android:fillColor="#E5B82E"
+        android:pathData="M40,27H56V38H40Z"/>
+
+    <!-- bottle body -->
+    <path
+        android:fillColor="#F2C230"
+        android:pathData="M35,36H61C64,36 66,39 66,42V69C66,73 63,76 59,76H37C33,76 30,73 30,69V42C30,39 32,36 35,36Z"/>
+
+    <!-- mustard shade -->
+    <path
+        android:fillColor="#D8A91F"
+        android:pathData="M55,37H61C64,37 66,40 66,43V69C66,73 63,76 59,76H54Z"/>
+
+    <!-- label -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M35,48H61C62.1,48 63,48.9 63,50V62C63,63.1 62.1,64 61,64H35C33.9,64 33,63.1 33,62V50C33,48.9 33.9,48 35,48Z"/>
+
+    <!-- mustard band -->
+    <path
+        android:fillColor="#F2C230"
+        android:pathData="M37,54H59V59H37Z"/>
+
+    <!-- little mustard dots -->
+    <path
+        android:fillColor="#B98A18"
+        android:pathData="M42,52m-1.1,0a1.1,1.1 0,1 1,2.2 0a1.1,1.1 0,1 1,-2.2 0
+                          M50,52m-1.1,0a1.1,1.1 0,1 1,2.2 0a1.1,1.1 0,1 1,-2.2 0
+                          M55,61m-1.1,0a1.1,1.1 0,1 1,2.2 0a1.1,1.1 0,1 1,-2.2 0"/>
+
+    <!-- shine -->
+    <path
+        android:fillColor="#FFD85C"
+        android:pathData="M35,41C37,39 40,39 42,41V68C40,66 37,66 35,68Z"/>
+
+</vector>

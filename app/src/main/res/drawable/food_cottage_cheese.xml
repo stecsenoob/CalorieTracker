@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- soft background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- bowl shadow -->
+    <path
+        android:fillColor="#D9D0C3"
+        android:pathData="M25,66C30,61 66,61 71,66C67,70 29,70 25,66Z" />
+
+    <!-- glass bowl outer -->
+    <path
+        android:fillColor="#EAF1F5"
+        android:pathData="M24,49C24,39 35,33 48,33C61,33 72,39 72,49C72,62 62,72 48,72C34,72 24,62 24,49Z" />
+
+    <!-- glass bowl inner -->
+    <path
+        android:fillColor="#F7FBFD"
+        android:pathData="M28,50C28,42 37,37 48,37C59,37 68,42 68,50C68,60 59,67 48,67C37,67 28,60 28,50Z" />
+
+    <!-- bowl rim -->
+    <path
+        android:fillColor="#DCE6EB"
+        android:pathData="M48,36m-22,0a22,6 0,1 1,44 0a22,6 0,1 1,-44 0" />
+
+    <!-- cottage cheese main mass -->
+    <path
+        android:fillColor="#FFFDF8"
+        android:pathData="M29,47C29,41 36,37 44,37C47,32 53,31 58,35C66,35 70,40 70,46C70,50 67,53 65,56C64,60 59,63 53,63C48,66 39,65 34,62C28,60 25,55 25,50C25,48 27,47 29,47Z" />
+
+    <!-- curd clusters -->
+    <path
+        android:fillColor="#FFFDFC"
+        android:pathData="M34,46m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0
+                          M43,43m-4.5,0a4.5,4.5 0,1 1,9 0a4.5,4.5 0,1 1,-9 0
+                          M53,42m-4.5,0a4.5,4.5 0,1 1,9 0a4.5,4.5 0,1 1,-9 0
+                          M61,45m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0
+                          M31,54m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0
+                          M41,54m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M52,55m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M62,54m-4.5,0a4.5,4.5 0,1 1,9 0a4.5,4.5 0,1 1,-9 0" />
+
+    <!-- small texture shadows -->
+    <path
+        android:fillColor="#EEE8DD"
+        android:pathData="M34,46m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M45,43m-1.1,0a1.1,1.1 0,1 1,2.2 0a1.1,1.1 0,1 1,-2.2 0
+                          M55,44m-1.1,0a1.1,1.1 0,1 1,2.2 0a1.1,1.1 0,1 1,-2.2 0
+                          M39,56m-1.1,0a1.1,1.1 0,1 1,2.2 0a1.1,1.1 0,1 1,-2.2 0
+                          M51,57m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M61,55m-1.1,0a1.1,1.1 0,1 1,2.2 0a1.1,1.1 0,1 1,-2.2 0" />
+
+    <!-- glass highlight -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,49C30,43 36,39 41,39C37,42 35,46 35,51C35,57 39,61 45,64C37,63 30,58 30,49Z" />
+
+</vector>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- whole grapefruit behind -->
+    <path
+        android:fillColor="#F28C61"
+        android:pathData="M58,28
+            C69,28 77,36 77,47
+            C77,58 69,66 58,66
+            C47,66 39,58 39,47
+            C39,36 47,28 58,28Z"/>
+
+    <!-- whole grapefruit shine -->
+    <path
+        android:fillColor="#F8AE82"
+        android:pathData="M54,33
+            C60,31 67,34 70,40
+            C64,38 58,39 53,44
+            C51,41 51.5,36 54,33Z"/>
+
+    <!-- half grapefruit rind -->
+    <path
+        android:fillColor="#F5B15C"
+        android:pathData="M23,50
+            C23,37 33,27 46,27
+            C59,27 69,37 69,50
+            C69,63 59,73 46,73
+            C33,73 23,63 23,50Z"/>
+
+    <!-- inner white rind -->
+    <path
+        android:fillColor="#FFF3D6"
+        android:pathData="M28,50
+            C28,40 36,32 46,32
+            C56,32 64,40 64,50
+            C64,60 56,68 46,68
+            C36,68 28,60 28,50Z"/>
+
+    <!-- pink flesh -->
+    <path
+        android:fillColor="#F26371"
+        android:pathData="M32,50
+            C32,42 38,36 46,36
+            C54,36 60,42 60,50
+            C60,58 54,64 46,64
+            C38,64 32,58 32,50Z"/>
+
+    <!-- grapefruit segments -->
+    <path
+        android:fillColor="#FF8A8F"
+        android:pathData="M45,37H47V63H45Z
+                          M33,49H59V51H33Z
+                          M37,40L56,59L54,61L35,42Z
+                          M56,42L37,61L35,59L54,40Z"/>
+
+    <!-- center -->
+    <path
+        android:fillColor="#FFF3D6"
+        android:pathData="M46,50m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"/>
+
+</vector>

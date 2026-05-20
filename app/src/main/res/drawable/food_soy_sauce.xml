@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- bottle shadow -->
+    <path
+        android:fillColor="#D8D0C4"
+        android:pathData="M33,77C33,74 40,72 48,72C56,72 63,74 63,77C63,80 56,82 48,82C40,82 33,80 33,77Z"/>
+
+    <!-- cap red -->
+    <path
+        android:fillColor="#C43A30"
+        android:pathData="M39,18H57C59,18 60,19 60,21V28H36V21C36,19 37,18 39,18Z"/>
+
+    <!-- bottle neck -->
+    <path
+        android:fillColor="#4B2419"
+        android:pathData="M40,27H56V38H40Z"/>
+
+    <!-- bottle body -->
+    <path
+        android:fillColor="#2D1712"
+        android:pathData="M35,36H61C64,36 66,39 66,42V69C66,73 63,76 59,76H37C33,76 30,73 30,69V42C30,39 32,36 35,36Z"/>
+
+    <!-- soy sauce liquid shine/shade -->
+    <path
+        android:fillColor="#4B2419"
+        android:pathData="M35,41C37,39 40,39 42,41V68C40,66 37,66 35,68Z"/>
+
+    <!-- label -->
+    <path
+        android:fillColor="#F7E8D0"
+        android:pathData="M35,48H61C62.1,48 63,48.9 63,50V63C63,64.1 62.1,65 61,65H35C33.9,65 33,64.1 33,63V50C33,48.9 33.9,48 35,48Z"/>
+
+    <!-- red label circle -->
+    <path
+        android:fillColor="#C43A30"
+        android:pathData="M48,52
+            C52,52 55,55 55,58
+            C55,61 52,64 48,64
+            C44,64 41,61 41,58
+            C41,55 44,52 48,52Z"/>
+
+    <!-- soy line -->
+    <path
+        android:fillColor="#2D1712"
+        android:pathData="M37,67H59V70H37Z"/>
+
+</vector>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- soft background circle -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- chicken breast main shape -->
+    <path
+        android:fillColor="#D99A63"
+        android:pathData="M27,49C27,36 38,27 51,27C64,27 72,36 72,48C72,61 61,69 47,69C34,69 27,61 27,49Z" />
+
+    <!-- lighter cooked area -->
+    <path
+        android:fillColor="#E8B27A"
+        android:pathData="M33,48C33,39 41,33 51,33C61,33 66,40 66,48C66,57 58,62 48,62C39,62 33,57 33,48Z" />
+
+    <!-- grilled/browned edge -->
+    <path
+        android:fillColor="#B96F3E"
+        android:pathData="M30,54C36,63 54,66 65,55C61,66 49,72 37,67C31,64 28,59 30,54Z" />
+
+    <!-- grill marks -->
+    <path
+        android:fillColor="#8F4E2C"
+        android:pathData="M40,38L45,40L38,58L33,56Z" />
+
+    <path
+        android:fillColor="#8F4E2C"
+        android:pathData="M52,35L57,37L49,61L44,59Z" />
+
+    <path
+        android:fillColor="#8F4E2C"
+        android:pathData="M63,42L67,45L59,60L55,58Z" />
+
+    <!-- small highlight -->
+    <path
+        android:fillColor="#F1C28E"
+        android:pathData="M43,35C48,32 57,34 61,39C54,37 48,38 41,42C41,39 42,37 43,35Z" />
+
+</vector>

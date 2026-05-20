@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- Turkey breast slices on plate - light meat, sliced so it differs from chicken -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M24,66C30,72 66,72 72,66C70,75 61,80 48,80C35,80 26,75 24,66Z" />
+
+    <path
+        android:fillColor="#D8A06D"
+        android:pathData="M28,48C28,35 40,26 55,29C68,32 75,45 69,57C63,69 46,71 35,64C30,61 28,55 28,48Z" />
+
+    <path
+        android:fillColor="#F0C69A"
+        android:pathData="M34,48C34,39 43,33 54,35C63,37 68,46 64,54C60,62 48,64 39,59C36,57 34,53 34,48Z" />
+
+    <!-- slice lines -->
+    <path
+        android:fillColor="#B87545"
+        android:pathData="M41,36L45,38L37,61L33,59Z" />
+
+    <path
+        android:fillColor="#B87545"
+        android:pathData="M51,34L55,36L47,64L43,62Z" />
+
+    <path
+        android:fillColor="#B87545"
+        android:pathData="M61,39L65,42L56,62L52,60Z" />
+
+    <!-- light highlight -->
+    <path
+        android:fillColor="#F8D7B3"
+        android:pathData="M43,34C50,32 59,35 63,41C56,38 48,38 41,43C40,39 41,36 43,34Z" />
+
+</vector>

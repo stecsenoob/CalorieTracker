@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0"/>
+
+    <!-- glass shadow -->
+    <path
+        android:fillColor="#D8D0C4"
+        android:pathData="M33,76C33,73 40,71 48,71C56,71 63,73 63,76C63,79 56,81 48,81C40,81 33,79 33,76Z"/>
+
+    <!-- glass body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,28H62L59,74H37Z"/>
+
+    <!-- latte milk layer -->
+    <path
+        android:fillColor="#E8C79B"
+        android:pathData="M36,41H60L58,71H38Z"/>
+
+    <!-- coffee layer top -->
+    <path
+        android:fillColor="#8B5A3C"
+        android:pathData="M36,36H60V45H36Z"/>
+
+    <!-- foam -->
+    <path
+        android:fillColor="#F7E8D0"
+        android:pathData="M34,34C34,30 39,27 48,27C57,27 62,30 62,34C62,38 57,41 48,41C39,41 34,38 34,34Z"/>
+
+    <!-- foam highlight -->
+    <path
+        android:fillColor="#FFF5E6"
+        android:pathData="M39,33C42,30 49,30 55,32C51,33 45,35 41,37C39,36.5 38.5,35 39,33Z"/>
+
+    <!-- glass rim -->
+    <path
+        android:fillColor="#DDE3EA"
+        android:pathData="M33,28C33,25 38,23 48,23C58,23 63,25 63,28C63,31 58,33 48,33C38,33 33,31 33,28Z"/>
+
+    <path
+        android:fillColor="#F9FAFB"
+        android:pathData="M36,28C36,27 39,26 48,26C57,26 60,27 60,28C60,29 57,30 48,30C39,30 36,29 36,28Z"/>
+
+    <!-- glass shine -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,34H43L42,66H38Z"/>
+
+    <!-- subtle right shade -->
+    <path
+        android:fillColor="#D6A977"
+        android:pathData="M55,43H60L58,71H54Z"/>
+
+</vector>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- chickpeas -->
+    <path
+        android:fillColor="#D9BF78"
+        android:pathData="M31,33m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M45,31m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M59,34m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M37,44m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M52,44m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M66,47m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M30,55m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M45,57m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0
+                          M60,57m-5,0a5,5 0,1 1,10 0a5,5 0,1 1,-10 0" />
+
+    <!-- chickpea dents -->
+    <path
+        android:fillColor="#BFA45E"
+        android:pathData="M31,35m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M45,33m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M59,36m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M37,46m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M52,46m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M30,57m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M45,59m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0
+                          M60,59m-1.2,0a1.2,1.2 0,1 1,2.4 0a1.2,1.2 0,1 1,-2.4 0" />
+
+</vector>
