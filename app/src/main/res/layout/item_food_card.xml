@@ -154,14 +154,14 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardDelete"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
             android:layout_marginEnd="8dp"
             android:visibility="gone"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="19dp"
             app:cardElevation="0dp"
             app:strokeWidth="1dp"
-            app:strokeColor="#F3D0D0"
+            app:strokeColor="#F0CACA"
             app:cardBackgroundColor="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@id/cardFav"
             app:layout_constraintTop_toTopOf="parent"
@@ -175,19 +175,19 @@
                 android:contentDescription="@null"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="9dp"
+                android:padding="8dp"
                 app:tint="#E53935" />
 
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardFav"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:cardCornerRadius="20dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            app:cardCornerRadius="19dp"
             app:cardElevation="0dp"
             app:strokeWidth="1dp"
-            app:strokeColor="#E7DFF6"
+            app:strokeColor="#E1D8F0"
             app:cardBackgroundColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -201,8 +201,8 @@
                 android:contentDescription="@null"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="9dp"
-                app:tint="#B0B0B0" />
+                android:padding="8dp"
+                app:tint="#A8A8A8" />
 
         </com.google.android.material.card.MaterialCardView>
 

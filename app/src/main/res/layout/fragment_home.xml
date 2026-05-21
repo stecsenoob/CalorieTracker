@@ -10,11 +10,11 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogout"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="12dp"
-        android:backgroundTint="#F5EFFB"
+        android:backgroundTint="#FAF7FD"
         android:contentDescription="Log out"
         android:insetLeft="0dp"
         android:insetTop="0dp"
@@ -23,12 +23,12 @@
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:padding="0dp"
-        app:cornerRadius="21dp"
+        app:cornerRadius="19dp"
         app:icon="@drawable/ic_logout_24"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
-        app:iconSize="22dp"
-        app:iconTint="#7B1FA2"
+        app:iconSize="20dp"
+        app:iconTint="#8E55B8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +90,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="14dp"
+                    android:padding="12dp"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -144,7 +144,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="8dp"
                         android:scrollbars="none"
                         android:overScrollMode="never"
                         android:clipChildren="false"
@@ -182,8 +182,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#1B5E20"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_protein"/>
 
                             <TextView
@@ -195,8 +195,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#E65100"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_fat"/>
 
                             <TextView
@@ -208,8 +208,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#0D47A1"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_carbs"/>
                         </LinearLayout>
                     </HorizontalScrollView>
@@ -234,7 +234,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="14dp"
+                    android:padding="12dp"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -288,7 +288,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="8dp"
                         android:scrollbars="none"
                         android:overScrollMode="never"
                         android:clipChildren="false"
@@ -326,8 +326,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#1B5E20"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_protein"/>
 
                             <TextView
@@ -339,8 +339,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#E65100"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_fat"/>
 
                             <TextView
@@ -352,8 +352,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#0D47A1"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_carbs"/>
                         </LinearLayout>
                     </HorizontalScrollView>
@@ -378,7 +378,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="14dp"
+                    android:padding="12dp"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -432,7 +432,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="8dp"
                         android:scrollbars="none"
                         android:overScrollMode="never"
                         android:clipChildren="false"
@@ -470,8 +470,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#1B5E20"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_protein"/>
 
                             <TextView
@@ -483,8 +483,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#E65100"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_fat"/>
 
                             <TextView
@@ -496,8 +496,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#0D47A1"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_carbs"/>
                         </LinearLayout>
                     </HorizontalScrollView>
@@ -522,7 +522,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="14dp"
+                    android:padding="12dp"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
@@ -576,7 +576,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="8dp"
                         android:scrollbars="none"
                         android:overScrollMode="never"
                         android:clipChildren="false"
@@ -614,8 +614,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#1B5E20"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_protein"/>
 
                             <TextView
@@ -627,8 +627,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#E65100"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_fat"/>
 
                             <TextView
@@ -640,8 +640,8 @@
                                 android:maxLines="1"
                                 android:textSize="12sp"
                                 android:textColor="#0D47A1"
-                                android:paddingHorizontal="10dp"
-                                android:paddingVertical="6dp"
+                                android:paddingHorizontal="9dp"
+                                android:paddingVertical="5dp"
                                 android:background="@drawable/bg_chip_carbs"/>
                         </LinearLayout>
                     </HorizontalScrollView>
@@ -667,8 +667,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp">
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp">
 
                     <TextView
                         android:id="@+id/tvGrandTitle"
@@ -685,7 +685,7 @@
                     <HorizontalScrollView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="10dp"
                         android:scrollbars="none"
                         android:overScrollMode="never"
                         android:requiresFadingEdge="horizontal"
@@ -763,15 +763,16 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnOpenScanDialog"
-        android:layout_width="68dp"
-        android:layout_height="68dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="18dp"
         android:text="+"
         android:textAllCaps="false"
-        android:textStyle="bold"
-        android:textSize="32sp"
+        android:textStyle="normal"
+        android:textSize="30sp"
         android:textColor="@android:color/white"
         android:backgroundTint="#7B1FA2"
+        android:fontFamily="sans"
         android:insetLeft="0dp"
         android:insetRight="0dp"
         android:insetTop="0dp"
@@ -780,7 +781,7 @@
         android:minHeight="0dp"
         android:padding="0dp"
         android:elevation="8dp"
-        app:cornerRadius="34dp"
+        app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
