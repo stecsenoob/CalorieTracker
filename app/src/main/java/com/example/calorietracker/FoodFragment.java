@@ -187,7 +187,7 @@ public class FoodFragment extends Fragment {
                         r.protein,
                         r.fat,
                         r.carbs,
-                        getCustomFoodImageRes(r.name),
+                        getCustomFoodImageResOrCategory(r.name, r.category),
                         r.category
                 ));
             }
@@ -547,6 +547,7 @@ public class FoodFragment extends Fragment {
         allFoods.add(new FoodItem("Shopska salad", "100g", 100f, 90, 4.0f, 6.0f, 5.0f, R.drawable.food_shopska_salad));
         allFoods.add(new FoodItem("Coca-Cola", "100g", 100f, 42, 0.0f, 0.0f, 10.6f, R.drawable.food_coca_cola));
         allFoods.add(new FoodItem("Coca-Cola Zero", "100g", 100f, 0, 0.0f, 0.0f, 0.0f, R.drawable.food_coca_cola_zero));
+        allFoods.add(new FoodItem("Beer", "100g", 100f, 43, 0.5f, 0.0f, 3.6f, R.drawable.food_beer));
         allFoods.add(new FoodItem("Orange juice", "100g", 100f, 45, 0.7f, 0.2f, 10.4f, R.drawable.food_orange_juice));
         allFoods.add(new FoodItem("Apple juice", "100g", 100f, 46, 0.1f, 0.1f, 11.3f, R.drawable.food_apple_juice));
         allFoods.add(new FoodItem("Lemonade sweetened", "100g", 100f, 40, 0.0f, 0.0f, 10.0f, R.drawable.food_lemonade_sweetened));
@@ -651,7 +652,8 @@ public class FoodFragment extends Fragment {
 
         if (n.contains("cola") || n.contains("juice") || n.contains("lemonade") ||
                 n.contains("coffee") || n.contains("cappuccino") || n.contains("latte") ||
-                n.contains("tea") || n.contains("shake")) {
+                n.contains("tea") || n.contains("shake") || n.contains("beer") ||
+                n.contains("pivo")) {
             return "Drinks";
         }
 
@@ -663,9 +665,9 @@ public class FoodFragment extends Fragment {
         return "Traditional/Prepared";
     }
 
-    private int getCustomFoodImageRes(String foodName) {
+    private int getCustomFoodImageResOrCategory(String foodName, String category) {
         if (foodName == null || foodName.trim().isEmpty()) {
-            return android.R.drawable.ic_menu_gallery;
+            return getDefaultCategoryImageRes(category);
         }
 
         String drawableName = "food_" + foodName
@@ -681,10 +683,63 @@ public class FoodFragment extends Fragment {
         );
 
         if (resId == 0) {
-            return android.R.drawable.ic_menu_gallery;
+            return getDefaultCategoryImageRes(category);
         }
 
         return resId;
+    }
+
+    private int getDefaultCategoryImageRes(String category) {
+        if (category == null) {
+            return android.R.drawable.ic_menu_gallery;
+        }
+
+        switch (category) {
+            case "Eggs":
+                return R.drawable.ic_cat_eggs;
+
+            case "Meat":
+                return R.drawable.ic_cat_meat;
+
+            case "Fish":
+                return R.drawable.ic_cat_fish;
+
+            case "Dairy":
+                return R.drawable.ic_cat_dairy;
+
+            case "Grains":
+                return R.drawable.ic_cat_grains;
+
+            case "Bread":
+                return R.drawable.ic_cat_bread;
+
+            case "Vegetables":
+                return R.drawable.ic_cat_vegetables;
+
+            case "Legumes":
+                return R.drawable.ic_cat_legumes;
+
+            case "Fruit":
+                return R.drawable.ic_cat_fruit;
+
+            case "Nuts & Seeds":
+                return R.drawable.ic_cat_nuts_seeds;
+
+            case "Sweets & Snacks":
+                return R.drawable.ic_cat_sweets_snacks;
+
+            case "Traditional/Prepared":
+                return R.drawable.ic_cat_traditional_prepared;
+
+            case "Drinks":
+                return R.drawable.ic_cat_drinks;
+
+            case "Oils & Sauces":
+                return R.drawable.ic_cat_oils_sauces;
+
+            default:
+                return android.R.drawable.ic_menu_gallery;
+        }
     }
 
     private int dp(int value) {

@@ -1,0 +1,48 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- background circle -->
+    <path
+        android:fillColor="#F3F0E8"
+        android:pathData="M48,48m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0" />
+
+    <!-- mug body -->
+    <path
+        android:fillColor="#F9D65C"
+        android:pathData="M28,32L58,32C61,32 63,34 63,37L63,68C63,72 60,75 56,75L34,75C30,75 28,72 28,68Z" />
+
+    <!-- beer inside -->
+    <path
+        android:fillColor="#E8A924"
+        android:pathData="M31,40L60,40L60,67C60,70 58,72 55,72L36,72C33,72 31,70 31,67Z" />
+
+    <!-- foam top -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M31,39C31,35 34,33 37,33C39,33 40,34 41,35C42,32 45,30 48,30C51,30 54,32 55,35C56,34 58,33 60,33C64,33 67,36 67,40C67,44 64,46 60,46L37,46C33,46 31,43 31,39Z" />
+
+    <!-- handle -->
+    <path
+        android:fillColor="#D9D9D9"
+        android:pathData="M63,42L68,42C74,42 78,46 78,52C78,58 74,62 68,62L63,62L63,57L67,57C70,57 73,55 73,52C73,49 70,47 67,47L63,47Z" />
+
+    <!-- glass shine -->
+    <path
+        android:fillColor="#FFF3B0"
+        android:pathData="M36,43L41,43L41,67L36,67Z" />
+
+    <!-- foam bubbles -->
+    <path
+        android:fillColor="#F7F7F7"
+        android:pathData="M39,37m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <path
+        android:fillColor="#F7F7F7"
+        android:pathData="M49,35m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <path
+        android:fillColor="#F7F7F7"
+        android:pathData="M58,38m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+
+</vector>

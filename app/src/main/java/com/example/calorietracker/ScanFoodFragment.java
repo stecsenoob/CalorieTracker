@@ -13,7 +13,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CheckBox;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -24,10 +25,12 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONObject;
 
@@ -60,7 +63,7 @@ public class ScanFoodFragment extends Fragment {
 
     private MaterialCardView cardQuantity;
     private TextInputEditText etGrams;
-    private CheckBox cbSaveToMyFoods;
+    private MaterialButton btnSaveToMyFoods;
 
     private MaterialButton btnTakePhoto;
     private MaterialButton btnSaveFood;
@@ -70,6 +73,7 @@ public class ScanFoodFragment extends Fragment {
     private boolean hasPhoto = false;
     private boolean hasAnalyzedFood = false;
     private boolean hasSavedFood = false;
+    private boolean hasSavedToMyFoods = false;
     private boolean isUpdatingGramsText = false;
 
     private String analyzedFoodName = "";
@@ -126,6 +130,7 @@ public class ScanFoodFragment extends Fragment {
                         hasPhoto = true;
                         hasAnalyzedFood = false;
                         hasSavedFood = false;
+                        hasSavedToMyFoods = false;
 
                         resetAnalyzedValues();
 
@@ -167,7 +172,7 @@ public class ScanFoodFragment extends Fragment {
 
         cardQuantity = view.findViewById(R.id.cardQuantity);
         etGrams = view.findViewById(R.id.etGrams);
-        cbSaveToMyFoods = view.findViewById(R.id.cbSaveToMyFoods);
+        btnSaveToMyFoods = view.findViewById(R.id.btnSaveToMyFoods);
 
         btnTakePhoto = view.findViewById(R.id.btnTakePhoto);
         btnSaveFood = view.findViewById(R.id.btnSaveFood);
@@ -203,6 +208,23 @@ public class ScanFoodFragment extends Fragment {
             }
 
             showMealChoiceDialog();
+        });
+
+        btnSaveToMyFoods.setOnClickListener(v -> {
+            if (!hasAnalyzedFood) {
+                showInfoState(
+                        "Analysis Required",
+                        "Please take a photo first. The app will analyze it automatically."
+                );
+                return;
+            }
+
+            if (hasSavedToMyFoods) {
+                showSnackbar("Already saved to My Foods");
+                return;
+            }
+
+            showSaveToMyFoodsBottomSheet();
         });
 
         etGrams.addTextChangedListener(new TextWatcher() {
@@ -311,6 +333,7 @@ public class ScanFoodFragment extends Fragment {
 
                     hasAnalyzedFood = true;
                     hasSavedFood = false;
+                    hasSavedToMyFoods = false;
 
                     cardQuantity.setVisibility(View.VISIBLE);
                     setGramsInputText(currentQuantityGrams);
@@ -326,6 +349,7 @@ public class ScanFoodFragment extends Fragment {
 
                     hasAnalyzedFood = false;
                     hasSavedFood = false;
+                    hasSavedToMyFoods = false;
 
                     cardQuantity.setVisibility(View.GONE);
                     disableSaveButton();
@@ -590,6 +614,293 @@ public class ScanFoodFragment extends Fragment {
         }
     }
 
+    private void showSaveToMyFoodsBottomSheet() {
+        if (hasSavedToMyFoods) {
+            showSnackbar("Already saved to My Foods");
+            return;
+        }
+
+        int userId = new SessionManager(requireContext()).getUserId();
+
+        if (userId == -1) {
+            showInfoState("Not Logged In", "Please log in before saving food to My Foods.");
+            return;
+        }
+
+        if (analyzedFoodName == null || analyzedFoodName.trim().isEmpty()) {
+            showInfoState("Missing Food Name", "The food name is missing. Please analyze the image again.");
+            return;
+        }
+
+        String foodName = capitalize(analyzedFoodName.trim());
+        float grams = currentQuantityGrams > 0 ? (float) currentQuantityGrams : 100f;
+        String portion = formatGrams(grams) + "g";
+        String category = guessCategoryForFood(foodName);
+
+        showAddFoodBottomSheetPrefilled(
+                userId,
+                foodName,
+                category,
+                portion,
+                grams,
+                currentCalories,
+                (float) currentProtein,
+                (float) currentFat,
+                (float) currentCarbs
+        );
+    }
+
+    private void showAddFoodBottomSheetPrefilled(int userId,
+                                                 String defaultName,
+                                                 String defaultCategory,
+                                                 String defaultPortion,
+                                                 float defaultGrams,
+                                                 int defaultKcal,
+                                                 float defaultProtein,
+                                                 float defaultFat,
+                                                 float defaultCarbs) {
+        BottomSheetDialog sheet = new BottomSheetDialog(requireContext());
+        View v = LayoutInflater.from(requireContext()).inflate(R.layout.bottom_sheet_add_food, null, false);
+
+        TextView tvAddFoodTitle = v.findViewById(R.id.tvAddFoodTitle);
+        TextView tvAddFoodSubtitle = v.findViewById(R.id.tvAddFoodSubtitle);
+        TextInputEditText etName = v.findViewById(R.id.etName);
+        AutoCompleteTextView actCategory = v.findViewById(R.id.actCategory);
+        TextInputEditText etPortion = v.findViewById(R.id.etPortion);
+        TextInputEditText etGrams = v.findViewById(R.id.etGrams);
+        TextInputEditText etKcal = v.findViewById(R.id.etKcal);
+        TextInputEditText etProtein = v.findViewById(R.id.etProtein);
+        TextInputEditText etFat = v.findViewById(R.id.etFat);
+        TextInputEditText etCarbs = v.findViewById(R.id.etCarbs);
+
+        MaterialButton btnCancel = v.findViewById(R.id.btnCancelAddFood);
+        MaterialButton btnSave = v.findViewById(R.id.btnSaveAddFood);
+
+        String[] addFoodCategories = getFoodCategories();
+
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                addFoodCategories
+        );
+
+        actCategory.setAdapter(categoryAdapter);
+
+        if (tvAddFoodTitle != null) {
+            tvAddFoodTitle.setText("Save to My Foods");
+        }
+
+        if (tvAddFoodSubtitle != null) {
+            tvAddFoodSubtitle.setText("Review and edit the scanned nutrition values before saving.");
+        }
+
+        etName.setText(defaultName);
+        actCategory.setText(isValidFoodCategory(defaultCategory) ? defaultCategory : "Traditional/Prepared", false);
+        etPortion.setText(defaultPortion);
+        etGrams.setText(formatGrams(defaultGrams));
+        etKcal.setText(String.valueOf(defaultKcal));
+        etProtein.setText(formatDouble(defaultProtein));
+        etFat.setText(formatDouble(defaultFat));
+        etCarbs.setText(formatDouble(defaultCarbs));
+        btnSave.setText("Save Food");
+
+        btnCancel.setOnClickListener(view -> sheet.dismiss());
+
+        btnSave.setOnClickListener(view -> {
+            String name = text(etName).trim();
+            String category = actCategory.getText() == null ? "" : actCategory.getText().toString().trim();
+            String portion = text(etPortion).trim();
+
+            float grams = parseFloat(text(etGrams), 100f);
+            int kcal = (int) parseFloat(text(etKcal), 0f);
+            float p = parseFloat(text(etProtein), 0f);
+            float f = parseFloat(text(etFat), 0f);
+            float c = parseFloat(text(etCarbs), 0f);
+
+            if (name.isEmpty()) {
+                etName.setError("Required");
+                return;
+            }
+
+            if (category.isEmpty()) {
+                actCategory.setError("Required");
+                return;
+            }
+
+            if (!isValidFoodCategory(category)) {
+                actCategory.setError("Choose a valid category");
+                return;
+            }
+
+            if (portion.isEmpty()) {
+                etPortion.setError("Required");
+                return;
+            }
+
+            if (grams <= 0) {
+                etGrams.setError("Must be > 0");
+                return;
+            }
+
+            if (kcal < 0) {
+                etKcal.setError("Must be >= 0");
+                return;
+            }
+
+            dbConnect db = new dbConnect(requireContext());
+
+            if (db.userFoodExists(userId, name, grams, kcal, p, f, c)) {
+                sheet.dismiss();
+                hasSavedToMyFoods = true;
+                markSaveToMyFoodsButton("Already in My Foods");
+                showSnackbar("Already in My Foods");
+                return;
+            }
+
+            long result = db.addUserFood(userId, name, portion, grams, kcal, p, f, c, category);
+
+            if (result != -1) {
+                sheet.dismiss();
+                hasSavedToMyFoods = true;
+                markSaveToMyFoodsButton("Saved to My Foods");
+                showSnackbar("Saved to My Foods");
+                updateResultCard();
+            } else {
+                showSnackbar("Save failed. Please try again.");
+            }
+        });
+
+        sheet.setContentView(v);
+        sheet.show();
+    }
+
+    private void markSaveToMyFoodsButton(String text) {
+        if (btnSaveToMyFoods == null) return;
+
+        btnSaveToMyFoods.setText(text);
+        btnSaveToMyFoods.setEnabled(false);
+        btnSaveToMyFoods.setClickable(false);
+        btnSaveToMyFoods.setAlpha(0.75f);
+    }
+
+    private void showSnackbar(String message) {
+        View rootView = getView();
+
+        if (rootView != null) {
+            Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT).show();
+        }
+    }
+
+    private String[] getFoodCategories() {
+        return new String[]{
+                "Eggs",
+                "Meat",
+                "Fish",
+                "Dairy",
+                "Grains",
+                "Bread",
+                "Vegetables",
+                "Legumes",
+                "Fruit",
+                "Nuts & Seeds",
+                "Sweets & Snacks",
+                "Traditional/Prepared",
+                "Drinks",
+                "Oils & Sauces"
+        };
+    }
+
+    private boolean isValidFoodCategory(String category) {
+        if (category == null) return false;
+
+        for (String c : getFoodCategories()) {
+            if (c.equals(category)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private String guessCategoryForFood(String foodName) {
+        if (foodName == null) return "Traditional/Prepared";
+
+        String n = foodName.toLowerCase(Locale.ROOT).trim();
+
+        if (n.contains("egg") || n.contains("omelette")) return "Eggs";
+
+        if (n.contains("chicken") || n.contains("turkey") || n.contains("beef") ||
+                n.contains("pork") || n.contains("ham") || n.contains("sausage") ||
+                n.contains("hot dog") || n.contains("salami") || n.contains("bacon") ||
+                n.contains("meatball") || n.contains("burger")) return "Meat";
+
+        if (n.contains("tuna") || n.contains("salmon") || n.contains("sardines") ||
+                n.contains("trout") || n.contains("mackerel") || n.contains("cod") ||
+                n.contains("shrimp") || n.contains("fish")) return "Fish";
+
+        if (n.contains("milk") || n.contains("yogurt") || n.contains("kefir") ||
+                n.contains("cheese") || n.contains("cream")) return "Dairy";
+
+        if (n.contains("rice") || n.contains("pasta") || n.contains("spaghetti") ||
+                n.contains("macaroni") || n.contains("oats") || n.contains("oatmeal") ||
+                n.contains("cornflakes") || n.contains("muesli") || n.contains("granola")) return "Grains";
+
+        if (n.contains("bread") || n.contains("toast") || n.contains("bagel") ||
+                n.contains("tortilla") || n.contains("pita") || n.contains("croissant") ||
+                n.contains("pancake") || n.contains("waffle")) return "Bread";
+
+        if (n.contains("potato") || n.contains("tomato") || n.contains("cucumber") ||
+                n.contains("lettuce") || n.contains("spinach") || n.contains("cabbage") ||
+                n.contains("carrot") || n.contains("broccoli") || n.contains("cauliflower") ||
+                n.contains("zucchini") || n.contains("pepper") || n.contains("onion") ||
+                n.contains("garlic") || n.contains("mushroom") || n.contains("peas")) return "Vegetables";
+
+        if (n.contains("beans") || n.contains("lentils") || n.contains("chickpeas") ||
+                n.contains("hummus")) return "Legumes";
+
+        if (n.contains("apple") || n.contains("banana") || n.contains("orange") ||
+                n.contains("mandarin") || n.contains("lemon") || n.contains("lime") ||
+                n.contains("grapefruit") || n.contains("pomegranate") || n.contains("pear") ||
+                n.contains("peach") || n.contains("apricot") || n.contains("plum") ||
+                n.contains("grapes") || n.contains("strawberries") || n.contains("raspberries") ||
+                n.contains("blueberries") || n.contains("kiwi") || n.contains("pineapple") ||
+                n.contains("mango") || n.contains("watermelon") || n.contains("melon") ||
+                n.contains("cherries") || n.contains("figs") || n.contains("avocado")) return "Fruit";
+
+        if (n.contains("almond") || n.contains("walnut") || n.contains("hazelnut") ||
+                n.contains("peanut") || n.contains("cashew") || n.contains("seed")) return "Nuts & Seeds";
+
+        if (n.contains("chocolate") || n.contains("cookie") || n.contains("biscuit") ||
+                n.contains("donut") || n.contains("ice cream") || n.contains("chips") ||
+                n.contains("popcorn") || n.contains("cracker") || n.contains("protein bar") ||
+                n.contains("honey") || n.contains("jam") || n.contains("spread")) return "Sweets & Snacks";
+
+        if (n.contains("cola") || n.contains("juice") || n.contains("lemonade") ||
+                n.contains("coffee") || n.contains("cappuccino") || n.contains("latte") ||
+                n.contains("tea") || n.contains("shake") || n.contains("beer") ||
+                n.contains("pivo")) return "Drinks";
+
+        if (n.contains("oil") || n.contains("butter") || n.contains("mayonnaise") ||
+                n.contains("ketchup") || n.contains("mustard") || n.contains("sauce")) return "Oils & Sauces";
+
+        return "Traditional/Prepared";
+    }
+
+    private static String text(TextInputEditText et) {
+        return (et.getText() == null) ? "" : et.getText().toString();
+    }
+
+    private static float parseFloat(String s, float def) {
+        try {
+            if (s == null) return def;
+            s = s.trim();
+            if (s.isEmpty()) return def;
+            return Float.parseFloat(s);
+        } catch (Exception e) {
+            return def;
+        }
+    }
+
     private void showMealChoiceDialog() {
         View dialogView = LayoutInflater.from(requireContext())
                 .inflate(R.layout.dialog_choose_meal, null, false);
@@ -673,31 +984,6 @@ public class ScanFoodFragment extends Fragment {
         boolean savedToMyFoods = false;
         boolean alreadyExistsInMyFoods = false;
 
-        if (cbSaveToMyFoods != null && cbSaveToMyFoods.isChecked()) {
-            String portion = formatGrams(grams) + "g";
-
-            float p = (float) currentProtein;
-            float f = (float) currentFat;
-            float c = (float) currentCarbs;
-
-            if (db.userFoodExists(userId, finalFoodName, grams, currentCalories, p, f, c)) {
-                alreadyExistsInMyFoods = true;
-            } else {
-                long foodResult = db.addUserFood(
-                        userId,
-                        finalFoodName,
-                        portion,
-                        grams,
-                        currentCalories,
-                        p,
-                        f,
-                        c
-                );
-
-                savedToMyFoods = foodResult != -1;
-            }
-        }
-
         hasSavedFood = true;
         btnSaveFood.setEnabled(false);
         btnSaveFood.setAlpha(0.5f);
@@ -710,6 +996,11 @@ public class ScanFoodFragment extends Fragment {
         if (isLoading) {
             btnTakePhoto.setEnabled(false);
             btnSaveFood.setEnabled(false);
+            if (btnSaveToMyFoods != null) {
+                btnSaveToMyFoods.setEnabled(false);
+                btnSaveToMyFoods.setClickable(false);
+                btnSaveToMyFoods.setAlpha(0.5f);
+            }
 
             btnTakePhoto.setText("Analyzing...");
 
@@ -740,6 +1031,17 @@ public class ScanFoodFragment extends Fragment {
         btnSaveFood.setEnabled(true);
         btnSaveFood.setAlpha(1.0f);
         btnSaveFood.setText("Save Food");
+
+        if (btnSaveToMyFoods != null) {
+            if (hasSavedToMyFoods) {
+                markSaveToMyFoodsButton("Saved to My Foods");
+            } else {
+                btnSaveToMyFoods.setEnabled(true);
+                btnSaveToMyFoods.setClickable(true);
+                btnSaveToMyFoods.setAlpha(1.0f);
+                btnSaveToMyFoods.setText("Save to My Foods");
+            }
+        }
     }
 
     private void disableSaveButton() {
@@ -748,6 +1050,16 @@ public class ScanFoodFragment extends Fragment {
 
         if (!hasSavedFood) {
             btnSaveFood.setText("Save Food");
+        }
+
+        if (btnSaveToMyFoods != null) {
+            btnSaveToMyFoods.setEnabled(false);
+            btnSaveToMyFoods.setClickable(false);
+            btnSaveToMyFoods.setAlpha(0.5f);
+
+            if (!hasAnalyzedFood) {
+                btnSaveToMyFoods.setText("Save to My Foods");
+            }
         }
     }
 
@@ -780,8 +1092,9 @@ public class ScanFoodFragment extends Fragment {
             etGrams.setText("");
         }
 
-        if (cbSaveToMyFoods != null) {
-            cbSaveToMyFoods.setChecked(false);
+        if (btnSaveToMyFoods != null) {
+            btnSaveToMyFoods.setText("Save to My Foods");
+            btnSaveToMyFoods.setAlpha(0.5f);
         }
 
         showEmptyResultState();
