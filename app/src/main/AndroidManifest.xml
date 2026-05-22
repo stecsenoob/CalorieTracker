@@ -16,10 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CalorieTracker"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".BarcodeScannerFragment"
-            android:exported="false"
-            android:theme="@style/Theme.CalorieTracker" />
 
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
@@ -29,9 +25,12 @@
             android:name=".HomeActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -52,6 +51,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
     </application>
 
 </manifest>
