@@ -88,8 +88,25 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
-            saveSessionAndOpenHome(currentUser);
+            openHomeIfUserIsAllowed(currentUser);
         }
+    }
+
+    private void openHomeIfUserIsAllowed(FirebaseUser firebaseUser) {
+        firebaseUser.reload().addOnCompleteListener(task -> {
+            FirebaseUser refreshedUser = mAuth.getCurrentUser();
+
+            if (refreshedUser == null) {
+                return;
+            }
+
+            if (shouldRequireEmailVerification(refreshedUser) && !refreshedUser.isEmailVerified()) {
+                mAuth.signOut();
+                return;
+            }
+
+            saveSessionAndOpenHome(refreshedUser);
+        });
     }
 
     private void setupGoogleSignIn() {
@@ -227,11 +244,7 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
 
-                        showSuccessSnackbar("Login successful!");
-
-                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                            saveSessionAndOpenHome(firebaseUser);
-                        }, 1000);
+                        handleEmailPasswordLoginSuccess(firebaseUser);
 
                     } else {
                         String error = "Invalid email or password";
@@ -243,6 +256,82 @@ public class MainActivity extends AppCompatActivity {
                         showPasswordError(error);
                     }
                 });
+    }
+
+    private void handleEmailPasswordLoginSuccess(FirebaseUser firebaseUser) {
+        firebaseUser.reload().addOnCompleteListener(reloadTask -> {
+            FirebaseUser refreshedUser = mAuth.getCurrentUser();
+
+            if (!reloadTask.isSuccessful() || refreshedUser == null) {
+                showPasswordError("Login failed. Please try again.");
+                return;
+            }
+
+            if (shouldRequireEmailVerification(refreshedUser) && !refreshedUser.isEmailVerified()) {
+                showEmailNotVerifiedDialog(refreshedUser);
+                return;
+            }
+
+            showSuccessSnackbar("Login successful!");
+
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                saveSessionAndOpenHome(refreshedUser);
+            }, 1000);
+        });
+    }
+
+    private boolean shouldRequireEmailVerification(FirebaseUser firebaseUser) {
+        if (firebaseUser == null) return false;
+
+        for (com.google.firebase.auth.UserInfo userInfo : firebaseUser.getProviderData()) {
+            if ("password".equals(userInfo.getProviderId())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void showEmailNotVerifiedDialog(FirebaseUser firebaseUser) {
+        String email = firebaseUser.getEmail() == null ? "your email" : firebaseUser.getEmail();
+
+        AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Verify your email")
+                .setMessage("Please verify your email address before logging in.\n\nWe sent a verification link to:\n" + email)
+                .setNegativeButton("OK", null)
+                .setPositiveButton("Resend email", null)
+                .create();
+
+        dialog.setOnShowListener(d -> {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#6F50B5"));
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#6F50B5"));
+
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setText("Sending...");
+
+                firebaseUser.sendEmailVerification()
+                        .addOnCompleteListener(task -> {
+                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
+                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setText("Resend email");
+
+                            if (task.isSuccessful()) {
+                                showSuccessSnackbar("Verification email sent!");
+                            } else {
+                                String error = "Failed to send verification email";
+
+                                if (task.getException() != null && task.getException().getMessage() != null) {
+                                    error = task.getException().getMessage();
+                                }
+
+                                showErrorSnackbar(error);
+                            }
+                        });
+            });
+        });
+
+        dialog.setOnDismissListener(d -> mAuth.signOut());
+        dialog.show();
     }
 
     private void saveSessionAndOpenHome(FirebaseUser firebaseUser) {

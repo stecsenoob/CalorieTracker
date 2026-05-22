@@ -27,8 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView btnLogin;
 
     private FirebaseAuth mAuth;
-    private dbConnect db;
-    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
-        db = new dbConnect(RegisterActivity.this);
-        session = new SessionManager(RegisterActivity.this);
 
         edtEmail = findViewById(R.id.email);
         edtPass = findViewById(R.id.password);
@@ -115,34 +111,57 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(task -> {
-                    btnRegister.setEnabled(true);
-                    btnRegister.setText("Register");
-
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
                         if (firebaseUser == null || firebaseUser.getEmail() == null) {
+                            btnRegister.setEnabled(true);
+                            btnRegister.setText("Register");
                             tilEmail.setError("Registration failed. Try again.");
                             edtEmail.requestFocus();
                             return;
                         }
 
-                        String firebaseEmail = firebaseUser.getEmail();
-                        String firebaseUid = firebaseUser.getUid();
-
-                        int localUserId = db.getOrCreateLocalUserId(firebaseEmail);
-                        session.saveFirebaseUser(localUserId, firebaseEmail, firebaseUid);
-
-                        showSuccessSnackbar("Registration successful!");
-
-                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                            Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }, 1000);
+                        sendVerificationEmail(firebaseUser);
 
                     } else {
+                        btnRegister.setEnabled(true);
+                        btnRegister.setText("Register");
+
                         String error = "Registration failed";
+
+                        if (task.getException() != null && task.getException().getMessage() != null) {
+                            error = task.getException().getMessage();
+                        }
+
+                        tilEmail.setError(error);
+                        edtEmail.requestFocus();
+                    }
+                });
+    }
+
+    private void sendVerificationEmail(FirebaseUser firebaseUser) {
+        btnRegister.setText("Sending email...");
+
+        firebaseUser.sendEmailVerification()
+                .addOnCompleteListener(task -> {
+                    btnRegister.setEnabled(true);
+                    btnRegister.setText("Register");
+
+                    if (task.isSuccessful()) {
+                        mAuth.signOut();
+
+                        showSuccessSnackbar("Verification email sent. Please check your inbox.");
+
+                        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            intent.putExtra("registered_email", firebaseUser.getEmail());
+                            startActivity(intent);
+                            finish();
+                        }, 1800);
+
+                    } else {
+                        String error = "Account created, but verification email could not be sent.";
 
                         if (task.getException() != null && task.getException().getMessage() != null) {
                             error = task.getException().getMessage();
