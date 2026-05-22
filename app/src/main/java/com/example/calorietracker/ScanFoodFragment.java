@@ -987,7 +987,7 @@ public class ScanFoodFragment extends Fragment {
         hasSavedFood = true;
         btnSaveFood.setEnabled(false);
         btnSaveFood.setAlpha(0.5f);
-        btnSaveFood.setText("Saved");
+        btnSaveFood.setText("Added to Meal");
 
         showSavedResultCard(mealLabel, savedToMyFoods, alreadyExistsInMyFoods);
     }
@@ -1030,7 +1030,7 @@ public class ScanFoodFragment extends Fragment {
     private void enableSaveButton() {
         btnSaveFood.setEnabled(true);
         btnSaveFood.setAlpha(1.0f);
-        btnSaveFood.setText("Save Food");
+        btnSaveFood.setText("Add to Meal");
 
         if (btnSaveToMyFoods != null) {
             if (hasSavedToMyFoods) {
@@ -1049,7 +1049,7 @@ public class ScanFoodFragment extends Fragment {
         btnSaveFood.setAlpha(0.5f);
 
         if (!hasSavedFood) {
-            btnSaveFood.setText("Save Food");
+            btnSaveFood.setText("Add to Meal");
         }
 
         if (btnSaveToMyFoods != null) {

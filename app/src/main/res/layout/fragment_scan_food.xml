@@ -408,7 +408,7 @@
             android:layout_height="54dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="24dp"
-            android:text="Save Food"
+            android:text="Add to Meal"
             android:textAllCaps="false"
             android:textStyle="bold"
             android:textSize="15sp"
