@@ -1,4 +1,4 @@
-package com.example.calorietracker;
+package com.leon.calorietracker;
 
 public class Users {
 

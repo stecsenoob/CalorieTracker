@@ -1,4 +1,4 @@
-package com.example.calorietracker;
+package com.leon.calorietracker;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.calorietracker.databinding.ActivityHomeBinding;
+import com.leon.calorietracker.databinding.ActivityHomeBinding;
 
 public class HomeActivity extends AppCompatActivity {
 

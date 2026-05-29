@@ -1,4 +1,4 @@
-package com.example.calorietracker;
+package com.leon.calorietracker;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

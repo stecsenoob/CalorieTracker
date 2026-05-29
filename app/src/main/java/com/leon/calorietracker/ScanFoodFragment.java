@@ -1,9 +1,11 @@
-package com.example.calorietracker;
+package com.leon.calorietracker;
+
+import android.Manifest;
 
 import androidx.appcompat.app.AlertDialog;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,11 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -26,16 +31,13 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.mlkit.vision.barcode.common.Barcode;
-import com.google.mlkit.vision.codescanner.GmsBarcodeScanner;
-import com.google.mlkit.vision.codescanner.GmsBarcodeScannerOptions;
-import com.google.mlkit.vision.codescanner.GmsBarcodeScanning;
 
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -43,93 +45,140 @@ import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class BarcodeScannerFragment extends Fragment {
+public class ScanFoodFragment extends Fragment {
 
-    private static final String AI_BARCODE_URL = "https://food-ai-server-wfc9.onrender.com/analyze-barcode-product";
-
-    private MaterialButton btnBack;
-    private MaterialButton btnScanBarcode;
-    private MaterialButton btnSaveFood;
-
-    private MaterialCardView cardQuantity;
-    private MaterialCardView cardProductImage;
-    private ImageView imgProduct;
-
-    private TextInputEditText etGrams;
-    private MaterialButton btnSaveToMyFoods;
+    private static final String SERVER_URL = "https://food-ai-server-wfc9.onrender.com/analyze-food";
 
     private TextView tvResultTitle;
     private TextView tvResultSubtitle;
-    private TextView tvProductValue;
-    private TextView tvBarcodeValue;
+    private TextView tvFoodValue;
     private TextView tvQuantityValue;
     private TextView tvCaloriesValue;
     private TextView tvProteinValue;
     private TextView tvCarbsValue;
     private TextView tvFatValue;
     private TextView tvInsightValue;
-    private TextView tvSourceValue;
+    private TextView tvConfidenceValue;
     private TextView tvNoteValue;
 
-    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
-    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private MaterialCardView cardQuantity;
+    private TextInputEditText etGrams;
+    private MaterialButton btnSaveToMyFoods;
 
-    private boolean hasProduct = false;
+    private MaterialButton btnTakePhoto;
+    private MaterialButton btnSaveFood;
+    private MaterialButton btnBack;
+
+    private Uri currentPhotoUri;
+    private boolean hasPhoto = false;
+    private boolean hasAnalyzedFood = false;
     private boolean hasSavedFood = false;
     private boolean hasSavedToMyFoods = false;
-    private boolean isUpdatingGrams = false;
+    private boolean isUpdatingGramsText = false;
 
-    private String barcodeValue = "";
-    private String productName = "";
-    private String productImageUrl = "";
-    private String aiNutritionInsight = "";
+    private String analyzedFoodName = "";
 
-    private double grams = 100.0;
+    private double originalQuantityGrams = 0.0;
+    private int originalCalories = 0;
+    private double originalProtein = 0.0;
+    private double originalCarbs = 0.0;
+    private double originalFat = 0.0;
 
-    private int caloriesPer100g = 0;
-    private double proteinPer100g = 0.0;
-    private double carbsPer100g = 0.0;
-    private double fatPer100g = 0.0;
-
+    private double currentQuantityGrams = 0.0;
     private int currentCalories = 0;
     private double currentProtein = 0.0;
     private double currentCarbs = 0.0;
     private double currentFat = 0.0;
 
-    public BarcodeScannerFragment() {
-        super(R.layout.fragment_barcode_scanner);
+    private String analyzedConfidence = "";
+    private String analyzedNote = "";
+
+    private ActivityResultLauncher<Uri> takePictureLauncher;
+    private ActivityResultLauncher<String> requestCameraPermissionLauncher;
+
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+
+    public ScanFoodFragment() {
+        super(R.layout.fragment_scan_food);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        requestCameraPermissionLauncher = registerForActivityResult(
+                new ActivityResultContracts.RequestPermission(),
+                isGranted -> {
+                    if (isGranted) {
+                        openCameraFullQuality();
+                    } else {
+                        if (tvResultTitle != null) {
+                            showInfoState(
+                                    "Camera Permission Needed",
+                                    "Camera access is required to take a food photo.\n\nPlease allow camera permission and try again."
+                            );
+                        }
+                    }
+                }
+        );
+
+        takePictureLauncher = registerForActivityResult(
+                new ActivityResultContracts.TakePicture(),
+                success -> {
+                    if (success && currentPhotoUri != null) {
+                        hasPhoto = true;
+                        hasAnalyzedFood = false;
+                        hasSavedFood = false;
+                        hasSavedToMyFoods = false;
+
+                        resetAnalyzedValues();
+
+                        cardQuantity.setVisibility(View.GONE);
+                        disableSaveButton();
+
+                        showInfoState(
+                                "Photo Captured",
+                                "Your photo was captured successfully.\n\nAnalyzing food now..."
+                        );
+
+                        analyzeFoodWithAI();
+
+                    } else {
+                        showInfoState(
+                                "No Image Captured",
+                                "The camera did not return a photo.\n\nPlease tap Take Photo and try again."
+                        );
+                    }
+                }
+        );
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnBack = view.findViewById(R.id.btnBack);
-        btnScanBarcode = view.findViewById(R.id.btnScanBarcode);
-        btnSaveFood = view.findViewById(R.id.btnSaveFood);
-
-        cardQuantity = view.findViewById(R.id.cardQuantity);
-        cardProductImage = view.findViewById(R.id.cardProductImage);
-        imgProduct = view.findViewById(R.id.imgProduct);
-
-        etGrams = view.findViewById(R.id.etGrams);
-        btnSaveToMyFoods = view.findViewById(R.id.btnSaveToMyFoods);
-
         tvResultTitle = view.findViewById(R.id.tvResultTitle);
         tvResultSubtitle = view.findViewById(R.id.tvResultSubtitle);
-        tvProductValue = view.findViewById(R.id.tvProductValue);
-        tvBarcodeValue = view.findViewById(R.id.tvBarcodeValue);
+        tvFoodValue = view.findViewById(R.id.tvFoodValue);
         tvQuantityValue = view.findViewById(R.id.tvQuantityValue);
         tvCaloriesValue = view.findViewById(R.id.tvCaloriesValue);
         tvProteinValue = view.findViewById(R.id.tvProteinValue);
         tvCarbsValue = view.findViewById(R.id.tvCarbsValue);
         tvFatValue = view.findViewById(R.id.tvFatValue);
         tvInsightValue = view.findViewById(R.id.tvInsightValue);
-        tvSourceValue = view.findViewById(R.id.tvSourceValue);
+        tvConfidenceValue = view.findViewById(R.id.tvConfidenceValue);
         tvNoteValue = view.findViewById(R.id.tvNoteValue);
 
+        cardQuantity = view.findViewById(R.id.cardQuantity);
+        etGrams = view.findViewById(R.id.etGrams);
+        btnSaveToMyFoods = view.findViewById(R.id.btnSaveToMyFoods);
+
+        btnTakePhoto = view.findViewById(R.id.btnTakePhoto);
+        btnSaveFood = view.findViewById(R.id.btnSaveFood);
+        btnBack = view.findViewById(R.id.btnBack);
+
         cardQuantity.setVisibility(View.GONE);
-        hideProductImage();
         disableSaveButton();
         showEmptyResultState();
 
@@ -137,15 +186,15 @@ public class BarcodeScannerFragment extends Fragment {
             requireActivity().getSupportFragmentManager().popBackStack();
         });
 
-        btnScanBarcode.setOnClickListener(v -> {
-            startBarcodeScanner();
+        btnTakePhoto.setOnClickListener(v -> {
+            checkCameraPermissionAndOpenCamera();
         });
 
         btnSaveFood.setOnClickListener(v -> {
-            if (!hasProduct) {
+            if (!hasAnalyzedFood) {
                 showInfoState(
-                        "Product Required",
-                        "Please scan a barcode first.\n\nAfter the product is found, you can save it to a meal."
+                        "Analysis Required",
+                        "Please take a photo first. The app will analyze it automatically."
                 );
                 return;
             }
@@ -162,10 +211,10 @@ public class BarcodeScannerFragment extends Fragment {
         });
 
         btnSaveToMyFoods.setOnClickListener(v -> {
-            if (!hasProduct) {
+            if (!hasAnalyzedFood) {
                 showInfoState(
-                        "Product Required",
-                        "Please scan a barcode first.\n\nAfter the product is found, you can save it to My Foods."
+                        "Analysis Required",
+                        "Please take a photo first. The app will analyze it automatically."
                 );
                 return;
             }
@@ -186,10 +235,10 @@ public class BarcodeScannerFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (isUpdatingGrams) return;
-                if (!hasProduct) return;
+                if (isUpdatingGramsText) return;
+                if (!hasAnalyzedFood) return;
 
-                recalculateFromGrams(s.toString());
+                recalculateFromEditedGrams(s.toString());
             }
 
             @Override
@@ -199,122 +248,97 @@ public class BarcodeScannerFragment extends Fragment {
         });
     }
 
-    private void startBarcodeScanner() {
-        GmsBarcodeScannerOptions options = new GmsBarcodeScannerOptions.Builder()
-                .setBarcodeFormats(
-                        Barcode.FORMAT_EAN_13,
-                        Barcode.FORMAT_EAN_8,
-                        Barcode.FORMAT_UPC_A,
-                        Barcode.FORMAT_UPC_E
-                )
-                .enableAutoZoom()
-                .build();
+    private void checkCameraPermissionAndOpenCamera() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
 
-        GmsBarcodeScanner scanner = GmsBarcodeScanning.getClient(requireActivity(), options);
+            openCameraFullQuality();
 
-        scanner.startScan()
-                .addOnSuccessListener(barcode -> {
-                    String rawValue = barcode.getRawValue();
-
-                    if (rawValue == null || rawValue.trim().isEmpty()) {
-                        showInfoState(
-                                "No Barcode Detected",
-                                "The scanner did not detect a barcode.\n\nTry holding the camera steady and make sure the barcode is visible."
-                        );
-                        return;
-                    }
-
-                    barcodeValue = rawValue.trim();
-                    aiNutritionInsight = "";
-                    fetchProductFromOpenFoodFacts(barcodeValue);
-                })
-                .addOnCanceledListener(() -> {
-                    showInfoState(
-                            "Scan Cancelled",
-                            "Barcode scanning was cancelled.\n\nTap Scan Barcode to try again."
-                    );
-                })
-                .addOnFailureListener(e -> {
-                    showInfoState(
-                            "Scanner Error",
-                            "The barcode scanner could not start.\n\nPlease try again."
-                    );
-                });
+        } else {
+            requestCameraPermissionLauncher.launch(Manifest.permission.CAMERA);
+        }
     }
 
-    private void fetchProductFromOpenFoodFacts(String barcode) {
+    private void openCameraFullQuality() {
+        try {
+            File imageFile = createImageFile();
+
+            currentPhotoUri = FileProvider.getUriForFile(
+                    requireContext(),
+                    requireContext().getPackageName() + ".provider",
+                    imageFile
+            );
+
+            takePictureLauncher.launch(currentPhotoUri);
+
+        } catch (Exception e) {
+            showInfoState(
+                    "Camera Error",
+                    "The camera could not be opened.\n\nPlease check app permissions and try again."
+            );
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        String fileName = "food_scan_" + System.currentTimeMillis();
+        File storageDir = new File(requireContext().getCacheDir(), "images");
+
+        if (!storageDir.exists()) {
+            storageDir.mkdirs();
+        }
+
+        return File.createTempFile(fileName, ".jpg", storageDir);
+    }
+
+    private void analyzeFoodWithAI() {
+        if (!hasPhoto || currentPhotoUri == null) {
+            showInfoState(
+                    "Photo Required",
+                    "Please take a food photo first."
+            );
+            return;
+        }
+
         setLoadingState(true);
 
         executorService.execute(() -> {
             try {
-                String apiUrl =
-                        "https://world.openfoodfacts.org/api/v2/product/" + barcode +
-                                "?fields=product_name,nutriments,image_url,image_front_url,selected_images";
+                String response = uploadImageToServer(currentPhotoUri);
 
-                String response = httpGet(apiUrl);
+                JSONObject jsonObject = new JSONObject(response);
 
-                JSONObject root = new JSONObject(response);
-                int status = root.optInt("status", 0);
+                analyzedFoodName = jsonObject.optString("food_name", "Unknown food");
 
-                if (status != 1) {
-                    throw new Exception("Product not found in Open Food Facts.");
+                originalQuantityGrams = jsonObject.optDouble("estimated_quantity_grams", 0.0);
+                originalCalories = jsonObject.optInt("calories", 0);
+                originalProtein = jsonObject.optDouble("protein_g", 0.0);
+                originalCarbs = jsonObject.optDouble("carbs_g", 0.0);
+                originalFat = jsonObject.optDouble("fat_g", 0.0);
+
+                if (originalQuantityGrams <= 0) {
+                    originalQuantityGrams = 100.0;
                 }
 
-                JSONObject product = root.getJSONObject("product");
-                JSONObject nutriments = product.optJSONObject("nutriments");
+                currentQuantityGrams = originalQuantityGrams;
+                currentCalories = originalCalories;
+                currentProtein = originalProtein;
+                currentCarbs = originalCarbs;
+                currentFat = originalFat;
 
-                if (nutriments == null) {
-                    throw new Exception("This product has no nutrition data.");
-                }
-
-                productName = product.optString("product_name", "Unknown product");
-
-                if (productName == null || productName.trim().isEmpty()) {
-                    productName = "Unknown product";
-                }
-
-                productImageUrl = product.optString("image_url", "");
-
-                if (productImageUrl == null || productImageUrl.trim().isEmpty()) {
-                    productImageUrl = product.optString("image_front_url", "");
-                }
-
-                Bitmap productBitmap = null;
-
-                if (productImageUrl != null && !productImageUrl.trim().isEmpty()) {
-                    productBitmap = downloadBitmap(productImageUrl.trim());
-                }
-
-                caloriesPer100g = getCaloriesPer100g(nutriments);
-                proteinPer100g = nutriments.optDouble("proteins_100g", 0.0);
-                carbsPer100g = nutriments.optDouble("carbohydrates_100g", 0.0);
-                fatPer100g = nutriments.optDouble("fat_100g", 0.0);
-
-                grams = 100.0;
-                recalculateNutritionValues();
-
-                aiNutritionInsight = fetchBarcodeNutritionInsightFromAI();
-
-                Bitmap finalProductBitmap = productBitmap;
+                analyzedConfidence = jsonObject.optString("confidence", "unknown");
+                analyzedNote = jsonObject.optString("note", "Nutrition values are estimated.");
 
                 mainHandler.post(() -> {
                     if (!isAdded()) return;
 
-                    hasProduct = true;
+                    hasAnalyzedFood = true;
                     hasSavedFood = false;
                     hasSavedToMyFoods = false;
 
                     cardQuantity.setVisibility(View.VISIBLE);
-                    setGramsInputText(grams);
+                    setGramsInputText(currentQuantityGrams);
 
                     updateResultCard();
-
-                    if (finalProductBitmap != null) {
-                        showProductImage(finalProductBitmap);
-                    } else {
-                        hideProductImage();
-                    }
-
                     enableSaveButton();
                     setLoadingState(false);
                 });
@@ -323,264 +347,127 @@ public class BarcodeScannerFragment extends Fragment {
                 mainHandler.post(() -> {
                     if (!isAdded()) return;
 
-                    hasProduct = false;
+                    hasAnalyzedFood = false;
                     hasSavedFood = false;
                     hasSavedToMyFoods = false;
-                    aiNutritionInsight = "";
 
                     cardQuantity.setVisibility(View.GONE);
-                    hideProductImage();
                     disableSaveButton();
                     setLoadingState(false);
 
-                    showProductNotFoundCard(barcode);
-                    showProductNotFoundDialog(barcode);
+                    showAnalysisFailedCard();
                 });
             }
         });
     }
 
-    private String fetchBarcodeNutritionInsightFromAI() {
-        try {
-            JSONObject requestBody = new JSONObject();
+    private String uploadImageToServer(Uri imageUri) throws Exception {
+        String boundary = "Boundary-" + System.currentTimeMillis();
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
 
-            requestBody.put("product_name", productName);
-            requestBody.put("barcode", barcodeValue);
-            requestBody.put("grams", grams);
-            requestBody.put("calories", currentCalories);
-            requestBody.put("protein_g", currentProtein);
-            requestBody.put("carbs_g", currentCarbs);
-            requestBody.put("fat_g", currentFat);
-
-            String response = httpPostJson(AI_BARCODE_URL, requestBody.toString());
-
-            JSONObject jsonObject = new JSONObject(response);
-
-            String note = jsonObject.optString("note", "");
-
-            if (note == null || note.trim().isEmpty()) {
-                return "";
-            }
-
-            return note.trim();
-
-        } catch (Exception ignored) {
-            return "";
-        }
-    }
-
-    private String httpPostJson(String apiUrl, String jsonBody) throws Exception {
-        URL url = new URL(apiUrl);
+        URL url = new URL(SERVER_URL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-        connection.setRequestMethod("POST");
         connection.setConnectTimeout(30000);
         connection.setReadTimeout(60000);
         connection.setDoInput(true);
         connection.setDoOutput(true);
-        connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-        connection.setRequestProperty("Accept", "application/json");
+        connection.setUseCaches(false);
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Connection", "Keep-Alive");
+        connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
 
         OutputStream outputStream = connection.getOutputStream();
-        outputStream.write(jsonBody.getBytes("UTF-8"));
+
+        outputStream.write((twoHyphens + boundary + lineEnd).getBytes());
+        outputStream.write(("Content-Disposition: form-data; name=\"image\"; filename=\"food.jpg\"" + lineEnd).getBytes());
+        outputStream.write(("Content-Type: image/jpeg" + lineEnd).getBytes());
+        outputStream.write(lineEnd.getBytes());
+
+        InputStream inputStream = requireContext().getContentResolver().openInputStream(imageUri);
+
+        if (inputStream == null) {
+            throw new IOException("Could not open image file");
+        }
+
+        byte[] buffer = new byte[4096];
+        int bytesRead;
+
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+
+        inputStream.close();
+
+        outputStream.write(lineEnd.getBytes());
+        outputStream.write((twoHyphens + boundary + twoHyphens + lineEnd).getBytes());
         outputStream.flush();
         outputStream.close();
 
         int responseCode = connection.getResponseCode();
 
-        InputStream inputStream;
+        InputStream responseStream;
 
         if (responseCode >= 200 && responseCode < 300) {
-            inputStream = connection.getInputStream();
+            responseStream = connection.getInputStream();
         } else {
-            inputStream = connection.getErrorStream();
+            responseStream = connection.getErrorStream();
         }
 
-        String response = readStream(inputStream);
+        String response = readStream(responseStream);
 
         connection.disconnect();
 
         if (responseCode < 200 || responseCode >= 300) {
-            throw new Exception("Server error: " + responseCode + "\n" + response);
+            throw new IOException("Server error " + responseCode + ":\n" + response);
         }
 
         return response;
     }
 
-    private Bitmap downloadBitmap(String imageUrl) {
-        HttpURLConnection connection = null;
-
-        try {
-            URL url = new URL(imageUrl);
-            connection = (HttpURLConnection) url.openConnection();
-
-            connection.setRequestMethod("GET");
-            connection.setConnectTimeout(15000);
-            connection.setReadTimeout(15000);
-            connection.setRequestProperty("User-Agent", "CalorieTrackerAndroid/1.0");
-            connection.setDoInput(true);
-            connection.connect();
-
-            int responseCode = connection.getResponseCode();
-
-            if (responseCode < 200 || responseCode >= 300) {
-                return null;
-            }
-
-            InputStream inputStream = connection.getInputStream();
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            inputStream.close();
-
-            return bitmap;
-
-        } catch (Exception ignored) {
-            return null;
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
-        }
-    }
-
-    private void showProductImage(Bitmap bitmap) {
-        if (bitmap == null) {
-            hideProductImage();
-            return;
-        }
-
-        imgProduct.setImageBitmap(bitmap);
-        cardProductImage.setVisibility(View.VISIBLE);
-    }
-
-    private void hideProductImage() {
-        if (cardProductImage != null) {
-            cardProductImage.setVisibility(View.GONE);
-        }
-
-        if (imgProduct != null) {
-            imgProduct.setImageDrawable(null);
-        }
-    }
-
-    private void showProductNotFoundDialog(String barcode) {
-        View dialogView = LayoutInflater.from(requireContext())
-                .inflate(R.layout.dialog_product_not_found, null, false);
-
-        AlertDialog dialog = new MaterialAlertDialogBuilder(requireContext())
-                .setView(dialogView)
-                .create();
-
-        TextView tvBarcode = dialogView.findViewById(R.id.tvProductNotFoundBarcode);
-        MaterialButton btnTryAnother = dialogView.findViewById(R.id.btnTryAnotherBarcode);
-        MaterialButton btnUseAiScan = dialogView.findViewById(R.id.btnUseAiScan);
-        MaterialButton btnCancel = dialogView.findViewById(R.id.btnProductNotFoundCancel);
-
-        tvBarcode.setText("Barcode: " + barcode);
-
-        btnTryAnother.setOnClickListener(v -> {
-            dialog.dismiss();
-            startBarcodeScanner();
-        });
-
-        btnUseAiScan.setOnClickListener(v -> {
-            dialog.dismiss();
-            openScanFoodPage();
-        });
-
-        btnCancel.setOnClickListener(v -> dialog.dismiss());
-
-        dialog.show();
-
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        }
-    }
-
-    private void openScanFoodPage() {
-        requireActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frameLayout, new ScanFoodFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-
-    private int getCaloriesPer100g(JSONObject nutriments) {
-        double kcal = nutriments.optDouble("energy-kcal_100g", -1);
-
-        if (kcal >= 0) {
-            return (int) Math.round(kcal);
-        }
-
-        double energyKj = nutriments.optDouble("energy_100g", 0.0);
-
-        if (energyKj > 0) {
-            return (int) Math.round(energyKj / 4.184);
-        }
-
-        return 0;
-    }
-
-    private String httpGet(String apiUrl) throws Exception {
-        URL url = new URL(apiUrl);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-        connection.setRequestMethod("GET");
-        connection.setConnectTimeout(30000);
-        connection.setReadTimeout(30000);
-        connection.setRequestProperty("User-Agent", "CalorieTrackerAndroid/1.0");
-
-        int responseCode = connection.getResponseCode();
-
-        InputStream inputStream;
-
-        if (responseCode >= 200 && responseCode < 300) {
-            inputStream = connection.getInputStream();
-        } else {
-            inputStream = connection.getErrorStream();
-        }
-
-        String response = readStream(inputStream);
-
-        connection.disconnect();
-
-        if (responseCode < 200 || responseCode >= 300) {
-            throw new Exception("Server error: " + responseCode);
-        }
-
-        return response;
-    }
-
-    private String readStream(InputStream inputStream) throws Exception {
+    private String readStream(InputStream inputStream) throws IOException {
         if (inputStream == null) {
             return "";
         }
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        StringBuilder builder = new StringBuilder();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-        String line;
+        byte[] buffer = new byte[4096];
+        int length;
 
-        while ((line = reader.readLine()) != null) {
-            builder.append(line);
+        while ((length = inputStream.read(buffer)) != -1) {
+            byteArrayOutputStream.write(buffer, 0, length);
         }
 
-        reader.close();
+        inputStream.close();
 
-        return builder.toString();
+        return byteArrayOutputStream.toString("UTF-8");
     }
 
-    private void recalculateFromGrams(String gramsText) {
-        if (gramsText == null || gramsText.trim().isEmpty()) return;
+    private void recalculateFromEditedGrams(String gramsText) {
+        if (gramsText == null || gramsText.trim().isEmpty()) {
+            return;
+        }
 
         try {
             double newGrams = Double.parseDouble(gramsText.trim());
 
-            if (newGrams <= 0) return;
+            if (newGrams <= 0 || originalQuantityGrams <= 0) {
+                return;
+            }
 
-            grams = newGrams;
-            recalculateNutritionValues();
+            double ratio = newGrams / originalQuantityGrams;
+
+            currentQuantityGrams = newGrams;
+            currentCalories = (int) Math.round(originalCalories * ratio);
+            currentProtein = originalProtein * ratio;
+            currentCarbs = originalCarbs * ratio;
+            currentFat = originalFat * ratio;
+
             hasSavedFood = false;
             enableSaveButton();
+
             updateResultCard();
 
         } catch (NumberFormatException ignored) {
@@ -588,22 +475,12 @@ public class BarcodeScannerFragment extends Fragment {
         }
     }
 
-    private void recalculateNutritionValues() {
-        double ratio = grams / 100.0;
-
-        currentCalories = (int) Math.round(caloriesPer100g * ratio);
-        currentProtein = proteinPer100g * ratio;
-        currentCarbs = carbsPer100g * ratio;
-        currentFat = fatPer100g * ratio;
-    }
-
     private void updateResultCard() {
-        tvResultTitle.setText("Barcode Food Result");
-        tvResultSubtitle.setText("Review the product data and adjust grams before saving.");
+        tvResultTitle.setText("AI Food Analysis");
+        tvResultSubtitle.setText("Review the estimate and adjust grams before saving.");
 
-        tvProductValue.setText(productName);
-        tvBarcodeValue.setText("Barcode: " + barcodeValue);
-        tvQuantityValue.setText(formatGrams(grams) + "g");
+        tvFoodValue.setText(capitalize(analyzedFoodName));
+        tvQuantityValue.setText(formatGrams(currentQuantityGrams) + "g");
         tvCaloriesValue.setText(currentCalories + " kcal");
 
         tvProteinValue.setText("Protein\n" + formatDouble(currentProtein) + "g");
@@ -612,83 +489,44 @@ public class BarcodeScannerFragment extends Fragment {
 
         tvInsightValue.setText(generateNutritionInsight());
 
-        tvSourceValue.setText("Source: Open Food Facts + AI");
-        tvNoteValue.setText("Nutrition values are based on product data per 100g. You can edit grams before saving.");
+        tvConfidenceValue.setText("Confidence: " + capitalize(analyzedConfidence));
+        tvNoteValue.setText("Nutrition values are estimates. You can edit grams before saving.");
     }
 
     private String generateNutritionInsight() {
-        if (aiNutritionInsight != null && !aiNutritionInsight.trim().isEmpty()) {
-            return aiNutritionInsight.trim();
+        if (analyzedNote != null && !analyzedNote.trim().isEmpty()) {
+            return analyzedNote.trim();
         }
 
-        return generateLocalNutritionInsight();
-    }
-
-    private String generateLocalNutritionInsight() {
-        String lowerName = productName == null ? "" : productName.toLowerCase(Locale.ROOT);
-
-        if (lowerName.contains("nescafe") ||
-                lowerName.contains("coffee") ||
-                lowerName.contains("instant coffee") ||
-                lowerName.contains("café") ||
-                lowerName.contains("cafe")) {
-
-            return "Coffee itself is usually very low in calories when prepared without sugar, milk, or cream. Calories can increase depending on what you add to it.";
-        }
-
-        if (lowerName.contains("zero") ||
-                lowerName.contains("diet") ||
-                lowerName.contains("light") ||
-                lowerName.contains("no sugar") ||
-                lowerName.contains("sugar free")) {
-
-            return "Very low calorie product. It can help reduce calorie intake compared to the regular version, but portion and overall daily habits still matter.";
-        }
-
-        if (lowerName.contains("coca") ||
-                lowerName.contains("cola") ||
-                lowerName.contains("pepsi") ||
-                lowerName.contains("fanta") ||
-                lowerName.contains("sprite") ||
-                lowerName.contains("soft drink") ||
-                lowerName.contains("soda")) {
-
-            if (caloriesPer100g <= 5) {
-                return "Very low calorie drink. It can fit into a calorie-tracking diet, but water is still the better everyday choice.";
-            } else {
-                return "This drink contains calories, usually from sugar. It is better to watch portion size if you are tracking calories.";
-            }
-        }
-
-        if (caloriesPer100g <= 0 && proteinPer100g <= 0 && carbsPer100g <= 0 && fatPer100g <= 0) {
-            return "Not enough nutrition data is available for this product.";
+        if (currentCalories <= 0 && currentProtein <= 0 && currentCarbs <= 0 && currentFat <= 0) {
+            return "Not enough nutrition data is available for this food.";
         }
 
         StringBuilder insight = new StringBuilder();
 
-        if (caloriesPer100g >= 450) {
-            insight.append("Watch portion: This product is high in calories per 100g. ");
-        } else if (caloriesPer100g >= 250) {
-            insight.append("Moderate choice: This product has a moderate calorie density. ");
+        if (currentCalories >= 600) {
+            insight.append("Watch portion: This food is high in calories for the estimated quantity. ");
+        } else if (currentCalories >= 300) {
+            insight.append("Moderate choice: This food has a moderate amount of calories. ");
         } else {
-            insight.append("Good choice: This product is relatively lower in calories per 100g. ");
+            insight.append("Good choice: This food is relatively lower in calories for the estimated quantity. ");
         }
 
-        if (proteinPer100g >= 15) {
+        if (currentProtein >= 25) {
             insight.append("It also provides a good amount of protein. ");
-        } else if (proteinPer100g >= 8) {
+        } else if (currentProtein >= 10) {
             insight.append("It contains a moderate amount of protein. ");
         }
 
-        if (carbsPer100g >= 60) {
+        if (currentCarbs >= 60) {
             insight.append("It is high in carbohydrates, so portion size matters. ");
-        } else if (carbsPer100g >= 30) {
+        } else if (currentCarbs >= 30) {
             insight.append("It has a moderate amount of carbohydrates. ");
         }
 
-        if (fatPer100g >= 20) {
+        if (currentFat >= 25) {
             insight.append("It is also high in fat, so it can add calories quickly. ");
-        } else if (fatPer100g >= 10) {
+        } else if (currentFat >= 10) {
             insight.append("It has a moderate amount of fat. ");
         }
 
@@ -696,13 +534,10 @@ public class BarcodeScannerFragment extends Fragment {
     }
 
     private void showEmptyResultState() {
-        hideProductImage();
+        tvResultTitle.setText("No food analyzed yet");
+        tvResultSubtitle.setText("Take a photo and the app will analyze it automatically.");
 
-        tvResultTitle.setText("No barcode scanned yet");
-        tvResultSubtitle.setText("Scan a packaged food barcode to load nutrition values.");
-
-        tvProductValue.setText("-");
-        tvBarcodeValue.setText("Barcode: -");
+        tvFoodValue.setText("-");
         tvQuantityValue.setText("-");
         tvCaloriesValue.setText("-");
 
@@ -710,19 +545,16 @@ public class BarcodeScannerFragment extends Fragment {
         tvCarbsValue.setText("Carbs\n-");
         tvFatValue.setText("Fat\n-");
 
-        tvInsightValue.setText("Nutrition insight will appear here after scanning.");
-        tvSourceValue.setText("Source: -");
-        tvNoteValue.setText("Product nutrition values will appear here after scanning.");
+        tvInsightValue.setText("Nutrition insight will appear here after analysis.");
+        tvConfidenceValue.setText("Confidence: -");
+        tvNoteValue.setText("Nutrition values will appear here after analysis.");
     }
 
     private void showInfoState(String title, String message) {
-        hideProductImage();
-
         tvResultTitle.setText(title);
         tvResultSubtitle.setText(message);
 
-        tvProductValue.setText("-");
-        tvBarcodeValue.setText("Barcode: " + (barcodeValue == null || barcodeValue.isEmpty() ? "-" : barcodeValue));
+        tvFoodValue.setText("-");
         tvQuantityValue.setText("-");
         tvCaloriesValue.setText("-");
 
@@ -730,19 +562,16 @@ public class BarcodeScannerFragment extends Fragment {
         tvCarbsValue.setText("Carbs\n-");
         tvFatValue.setText("Fat\n-");
 
-        tvInsightValue.setText("Nutrition insight is available after a product is scanned.");
-        tvSourceValue.setText("Status: Attention needed");
+        tvInsightValue.setText("Nutrition insight is available after food analysis.");
+        tvConfidenceValue.setText("Status: Attention needed");
         tvNoteValue.setText(message);
     }
 
-    private void showProductNotFoundCard(String barcode) {
-        hideProductImage();
+    private void showAnalysisFailedCard() {
+        tvResultTitle.setText("Analysis Failed");
+        tvResultSubtitle.setText("We couldn’t analyze this photo.");
 
-        tvResultTitle.setText("Product Not Found");
-        tvResultSubtitle.setText("This product is not available in the food database.");
-
-        tvProductValue.setText("-");
-        tvBarcodeValue.setText("Barcode: " + barcode);
+        tvFoodValue.setText("-");
         tvQuantityValue.setText("-");
         tvCaloriesValue.setText("-");
 
@@ -750,13 +579,14 @@ public class BarcodeScannerFragment extends Fragment {
         tvCarbsValue.setText("Carbs\n-");
         tvFatValue.setText("Fat\n-");
 
-        tvInsightValue.setText("No product insight is available because this barcode was not found.");
-        tvSourceValue.setText("Source: Open Food Facts");
+        tvInsightValue.setText("No nutrition insight is available because the analysis failed.");
+        tvConfidenceValue.setText("Status: Try again");
         tvNoteValue.setText(
-                "What you can do:\n" +
-                        "• Try scanning another barcode\n" +
-                        "• Use AI Scan Food instead\n" +
-                        "• Add this food manually from My Foods"
+                "What you can try:\n" +
+                        "• Check your internet connection\n" +
+                        "• Take a clearer photo\n" +
+                        "• Make sure the food is visible\n" +
+                        "• Try again in a few seconds"
         );
     }
 
@@ -764,9 +594,8 @@ public class BarcodeScannerFragment extends Fragment {
         tvResultTitle.setText("Food Saved Successfully");
         tvResultSubtitle.setText("Added to " + mealLabel + ".");
 
-        tvProductValue.setText(productName);
-        tvBarcodeValue.setText("Barcode: " + barcodeValue);
-        tvQuantityValue.setText(formatGrams(grams) + "g");
+        tvFoodValue.setText(capitalize(analyzedFoodName));
+        tvQuantityValue.setText(formatGrams(currentQuantityGrams) + "g");
         tvCaloriesValue.setText(currentCalories + " kcal");
 
         tvProteinValue.setText("Protein\n" + formatDouble(currentProtein) + "g");
@@ -774,7 +603,7 @@ public class BarcodeScannerFragment extends Fragment {
         tvFatValue.setText("Fat\n" + formatDouble(currentFat) + "g");
 
         tvInsightValue.setText(generateNutritionInsight());
-        tvSourceValue.setText("Meal: " + mealLabel);
+        tvConfidenceValue.setText("Meal: " + mealLabel);
 
         if (savedToMyFoods) {
             tvNoteValue.setText("Also saved to My Foods. You can go back to Home to see updated totals.");
@@ -794,26 +623,26 @@ public class BarcodeScannerFragment extends Fragment {
         int userId = new SessionManager(requireContext()).getUserId();
 
         if (userId == -1) {
-            showInfoState("Not Logged In", "Please log in before saving product to My Foods.");
+            showInfoState("Not Logged In", "Please log in before saving food to My Foods.");
             return;
         }
 
-        if (productName == null || productName.trim().isEmpty()) {
-            showInfoState("Missing Product Name", "The product name is missing. Please scan the barcode again.");
+        if (analyzedFoodName == null || analyzedFoodName.trim().isEmpty()) {
+            showInfoState("Missing Food Name", "The food name is missing. Please analyze the image again.");
             return;
         }
 
-        String finalProductName = productName.trim();
-        float finalGrams = grams > 0 ? (float) grams : 100f;
-        String portion = formatGrams(finalGrams) + "g";
-        String category = guessCategoryForFood(finalProductName);
+        String foodName = capitalize(analyzedFoodName.trim());
+        float grams = currentQuantityGrams > 0 ? (float) currentQuantityGrams : 100f;
+        String portion = formatGrams(grams) + "g";
+        String category = guessCategoryForFood(foodName);
 
         showAddFoodBottomSheetPrefilled(
                 userId,
-                finalProductName,
+                foodName,
                 category,
                 portion,
-                finalGrams,
+                grams,
                 currentCalories,
                 (float) currentProtein,
                 (float) currentFat,
@@ -862,7 +691,7 @@ public class BarcodeScannerFragment extends Fragment {
         }
 
         if (tvAddFoodSubtitle != null) {
-            tvAddFoodSubtitle.setText("Review and edit the scanned product values before saving.");
+            tvAddFoodSubtitle.setText("Review and edit the scanned nutrition values before saving.");
         }
 
         etName.setText(defaultName);
@@ -1088,22 +917,22 @@ public class BarcodeScannerFragment extends Fragment {
 
         btnBreakfast.setOnClickListener(v -> {
             dialog.dismiss();
-            saveProductToMeal("breakfast", "Breakfast");
+            saveAnalyzedFoodToMeal("breakfast", "Breakfast");
         });
 
         btnLunch.setOnClickListener(v -> {
             dialog.dismiss();
-            saveProductToMeal("lunch", "Lunch");
+            saveAnalyzedFoodToMeal("lunch", "Lunch");
         });
 
         btnDinner.setOnClickListener(v -> {
             dialog.dismiss();
-            saveProductToMeal("dinner", "Dinner");
+            saveAnalyzedFoodToMeal("dinner", "Dinner");
         });
 
         btnSnacks.setOnClickListener(v -> {
             dialog.dismiss();
-            saveProductToMeal("snacks", "Snacks");
+            saveAnalyzedFoodToMeal("snacks", "Snacks");
         });
 
         btnCancel.setOnClickListener(v -> dialog.dismiss());
@@ -1115,7 +944,7 @@ public class BarcodeScannerFragment extends Fragment {
         }
     }
 
-    private void saveProductToMeal(String mealValue, String mealLabel) {
+    private void saveAnalyzedFoodToMeal(String mealValue, String mealLabel) {
         int userId = new SessionManager(requireContext()).getUserId();
 
         if (userId == -1) {
@@ -1123,21 +952,24 @@ public class BarcodeScannerFragment extends Fragment {
             return;
         }
 
-        if (productName == null || productName.trim().isEmpty()) {
-            showInfoState("Missing Product Name", "The product name is missing. Please scan the barcode again.");
+        if (analyzedFoodName == null || analyzedFoodName.trim().isEmpty()) {
+            showInfoState("Missing Food Name", "The food name is missing. Please analyze the image again.");
             return;
         }
 
-        String finalProductName = productName.trim();
+        String finalFoodName = capitalize(analyzedFoodName.trim());
+
+        float grams = currentQuantityGrams > 0 ? (float) currentQuantityGrams : 100f;
+        float portions = 1f;
 
         dbConnect db = new dbConnect(requireContext());
 
         long logResult = db.addFoodLog(
                 userId,
                 mealValue,
-                finalProductName,
-                (float) grams,
-                1f,
+                finalFoodName,
+                grams,
+                portions,
                 currentCalories,
                 (float) currentProtein,
                 (float) currentFat,
@@ -1162,33 +994,32 @@ public class BarcodeScannerFragment extends Fragment {
 
     private void setLoadingState(boolean isLoading) {
         if (isLoading) {
-            btnScanBarcode.setEnabled(false);
+            btnTakePhoto.setEnabled(false);
             btnSaveFood.setEnabled(false);
             if (btnSaveToMyFoods != null) {
                 btnSaveToMyFoods.setEnabled(false);
+                btnSaveToMyFoods.setClickable(false);
                 btnSaveToMyFoods.setAlpha(0.5f);
             }
-            btnScanBarcode.setText("Loading product...");
 
-            hideProductImage();
+            btnTakePhoto.setText("Analyzing...");
 
-            tvResultTitle.setText("Loading Product");
-            tvResultSubtitle.setText("Searching nutrition information from the barcode.");
-            tvProductValue.setText("Processing...");
-            tvBarcodeValue.setText("Barcode: " + (barcodeValue == null || barcodeValue.isEmpty() ? "-" : barcodeValue));
+            tvResultTitle.setText("Analyzing Food Image");
+            tvResultSubtitle.setText("Please wait while the app estimates nutrition values.");
+            tvFoodValue.setText("Processing...");
             tvQuantityValue.setText("-");
             tvCaloriesValue.setText("-");
             tvProteinValue.setText("Protein\n-");
             tvCarbsValue.setText("Carbs\n-");
             tvFatValue.setText("Fat\n-");
             tvInsightValue.setText("Analyzing nutrition data...");
-            tvSourceValue.setText("Status: Searching");
-            tvNoteValue.setText("Please wait. This may take a few seconds.");
+            tvConfidenceValue.setText("Status: Processing");
+            tvNoteValue.setText("This may take a few seconds.");
         } else {
-            btnScanBarcode.setEnabled(true);
-            btnScanBarcode.setText("Scan Barcode");
+            btnTakePhoto.setEnabled(true);
+            btnTakePhoto.setText("Take Photo and Analyze");
 
-            if (hasProduct && !hasSavedFood) {
+            if (hasAnalyzedFood && !hasSavedFood) {
                 enableSaveButton();
             } else {
                 disableSaveButton();
@@ -1226,17 +1057,47 @@ public class BarcodeScannerFragment extends Fragment {
             btnSaveToMyFoods.setClickable(false);
             btnSaveToMyFoods.setAlpha(0.5f);
 
-            if (!hasProduct) {
+            if (!hasAnalyzedFood) {
                 btnSaveToMyFoods.setText("Save to My Foods");
             }
         }
     }
 
-    private void setGramsInputText(double value) {
-        isUpdatingGrams = true;
-        etGrams.setText(formatGrams(value));
+    private void setGramsInputText(double grams) {
+        isUpdatingGramsText = true;
+        etGrams.setText(formatGrams(grams));
         etGrams.setSelection(etGrams.getText() == null ? 0 : etGrams.getText().length());
-        isUpdatingGrams = false;
+        isUpdatingGramsText = false;
+    }
+
+    private void resetAnalyzedValues() {
+        analyzedFoodName = "";
+
+        originalQuantityGrams = 0.0;
+        originalCalories = 0;
+        originalProtein = 0.0;
+        originalCarbs = 0.0;
+        originalFat = 0.0;
+
+        currentQuantityGrams = 0.0;
+        currentCalories = 0;
+        currentProtein = 0.0;
+        currentCarbs = 0.0;
+        currentFat = 0.0;
+
+        analyzedConfidence = "";
+        analyzedNote = "";
+
+        if (etGrams != null) {
+            etGrams.setText("");
+        }
+
+        if (btnSaveToMyFoods != null) {
+            btnSaveToMyFoods.setText("Save to My Foods");
+            btnSaveToMyFoods.setAlpha(0.5f);
+        }
+
+        showEmptyResultState();
     }
 
     private String formatDouble(double value) {
@@ -1249,6 +1110,14 @@ public class BarcodeScannerFragment extends Fragment {
         }
 
         return String.format(Locale.ROOT, "%.1f", value);
+    }
+
+    private String capitalize(String text) {
+        if (text == null || text.trim().isEmpty()) return "";
+
+        text = text.trim();
+
+        return text.substring(0, 1).toUpperCase(Locale.ROOT) + text.substring(1);
     }
 
     @Override

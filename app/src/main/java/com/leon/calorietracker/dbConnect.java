@@ -1,4 +1,4 @@
-package com.example.calorietracker;
+package com.leon.calorietracker;
 
 import android.content.ContentValues;
 import android.content.Context;

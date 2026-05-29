@@ -1,4 +1,4 @@
-package com.example.calorietracker;
+package com.leon.calorietracker;
 
 import android.app.AlertDialog;
 import android.graphics.Color;

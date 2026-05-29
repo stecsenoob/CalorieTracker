@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/Second3Fragment"
-        android:name="com.example.calorietracker.Second3Fragment"
+        android:name="com.leon.calorietracker.Second3Fragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second3">
 

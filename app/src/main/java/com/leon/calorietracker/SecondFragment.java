@@ -1,4 +1,4 @@
-package com.example.calorietracker;
+package com.leon.calorietracker;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.calorietracker.databinding.FragmentFirst3Binding;
+import com.leon.calorietracker.databinding.FragmentSecondBinding;
 
-public class First3Fragment extends Fragment {
+public class SecondFragment extends Fragment {
 
-    private FragmentFirst3Binding binding;
+    private FragmentSecondBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +21,7 @@ public class First3Fragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFirst3Binding.inflate(inflater, container, false);
+        binding = FragmentSecondBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -29,9 +29,9 @@ public class First3Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonFirst.setOnClickListener(v ->
-                NavHostFragment.findNavController(First3Fragment.this)
-                        .navigate(R.id.action_First3Fragment_to_Second3Fragment)
+        binding.buttonSecond.setOnClickListener(v ->
+                NavHostFragment.findNavController(SecondFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_FirstFragment)
         );
     }
 

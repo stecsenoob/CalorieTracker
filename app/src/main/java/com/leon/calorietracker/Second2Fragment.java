@@ -1,4 +1,4 @@
-package com.example.calorietracker;
+package com.leon.calorietracker;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.calorietracker.databinding.FragmentSecond2Binding;
+import com.leon.calorietracker.databinding.FragmentSecond2Binding;
 
 public class Second2Fragment extends Fragment {
 

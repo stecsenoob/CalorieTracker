@@ -1,4 +1,4 @@
-package com.example.calorietracker;
+package com.leon.calorietracker;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.calorietracker.databinding.FragmentFirst4Binding;
+import com.leon.calorietracker.databinding.FragmentFirst2Binding;
 
-public class First4Fragment extends Fragment {
+public class First2Fragment extends Fragment {
 
-    private FragmentFirst4Binding binding;
+    private FragmentFirst2Binding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +21,7 @@ public class First4Fragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFirst4Binding.inflate(inflater, container, false);
+        binding = FragmentFirst2Binding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -30,8 +30,8 @@ public class First4Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.buttonFirst.setOnClickListener(v ->
-                NavHostFragment.findNavController(First4Fragment.this)
-                        .navigate(R.id.action_First4Fragment_to_Second4Fragment)
+                NavHostFragment.findNavController(First2Fragment.this)
+                        .navigate(R.id.action_First2Fragment_to_Second2Fragment)
         );
     }
 
